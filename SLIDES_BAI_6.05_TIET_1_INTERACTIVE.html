@@ -230,7 +230,7 @@
     }
     .slide-card.active { display: flex; }
 
-    /* SLIDE MỞ GIAI ĐOẠN (CARD ĐẶC BIỆT) */
+    /* SLIDE MỞ GIAI ĐOẠN / SLIDE CÂU HỎI LỚN */
     .slide-card.stage-intro-card {
       background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
       color: #FFFFFF;
@@ -308,7 +308,7 @@
       margin-bottom: 20px;
     }
 
-    /* KHUNG SỔ TAY VỞ GHI (NOTEBOOK BOX) */
+    /* KHUNG SỔ TAY VỞ GHI */
     .notebook-box {
       background: #FFFFFF;
       border: 2px solid #CBD5E1;
@@ -319,7 +319,7 @@
       position: relative;
     }
 
-    /* GIẤY GHI CHÚ DÁN VÀNG (STICKY NOTE) */
+    /* GIẤY GHI CHÚ DÁN VÀNG */
     .sticky-note {
       background: #FEF9C3;
       border: 1px solid #FDE047;
@@ -457,7 +457,7 @@
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
 
-    /* TABLES CÓ VẠCH Ô LY */
+    /* TABLES */
     .edu-table {
       width: 100%;
       border-collapse: separate;
@@ -521,7 +521,7 @@
     }
     .timer-btn:hover { background: rgba(255, 255, 255, 0.3); }
 
-    /* CLICK TO MATCH */
+    /* MATCH */
     .match-column { display: flex; flex-direction: column; gap: 10px; }
     .match-item {
       padding: 13px 16px;
@@ -607,58 +607,59 @@
 
   <div class="app-container">
     
-    <!-- SIDEBAR ĐIỀU HƯỚNG BÀI HỌC (28 SLIDES) -->
+    <!-- SIDEBAR ĐIỀU HƯỚNG BÀI HỌC (29 SLIDES) -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <h2>HỘI ĐỒNG SƯ PHẠM NHÍ NOVA</h2>
-        <p>BÀI 6.05 — TIẾT 1 (OUTLINE V3 — 28 TRANG)</p>
+        <p>BÀI 6.05 — TIẾT 1 (29 TRANG)</p>
       </div>
       <div class="sidebar-nav">
         <div class="stage-section-header">Khởi đầu bài học</div>
         <div class="nav-item active" onclick="goToSlide(1)"><span>01. Slide Bìa Tiết 1</span><span class="slide-num">01</span></div>
-        <div class="nav-item" onclick="goToSlide(2)"><span>02. Chuẩn bị cho tiết học</span><span class="slide-num">02</span></div>
+        <div class="nav-item" onclick="goToSlide(2)"><span>02. Câu hỏi lớn bài học</span><span class="slide-num">02</span></div>
+        <div class="nav-item" onclick="goToSlide(3)"><span>03. Chuẩn bị cho tiết học</span><span class="slide-num">03</span></div>
 
         <div class="stage-section-header">Giai đoạn 1: Mở khóa bài giảng</div>
-        <div class="nav-item" onclick="goToSlide(3)"><span>03. Mở Giai đoạn 1</span><span class="slide-num">03</span></div>
-        <div class="nav-item" onclick="goToSlide(4)"><span>04. Hồ sơ lớp: Hùng và Tuấn</span><span class="slide-num">04</span></div>
-        <div class="nav-item" onclick="goToSlide(5)"><span>05. Nhận định ban đầu</span><span class="slide-num">05</span></div>
+        <div class="nav-item" onclick="goToSlide(4)"><span>04. Mở Giai đoạn 1</span><span class="slide-num">04</span></div>
+        <div class="nav-item" onclick="goToSlide(5)"><span>05. Hồ sơ lớp: Hùng và Tuấn</span><span class="slide-num">05</span></div>
+        <div class="nav-item" onclick="goToSlide(6)"><span>06. Nhận định ban đầu</span><span class="slide-num">06</span></div>
 
         <div class="stage-section-header">Giai đoạn 2: Nhận kế hoạch bài dạy</div>
-        <div class="nav-item" onclick="goToSlide(6)"><span>06. Mở Giai đoạn 2</span><span class="slide-num">06</span></div>
-        <div class="nav-item" onclick="goToSlide(7)"><span>07. Phiếu phân tích tình huống</span><span class="slide-num">07</span></div>
-        <div class="nav-item" onclick="goToSlide(8)"><span>08. 2 Phút phân tích nhóm đôi</span><span class="slide-num">08</span></div>
-        <div class="nav-item" onclick="goToSlide(9)"><span>09. Kiểm chứng phiếu phân tích</span><span class="slide-num">09</span></div>
+        <div class="nav-item" onclick="goToSlide(7)"><span>07. Mở Giai đoạn 2</span><span class="slide-num">07</span></div>
+        <div class="nav-item" onclick="goToSlide(8)"><span>08. Phiếu phân tích tình huống</span><span class="slide-num">08</span></div>
+        <div class="nav-item" onclick="goToSlide(9)"><span>09. 2 Phút phân tích nhóm đôi</span><span class="slide-num">09</span></div>
+        <div class="nav-item" onclick="goToSlide(10)"><span>10. Kiểm chứng phiếu phân tích</span><span class="slide-num">10</span></div>
 
         <div class="stage-section-header">Giai đoạn 3: Nghiên cứu tài liệu</div>
-        <div class="nav-item" onclick="goToSlide(10)"><span>10. Mở Giai đoạn 3</span><span class="slide-num">10</span></div>
-        <div class="nav-item" onclick="goToSlide(11)"><span>11. Thử thách ghép 5 nguyên tắc</span><span class="slide-num">11</span></div>
-        <div class="nav-item" onclick="goToSlide(12)"><span>12. Kiểm chứng 5 cặp nguyên tắc</span><span class="slide-num">12</span></div>
+        <div class="nav-item" onclick="goToSlide(11)"><span>11. Mở Giai đoạn 3</span><span class="slide-num">11</span></div>
+        <div class="nav-item" onclick="goToSlide(12)"><span>12. Thử thách ghép 5 nguyên tắc</span><span class="slide-num">12</span></div>
+        <div class="nav-item" onclick="goToSlide(13)"><span>13. Kiểm chứng 5 cặp nguyên tắc</span><span class="slide-num">13</span></div>
 
         <div class="stage-section-header">Giai đoạn 4: Soạn giáo án</div>
-        <div class="nav-item" onclick="goToSlide(13)"><span>13. Mở Giai đoạn 4</span><span class="slide-num">13</span></div>
-        <div class="nav-item" onclick="goToSlide(14)"><span>14. Sơ đồ 5 nguyên tắc</span><span class="slide-num">14</span></div>
-        <div class="nav-item" onclick="goToSlide(15)"><span>15. Tiêu chuẩn phân công “4 Rõ”</span><span class="slide-num">15</span></div>
+        <div class="nav-item" onclick="goToSlide(14)"><span>14. Mở Giai đoạn 4</span><span class="slide-num">14</span></div>
+        <div class="nav-item" onclick="goToSlide(15)"><span>15. Sơ đồ 5 nguyên tắc</span><span class="slide-num">15</span></div>
+        <div class="nav-item" onclick="goToSlide(16)"><span>16. Tiêu chuẩn phân công “4 Rõ”</span><span class="slide-num">16</span></div>
 
         <div class="stage-section-header">Giai đoạn 5: Thông qua giáo án</div>
-        <div class="nav-item" onclick="goToSlide(16)"><span>16. Mở Giai đoạn 5</span><span class="slide-num">16</span></div>
-        <div class="nav-item" onclick="goToSlide(17)"><span>17. Phương án xử lý Hùng–Tuấn</span><span class="slide-num">17</span></div>
-        <div class="nav-item" onclick="goToSlide(18)"><span>18. 5 Phút soạn phương án</span><span class="slide-num">18</span></div>
-        <div class="nav-item" onclick="goToSlide(19)"><span>19. Đối chiếu & thông qua phương án</span><span class="slide-num">19</span></div>
+        <div class="nav-item" onclick="goToSlide(17)"><span>17. Mở Giai đoạn 5</span><span class="slide-num">17</span></div>
+        <div class="nav-item" onclick="goToSlide(18)"><span>18. Phương án xử lý Hùng–Tuấn</span><span class="slide-num">18</span></div>
+        <div class="nav-item" onclick="goToSlide(19)"><span>19. 5 Phút soạn phương án</span><span class="slide-num">19</span></div>
+        <div class="nav-item" onclick="goToSlide(20)"><span>20. Đối chiếu & thông qua phương án</span><span class="slide-num">20</span></div>
 
         <div class="stage-section-header">Giai đoạn 6: Đứng lớp giảng bài</div>
-        <div class="nav-item" onclick="goToSlide(20)"><span>20. Mở Giai đoạn 6</span><span class="slide-num">20</span></div>
-        <div class="nav-item" onclick="goToSlide(21)"><span>21. Chuẩn bị diễn tập</span><span class="slide-num">21</span></div>
-        <div class="nav-item" onclick="goToSlide(22)"><span>22. Diễn tập lượt 1</span><span class="slide-num">22</span></div>
-        <div class="nav-item" onclick="goToSlide(23)"><span>23. Diễn tập lượt 2</span><span class="slide-num">23</span></div>
-        <div class="nav-item" onclick="goToSlide(24)"><span>24. Trình diễn trước Hội đồng</span><span class="slide-num">24</span></div>
+        <div class="nav-item" onclick="goToSlide(21)"><span>21. Mở Giai đoạn 6</span><span class="slide-num">21</span></div>
+        <div class="nav-item" onclick="goToSlide(22)"><span>22. Chuẩn bị diễn tập</span><span class="slide-num">22</span></div>
+        <div class="nav-item" onclick="goToSlide(23)"><span>23. Diễn tập lượt 1</span><span class="slide-num">23</span></div>
+        <div class="nav-item" onclick="goToSlide(24)"><span>24. Diễn tập lượt 2</span><span class="slide-num">24</span></div>
+        <div class="nav-item" onclick="goToSlide(25)"><span>25. Trình diễn trước Hội đồng</span><span class="slide-num">25</span></div>
 
         <div class="stage-section-header">Giai đoạn 7: Nhật ký người thầy</div>
-        <div class="nav-item" onclick="goToSlide(25)"><span>25. Mở Giai đoạn 7</span><span class="slide-num">25</span></div>
-        <div class="nav-item" onclick="goToSlide(26)"><span>26. Nhìn lại chính mình</span><span class="slide-num">26</span></div>
+        <div class="nav-item" onclick="goToSlide(26)"><span>26. Mở Giai đoạn 7</span><span class="slide-num">26</span></div>
+        <div class="nav-item" onclick="goToSlide(27)"><span>27. Nhìn lại chính mình</span><span class="slide-num">27</span></div>
 
         <div class="stage-section-header">Giai đoạn 8: Lan tỏa tri thức</div>
-        <div class="nav-item" onclick="goToSlide(27)"><span>27. Mở Giai đoạn 8</span><span class="slide-num">27</span></div>
-        <div class="nav-item" onclick="goToSlide(28)"><span>28. Cam kết làm việc nhóm</span><span class="slide-num">28</span></div>
+        <div class="nav-item" onclick="goToSlide(28)"><span>28. Mở Giai đoạn 8</span><span class="slide-num">28</span></div>
+        <div class="nav-item" onclick="goToSlide(29)"><span>29. Cam kết làm việc nhóm</span><span class="slide-num">29</span></div>
       </div>
     </aside>
 
@@ -689,17 +690,12 @@
 
         <!-- ==================== SLIDE 01: SLIDE BÌA ==================== -->
         <section class="slide-card active" id="slide-1">
-          <div>
+          <div style="text-align: center; padding: 40px 20px;">
             <div class="slide-tag">BÀI 6.05 — TIẾT 1</div>
-            <h1 class="slide-title">BÀI 6.05 — CÁC NGUYÊN TẮC KHI LÀM VIỆC NHÓM</h1>
-            <p class="slide-subtitle">TIẾT 1 — HỘI ĐỒNG SƯ PHẠM NHÍ NOVA</p>
-            
-            <div class="notebook-box" style="margin-top: 16px;">
-              <p style="font-size: 14px; font-weight: 800; color: #1E3A8A; margin-bottom: 6px;">❓ CÂU HỎI LỚN CỦA BÀI HỌC:</p>
-              <p style="font-size: 17px; font-weight: 700; color: #1E1B4B; line-height: 1.6;">
-                “Làm thế nào để phân chia công việc công bằng, loại bỏ thói quen tranh việc nhẹ đùn việc nặng và vận dụng 5 nguyên tắc Học tập hợp tác để cùng đồng đội hoàn thành xuất sắc dự án chung?”
-              </p>
-            </div>
+            <h1 class="slide-title" style="font-size: 36px; margin: 16px 0;">BÀI 6.05 — CÁC NGUYÊN TẮC KHI LÀM VIỆC NHÓM</h1>
+            <p class="slide-subtitle" style="font-size: 20px; color: #4338CA; font-weight: 800;">
+              TIẾT 1 — HỘI ĐỒNG SƯ PHẠM NHÍ NOVA
+            </p>
           </div>
 
           <div style="text-align: center; margin-top: 24px;">
@@ -709,8 +705,26 @@
           </div>
         </section>
 
-        <!-- ==================== SLIDE 02: SLIDE CHUẨN BỊ ==================== -->
-        <section class="slide-card" id="slide-2">
+        <!-- ==================== SLIDE 02: SLIDE CÂU HỎI LỚN BÀI HỌC (TÁCH RIÊNG) ==================== -->
+        <section class="slide-card stage-intro-card" id="slide-2" style="background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%); border-color: #F59E0B;">
+          <div>
+            <div class="stage-intro-badge" style="background: #F59E0B;">CÂU HỎI ĐỊNH HƯỚNG</div>
+            <h2 class="stage-intro-title" style="font-size: 32px; color: #FDE047;">CÂU HỎI LỚN CỦA BÀI HỌC</h2>
+            <div class="notebook-box" style="background: rgba(255, 255, 255, 0.96); border-left-color: #D97706; padding: 28px; max-width: 820px; margin: 20px auto; text-align: left;">
+              <p style="font-size: 19px; font-weight: 800; color: #1E1B4B; line-height: 1.7; font-style: italic;">
+                “Làm thế nào để phân chia công việc công bằng, loại bỏ thói quen tranh việc nhẹ đùn việc nặng và vận dụng 5 nguyên tắc Học tập hợp tác để cùng đồng đội hoàn thành xuất sắc dự án chung?”
+              </p>
+            </div>
+          </div>
+          <div>
+            <button class="btn-action emerald" onclick="goToSlide(3)">
+              TIẾP TỤC CHUẨN BỊ BÀI HỌC ▶
+            </button>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 03: SLIDE CHUẨN BỊ ==================== -->
+        <section class="slide-card" id="slide-3">
           <div>
             <div class="slide-tag">CHUẨN BỊ BÀI HỌC</div>
             <h2 class="slide-title">CHUẨN BỊ CHO TIẾT HỌC</h2>
@@ -738,14 +752,14 @@
           </div>
 
           <div style="text-align: right; margin-top: 20px;">
-            <button class="btn-action primary" onclick="goToSlide(3)">
+            <button class="btn-action primary" onclick="goToSlide(4)">
               TIẾP TỤC SANG GIAI ĐOẠN 1 ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 03: MỞ GIAI ĐOẠN 1 ==================== -->
-        <section class="slide-card stage-intro-card" id="slide-3">
+        <!-- ==================== SLIDE 04: MỞ GIAI ĐOẠN 1 ==================== -->
+        <section class="slide-card stage-intro-card" id="slide-4">
           <div>
             <div class="stage-intro-badge">GIAI ĐOẠN 1</div>
             <h2 class="stage-intro-title">MỞ KHÓA BÀI GIẢNG</h2>
@@ -754,14 +768,14 @@
             </p>
           </div>
           <div>
-            <button class="btn-action emerald" onclick="goToSlide(4)">
+            <button class="btn-action emerald" onclick="goToSlide(5)">
               ▶ BẮT ĐẦU
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 04: HỒ SƠ LỚP HỌC HÙNG & TUẤN ==================== -->
-        <section class="slide-card" id="slide-4">
+        <!-- ==================== SLIDE 05: HỒ SƠ LỚP HỌC HÙNG & TUẤN ==================== -->
+        <section class="slide-card" id="slide-5">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 1 — MỞ KHÓA BÀI GIẢNG</div>
             <h2 class="slide-title">HỒ SƠ LỚP HỌC: HÙNG VÀ TUẤN</h2>
@@ -782,14 +796,14 @@
           </div>
 
           <div style="text-align: right; margin-top: 20px;">
-            <button class="btn-action primary" onclick="goToSlide(5)">
+            <button class="btn-action primary" onclick="goToSlide(6)">
               CHIA SẺ NHẬN ĐỊNH ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 05: NHẬN ĐỊNH BAN ĐẦU ==================== -->
-        <section class="slide-card" id="slide-5">
+        <!-- ==================== SLIDE 06: NHẬN ĐỊNH BAN ĐẦU ==================== -->
+        <section class="slide-card" id="slide-6">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 1 — MỞ KHÓA BÀI GIẢNG</div>
             <h2 class="slide-title">NHẬN ĐỊNH BAN ĐẦU</h2>
@@ -800,7 +814,7 @@
               <p style="font-size: 15px; color: #334155;">(Giáo viên mời 2 đại diện chia sẻ nhanh suy nghĩ của mình)</p>
             </div>
 
-            <div id="boxHint05" class="sticky-note" style="margin-top: 16px; display: none;">
+            <div id="boxHint06" class="sticky-note" style="margin-top: 16px; display: none;">
               <p style="font-size: 14px; font-weight: 800; color: #854D0E;">💡 GỢI Ý ĐỐI CHIẾU:</p>
               <p style="font-size: 16px; font-weight: 700; color: #713F12; line-height: 1.6;">
                 Cả hai cùng muốn nhận phần việc nổi bật, né tránh phần việc tẻ nhạt; nhóm thiếu sự phân công công bằng.
@@ -809,17 +823,17 @@
           </div>
 
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
-            <button class="btn-action secondary" id="btnRevealHint05" onclick="revealHint05()">
+            <button class="btn-action secondary" id="btnRevealHint06" onclick="revealHint06()">
               👁️ HIỆN GỢI Ý ĐỐI CHIẾU
             </button>
-            <button class="btn-action primary" onclick="goToSlide(6)">
+            <button class="btn-action primary" onclick="goToSlide(7)">
               TIẾP TỤC SANG GIAI ĐOẠN 2 ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 06: MỞ GIAI ĐOẠN 2 ==================== -->
-        <section class="slide-card stage-intro-card" id="slide-6">
+        <!-- ==================== SLIDE 07: MỞ GIAI ĐOẠN 2 ==================== -->
+        <section class="slide-card stage-intro-card" id="slide-7">
           <div>
             <div class="stage-intro-badge">GIAI ĐOẠN 2</div>
             <h2 class="stage-intro-title">NHẬN KẾ HOẠCH BÀI DẠY</h2>
@@ -828,14 +842,14 @@
             </p>
           </div>
           <div>
-            <button class="btn-action emerald" onclick="goToSlide(7)">
+            <button class="btn-action emerald" onclick="goToSlide(8)">
               ▶ BẮT ĐẦU
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 07: PHIẾU PHÂN TÍCH TÌNH HUỐNG ==================== -->
-        <section class="slide-card" id="slide-7">
+        <!-- ==================== SLIDE 08: PHIẾU PHÂN TÍCH TÌNH HUỐNG ==================== -->
+        <section class="slide-card" id="slide-8">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 2 — NHẬN KẾ HOẠCH BÀI DẠY</div>
             <h2 class="slide-title">PHIẾU PHÂN TÍCH TÌNH HUỐNG SƯ PHẠM</h2>
@@ -866,14 +880,14 @@
           </div>
 
           <div style="text-align: center; margin-top: 18px;">
-            <button class="btn-action primary" onclick="goToSlide(8)">
+            <button class="btn-action primary" onclick="goToSlide(9)">
               ⏱️ BẮT ĐẦU 2 PHÚT PHÂN TÍCH NHÓM ĐÔI
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 08: 2 PHÚT PHÂN TÍCH NHÓM ĐÔI ==================== -->
-        <section class="slide-card" id="slide-8">
+        <!-- ==================== SLIDE 09: 2 PHÚT PHÂN TÍCH NHÓM ĐÔI ==================== -->
+        <section class="slide-card" id="slide-9">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 2 — NHẬN KẾ HOẠCH BÀI DẠY</div>
             <h2 class="slide-title">2 PHÚT PHÂN TÍCH NHÓM ĐÔI</h2>
@@ -899,16 +913,16 @@
                 <div class="timer-widget">
                   <div>
                     <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ ĐẾM NGƯỢC</div>
-                    <div class="timer-display" id="timerDisplay08">02:00</div>
+                    <div class="timer-display" id="timerDisplay09">02:00</div>
                   </div>
                   <div class="timer-controls">
-                    <button class="timer-btn" onclick="startTimer08()">Bắt đầu</button>
-                    <button class="timer-btn" onclick="pauseTimer08()">Tạm dừng</button>
-                    <button class="timer-btn" onclick="resetTimer08()">Đặt lại</button>
-                    <button class="timer-btn" onclick="skipTimer08()">Bỏ qua</button>
+                    <button class="timer-btn" onclick="startTimer09()">Bắt đầu</button>
+                    <button class="timer-btn" onclick="pauseTimer09()">Tạm dừng</button>
+                    <button class="timer-btn" onclick="resetTimer09()">Đặt lại</button>
+                    <button class="timer-btn" onclick="skipTimer09()">Bỏ qua</button>
                   </div>
                 </div>
-                <div id="msgTimer08" style="margin-top: 12px; font-size: 14px; font-weight: 800; color: #D97706; display: none;">
+                <div id="msgTimer09" style="margin-top: 12px; font-size: 14px; font-weight: 800; color: #D97706; display: none;">
                   🔔 Đã hết thời gian! Dừng bút và chuẩn bị đối chiếu kết quả.
                 </div>
               </div>
@@ -916,14 +930,14 @@
           </div>
 
           <div style="text-align: right; margin-top: 18px;">
-            <button class="btn-action primary" onclick="goToSlide(9)">
+            <button class="btn-action primary" onclick="goToSlide(10)">
               🔍 KIỂM CHỨNG KẾT QUẢ ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 09: KIỂM CHỨNG PHIẾU PHÂN TÍCH ==================== -->
-        <section class="slide-card" id="slide-9">
+        <!-- ==================== SLIDE 10: KIỂM CHỨNG PHIẾU PHÂN TÍCH ==================== -->
+        <section class="slide-card" id="slide-10">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 2 — NHẬN KẾ HOẠCH BÀI DẠY</div>
             <h2 class="slide-title">KIỂM CHỨNG PHIẾU PHÂN TÍCH</h2>
@@ -939,20 +953,20 @@
               </thead>
               <tbody>
                 <tr style="height: 100px;">
-                  <td id="colCol09_1" style="vertical-align: top; font-weight: 600;">
-                    <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealCol09(1)">👁️ MỞ CỘT 1</button>
+                  <td id="colCol10_1" style="vertical-align: top; font-weight: 600;">
+                    <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealCol10(1)">👁️ MỞ CỘT 1</button>
                   </td>
-                  <td id="colCol09_2" style="vertical-align: top; font-weight: 600;">
-                    <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealCol09(2)">👁️ MỞ CỘT 2</button>
+                  <td id="colCol10_2" style="vertical-align: top; font-weight: 600;">
+                    <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealCol10(2)">👁️ MỞ CỘT 2</button>
                   </td>
-                  <td id="colCol09_3" style="vertical-align: top; font-weight: 600;">
-                    <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealCol09(3)">👁️ MỞ CỘT 3</button>
+                  <td id="colCol10_3" style="vertical-align: top; font-weight: 600;">
+                    <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealCol10(3)">👁️ MỞ CỘT 3</button>
                   </td>
                 </tr>
               </tbody>
             </table>
 
-            <div id="boxConclusion09" class="sticky-note" style="margin-top: 12px; display: none;">
+            <div id="boxConclusion10" class="sticky-note" style="margin-top: 12px; display: none;">
               <p style="font-size: 14px; font-weight: 800; color: #854D0E;">💡 KẾT LUẬN SƯ PHẠM:</p>
               <p style="font-size: 15px; font-weight: 700; color: #713F12;">
                 Nhóm chỉ thành công khi mọi thành viên cùng chia sẻ trách nhiệm và tôn trọng mọi vị trí công việc.
@@ -961,17 +975,17 @@
           </div>
 
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-            <button class="btn-action secondary" onclick="revealAllCols09()">
+            <button class="btn-action secondary" onclick="revealAllCols10()">
               👁️ MỞ TẤT CẢ 3 CỘT
             </button>
-            <button class="btn-action primary" onclick="goToSlide(10)">
+            <button class="btn-action primary" onclick="goToSlide(11)">
               TIẾP TỤC SANG GIAI ĐOẠN 3 ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 10: MỞ GIAI ĐOẠN 3 ==================== -->
-        <section class="slide-card stage-intro-card" id="slide-10">
+        <!-- ==================== SLIDE 11: MỞ GIAI ĐOẠN 3 ==================== -->
+        <section class="slide-card stage-intro-card" id="slide-11">
           <div>
             <div class="stage-intro-badge">GIAI ĐOẠN 3</div>
             <h2 class="stage-intro-title">NGHIÊN CỨU TÀI LIỆU</h2>
@@ -980,14 +994,14 @@
             </p>
           </div>
           <div>
-            <button class="btn-action emerald" onclick="goToSlide(11)">
+            <button class="btn-action emerald" onclick="goToSlide(12)">
               ▶ BẮT ĐẦU
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 11: THỬ THÁCH GHÉP 5 NGUYÊN TẮC ==================== -->
-        <section class="slide-card" id="slide-11">
+        <!-- ==================== SLIDE 12: THỬ THÁCH GHÉP 5 NGUYÊN TẮC ==================== -->
+        <section class="slide-card" id="slide-12">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 3 — NGHIÊN CỨU TÀI LIỆU</div>
             <h2 class="slide-title">THỬ THÁCH GHÉP 5 NGUYÊN TẮC</h2>
@@ -996,43 +1010,43 @@
             <div class="grid-2" style="margin-top: 8px;">
               <div class="match-column">
                 <p style="font-size: 13px; font-weight: 800; color: #2563EB;">5 NGUYÊN TẮC HỌC TẬP HỢP TÁC:</p>
-                <div class="match-item" id="left11-1" onclick="selectMatch11('left', 1)">
+                <div class="match-item" id="left12-1" onclick="selectMatch12('left', 1)">
                   <span>1. Phụ thuộc tích cực</span>
-                  <span id="tag11-1" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
+                  <span id="tag12-1" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
                 </div>
-                <div class="match-item" id="left11-2" onclick="selectMatch11('left', 2)">
+                <div class="match-item" id="left12-2" onclick="selectMatch12('left', 2)">
                   <span>2. Trách nhiệm cá nhân</span>
-                  <span id="tag11-2" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
+                  <span id="tag12-2" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
                 </div>
-                <div class="match-item" id="left11-3" onclick="selectMatch11('left', 3)">
+                <div class="match-item" id="left12-3" onclick="selectMatch12('left', 3)">
                   <span>3. Tương tác trực tiếp</span>
-                  <span id="tag11-3" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
+                  <span id="tag12-3" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
                 </div>
-                <div class="match-item" id="left11-4" onclick="selectMatch11('left', 4)">
+                <div class="match-item" id="left12-4" onclick="selectMatch12('left', 4)">
                   <span>4. Kỹ năng xã hội</span>
-                  <span id="tag11-4" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
+                  <span id="tag12-4" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
                 </div>
-                <div class="match-item" id="left11-5" onclick="selectMatch11('left', 5)">
+                <div class="match-item" id="left12-5" onclick="selectMatch12('left', 5)">
                   <span>5. Đánh giá hoạt động nhóm</span>
-                  <span id="tag11-5" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
+                  <span id="tag12-5" style="font-size: 11px; color: #64748B;">[Chưa nối]</span>
                 </div>
               </div>
 
               <div class="match-column">
                 <p style="font-size: 13px; font-weight: 800; color: #D97706;">Ý NGHĨA TƯƠNG ỨNG:</p>
-                <div class="match-item" id="right11-A" onclick="selectMatch11('right', 'A')">
+                <div class="match-item" id="right12-A" onclick="selectMatch12('right', 'A')">
                   <span>A. Mỗi thành viên hoàn thành 100% nhiệm vụ được giao, không ỷ lại.</span>
                 </div>
-                <div class="match-item" id="right11-B" onclick="selectMatch11('right', 'B')">
+                <div class="match-item" id="right12-B" onclick="selectMatch12('right', 'B')">
                   <span>B. Cùng tiến bộ, thành công của bạn là thành công của tớ.</span>
                 </div>
-                <div class="match-item" id="right11-C" onclick="selectMatch11('right', 'C')">
+                <div class="match-item" id="right12-C" onclick="selectMatch12('right', 'C')">
                   <span>C. Hỗ trợ, động viên nhau làm việc.</span>
                 </div>
-                <div class="match-item" id="right11-D" onclick="selectMatch11('right', 'D')">
+                <div class="match-item" id="right12-D" onclick="selectMatch12('right', 'D')">
                   <span>D. Lắng nghe, hòa giải bất đồng văn minh.</span>
                 </div>
-                <div class="match-item" id="right11-E" onclick="selectMatch11('right', 'E')">
+                <div class="match-item" id="right12-E" onclick="selectMatch12('right', 'E')">
                   <span>E. Rút kinh nghiệm để hoàn thiện.</span>
                 </div>
               </div>
@@ -1041,59 +1055,59 @@
 
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
             <div style="display: flex; gap: 8px;">
-              <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="undoMatch11()">↩ Hoàn tác</button>
-              <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="resetMatch11()">🗑️ Xóa</button>
+              <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="undoMatch12()">↩ Hoàn tác</button>
+              <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="resetMatch12()">🗑️ Xóa</button>
             </div>
             <div class="timer-widget" style="padding: 6px 16px;">
               <span style="font-size: 12px; font-weight: 800; color: #FDE047;">ĐẾM GIỜ:</span>
-              <span class="timer-display" id="timerDisplay11" style="font-size: 22px; min-width: 60px;">03:00</span>
-              <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="startTimer11()">Chạy</button>
-              <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="pauseTimer11()">Dừng</button>
+              <span class="timer-display" id="timerDisplay12" style="font-size: 22px; min-width: 60px;">03:00</span>
+              <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="startTimer12()">Chạy</button>
+              <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="pauseTimer12()">Dừng</button>
             </div>
-            <button class="btn-action primary" onclick="goToSlide(12)">
+            <button class="btn-action primary" onclick="goToSlide(13)">
               🔍 KIỂM CHỨNG 5 CẶP ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 12: KIỂM CHỨNG 5 CẶP NGUYÊN TẮC ==================== -->
-        <section class="slide-card" id="slide-12">
+        <!-- ==================== SLIDE 13: KIỂM CHỨNG 5 CẶP NGUYÊN TẮC ==================== -->
+        <section class="slide-card" id="slide-13">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 3 — NGHIÊN CỨU TÀI LIỆU</div>
             <h2 class="slide-title">KIỂM CHỨNG 5 CẶP NGUYÊN TẮC</h2>
             <p class="slide-subtitle">Bảng đối chiếu 5 cặp nguyên tắc đúng chuẩn vào vở ghi</p>
 
             <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
-              <div id="pairRow12_1" class="notebook-box" style="display: none; padding: 10px 18px;">
+              <div id="pairRow13_1" class="notebook-box" style="display: none; padding: 10px 18px;">
                 <strong style="color: #2563EB;">1 → B: Phụ thuộc tích cực</strong> — Cùng tiến bộ, thành công của bạn là thành công của tớ.
               </div>
-              <div id="pairRow12_2" class="notebook-box" style="display: none; padding: 10px 18px;">
+              <div id="pairRow13_2" class="notebook-box" style="display: none; padding: 10px 18px;">
                 <strong style="color: #2563EB;">2 → A: Trách nhiệm cá nhân</strong> — Mỗi thành viên hoàn thành 100% nhiệm vụ được giao, không ỷ lại.
               </div>
-              <div id="pairRow12_3" class="notebook-box" style="display: none; padding: 10px 18px;">
+              <div id="pairRow13_3" class="notebook-box" style="display: none; padding: 10px 18px;">
                 <strong style="color: #2563EB;">3 → C: Tương tác trực tiếp</strong> — Hỗ trợ, động viên nhau làm việc.
               </div>
-              <div id="pairRow12_4" class="notebook-box" style="display: none; padding: 10px 18px;">
+              <div id="pairRow13_4" class="notebook-box" style="display: none; padding: 10px 18px;">
                 <strong style="color: #2563EB;">4 → D: Kỹ năng xã hội</strong> — Lắng nghe, hòa giải bất đồng văn minh.
               </div>
-              <div id="pairRow12_5" class="notebook-box" style="display: none; padding: 10px 18px;">
+              <div id="pairRow13_5" class="notebook-box" style="display: none; padding: 10px 18px;">
                 <strong style="color: #2563EB;">5 → E: Đánh giá hoạt động nhóm</strong> — Rút kinh nghiệm để hoàn thiện.
               </div>
             </div>
           </div>
 
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-            <button class="btn-action secondary" onclick="revealPair12()">
+            <button class="btn-action secondary" onclick="revealPair13()">
               👁️ MỞ LẦN LƯỢT TỪNG CẶP
             </button>
-            <button class="btn-action primary" onclick="goToSlide(13)">
+            <button class="btn-action primary" onclick="goToSlide(14)">
               TIẾP TỤC SANG GIAI ĐOẠN 4 ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 13: MỞ GIAI ĐOẠN 4 ==================== -->
-        <section class="slide-card stage-intro-card" id="slide-13">
+        <!-- ==================== SLIDE 14: MỞ GIAI ĐOẠN 4 ==================== -->
+        <section class="slide-card stage-intro-card" id="slide-14">
           <div>
             <div class="stage-intro-badge">GIAI ĐOẠN 4</div>
             <h2 class="stage-intro-title">SOẠN GIÁO ÁN</h2>
@@ -1102,14 +1116,14 @@
             </p>
           </div>
           <div>
-            <button class="btn-action emerald" onclick="goToSlide(14)">
+            <button class="btn-action emerald" onclick="goToSlide(15)">
               ▶ BẮT ĐẦU
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 14: SƠ ĐỒ 5 NGUYÊN TẮC ==================== -->
-        <section class="slide-card" id="slide-14">
+        <!-- ==================== SLIDE 15: SƠ ĐỒ 5 NGUYÊN TẮC ==================== -->
+        <section class="slide-card" id="slide-15">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 4 — SOẠN GIÁO ÁN</div>
             <h2 class="slide-title">SƠ ĐỒ 5 NGUYÊN TẮC</h2>
@@ -1146,46 +1160,46 @@
           </div>
 
           <div style="text-align: right; margin-top: 18px;">
-            <button class="btn-action primary" onclick="goToSlide(15)">
+            <button class="btn-action primary" onclick="goToSlide(16)">
               TIÊU CHUẨN 4 RÕ ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 15: TIÊU CHUẨN PHÂN CÔNG “4 RÕ” ==================== -->
-        <section class="slide-card" id="slide-15">
+        <!-- ==================== SLIDE 16: TIÊU CHUẨN PHÂN CÔNG “4 RÕ” ==================== -->
+        <section class="slide-card" id="slide-16">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 4 — SOẠN GIÁO ÁN</div>
             <h2 class="slide-title">TIÊU CHUẨN PHÂN CÔNG “4 RÕ”</h2>
             <p class="slide-subtitle">Ghi 4 Rõ vào vở để làm chuẩn mực phân công</p>
 
             <div class="grid-4" style="margin-top: 14px;">
-              <div class="reveal-card" id="cardRo15_1" onclick="revealRo15(1)">
+              <div class="reveal-card" id="cardRo16_1" onclick="revealRo16(1)">
                 <div style="font-size: 28px; margin-bottom: 6px;">👤</div>
                 <h3 style="font-size: 16px; font-weight: 900; color: #1E3A8A;">RÕ NGƯỜI</h3>
-                <p id="txtRo15_1" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
+                <p id="txtRo16_1" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
               </div>
 
-              <div class="reveal-card" id="cardRo15_2" onclick="revealRo15(2)">
+              <div class="reveal-card" id="cardRo16_2" onclick="revealRo16(2)">
                 <div style="font-size: 28px; margin-bottom: 6px;">📋</div>
                 <h3 style="font-size: 16px; font-weight: 900; color: #1E3A8A;">RÕ VIỆC</h3>
-                <p id="txtRo15_2" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
+                <p id="txtRo16_2" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
               </div>
 
-              <div class="reveal-card" id="cardRo15_3" onclick="revealRo15(3)">
+              <div class="reveal-card" id="cardRo16_3" onclick="revealRo16(3)">
                 <div style="font-size: 28px; margin-bottom: 6px;">⏳</div>
                 <h3 style="font-size: 16px; font-weight: 900; color: #1E3A8A;">RÕ THỜI HẠN</h3>
-                <p id="txtRo15_3" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
+                <p id="txtRo16_3" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
               </div>
 
-              <div class="reveal-card" id="cardRo15_4" onclick="revealRo15(4)">
+              <div class="reveal-card" id="cardRo16_4" onclick="revealRo16(4)">
                 <div style="font-size: 28px; margin-bottom: 6px;">🎯</div>
                 <h3 style="font-size: 16px; font-weight: 900; color: #1E3A8A;">RÕ TIÊU CHUẨN</h3>
-                <p id="txtRo15_4" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
+                <p id="txtRo16_4" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
               </div>
             </div>
 
-            <div id="boxMsgRo15" class="sticky-note" style="margin-top: 14px; display: none;">
+            <div id="boxMsgRo16" class="sticky-note" style="margin-top: 14px; display: none;">
               <p style="font-size: 15px; font-weight: 800; color: #713F12;">
                 ✨ Thông điệp: Hội đồng đã đủ công cụ để soạn phương án xử lý Hùng–Tuấn!
               </p>
@@ -1193,17 +1207,17 @@
           </div>
 
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-            <button class="btn-action secondary" onclick="revealAllRo15()">
+            <button class="btn-action secondary" onclick="revealAllRo16()">
               👁️ MỞ TẤT CẢ “4 RÕ”
             </button>
-            <button class="btn-action primary" onclick="goToSlide(16)">
+            <button class="btn-action primary" onclick="goToSlide(17)">
               TIẾP TỤC SANG GIAI ĐOẠN 5 ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 16: MỞ GIAI ĐOẠN 5 ==================== -->
-        <section class="slide-card stage-intro-card" id="slide-16">
+        <!-- ==================== SLIDE 17: MỞ GIAI ĐOẠN 5 ==================== -->
+        <section class="slide-card stage-intro-card" id="slide-17">
           <div>
             <div class="stage-intro-badge">GIAI ĐOẠN 5</div>
             <h2 class="stage-intro-title">THÔNG QUA GIÁO ÁN</h2>
@@ -1212,14 +1226,14 @@
             </p>
           </div>
           <div>
-            <button class="btn-action emerald" onclick="goToSlide(17)">
+            <button class="btn-action emerald" onclick="goToSlide(18)">
               ▶ BẮT ĐẦU
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 17: PHƯƠNG ÁN XỬ LÝ HÙNG–TUẤN ==================== -->
-        <section class="slide-card" id="slide-17">
+        <!-- ==================== SLIDE 18: PHƯƠNG ÁN XỬ LÝ HÙNG–TUẤN ==================== -->
+        <section class="slide-card" id="slide-18">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 5 — THÔNG QUA GIÁO ÁN</div>
             <h2 class="slide-title">PHƯƠNG ÁN SƯ PHẠM XỬ LÝ NHÓM HÙNG–TUẤN</h2>
@@ -1255,14 +1269,14 @@
           </div>
 
           <div style="text-align: center; margin-top: 18px;">
-            <button class="btn-action primary" onclick="goToSlide(18)">
+            <button class="btn-action primary" onclick="goToSlide(19)">
               ⏱️ BẮT ĐẦU 5 PHÚT SOẠN PHƯƠNG ÁN
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 18: 5 PHÚT SOẠN PHƯƠNG ÁN ==================== -->
-        <section class="slide-card" id="slide-18">
+        <!-- ==================== SLIDE 19: 5 PHÚT SOẠN PHƯƠNG ÁN ==================== -->
+        <section class="slide-card" id="slide-19">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 5 — THÔNG QUA GIÁO ÁN</div>
             <h2 class="slide-title">5 PHÚT SOẠN PHƯƠNG ÁN</h2>
@@ -1288,12 +1302,12 @@
                 <div class="timer-widget">
                   <div>
                     <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ ĐẾM NGƯỢC</div>
-                    <div class="timer-display" id="timerDisplay18">05:00</div>
+                    <div class="timer-display" id="timerDisplay19">05:00</div>
                   </div>
                   <div class="timer-controls">
-                    <button class="timer-btn" onclick="startTimer18()">Bắt đầu</button>
-                    <button class="timer-btn" onclick="pauseTimer18()">Tạm dừng</button>
-                    <button class="timer-btn" onclick="resetTimer18()">Đặt lại</button>
+                    <button class="timer-btn" onclick="startTimer19()">Bắt đầu</button>
+                    <button class="timer-btn" onclick="pauseTimer19()">Tạm dừng</button>
+                    <button class="timer-btn" onclick="resetTimer19()">Đặt lại</button>
                   </div>
                 </div>
               </div>
@@ -1301,14 +1315,14 @@
           </div>
 
           <div style="text-align: right; margin-top: 18px;">
-            <button class="btn-action primary" onclick="goToSlide(19)">
+            <button class="btn-action primary" onclick="goToSlide(20)">
               ĐỐI CHIẾU PHƯƠNG ÁN ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 19: ĐỐI CHIẾU VÀ THÔNG QUA PHƯƠNG ÁN ==================== -->
-        <section class="slide-card" id="slide-19">
+        <!-- ==================== SLIDE 20: ĐỐI CHIẾU VÀ THÔNG QUA PHƯƠNG ÁN ==================== -->
+        <section class="slide-card" id="slide-20">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 5 — THÔNG QUA GIÁO ÁN</div>
             <h2 class="slide-title">ĐỐI CHIẾU VÀ THÔNG QUA PHƯƠNG ÁN</h2>
@@ -1344,14 +1358,14 @@
           </div>
 
           <div style="text-align: center; margin-top: 16px;">
-            <button class="btn-action emerald" onclick="goToSlide(20)">
+            <button class="btn-action emerald" onclick="goToSlide(21)">
               ✅ THÔNG QUA PHƯƠNG ÁN
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 20: MỞ GIAI ĐOẠN 6 ==================== -->
-        <section class="slide-card stage-intro-card" id="slide-20">
+        <!-- ==================== SLIDE 21: MỞ GIAI ĐOẠN 6 ==================== -->
+        <section class="slide-card stage-intro-card" id="slide-21">
           <div>
             <div class="stage-intro-badge">GIAI ĐOẠN 6</div>
             <h2 class="stage-intro-title">ĐỨNG LỚP GIẢNG BÀI</h2>
@@ -1360,14 +1374,14 @@
             </p>
           </div>
           <div>
-            <button class="btn-action emerald" onclick="goToSlide(21)">
+            <button class="btn-action emerald" onclick="goToSlide(22)">
               ▶ BẮT ĐẦU
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 21: CHUẨN BỊ DIỄN TẬP ==================== -->
-        <section class="slide-card" id="slide-21">
+        <!-- ==================== SLIDE 22: CHUẨN BỊ DIỄN TẬP ==================== -->
+        <section class="slide-card" id="slide-22">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 6 — ĐỨNG LỚP GIẢNG BÀI</div>
             <h2 class="slide-title">CHUẨN BỊ DIỄN TẬP</h2>
@@ -1400,11 +1414,11 @@
                 <div class="timer-widget">
                   <div>
                     <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">CHUẨN BỊ LỜI THOẠI</div>
-                    <div class="timer-display" id="timerDisplay21">01:00</div>
+                    <div class="timer-display" id="timerDisplay22">01:00</div>
                   </div>
                   <div class="timer-controls">
-                    <button class="timer-btn" onclick="startTimer21()">Bắt đầu</button>
-                    <button class="timer-btn" onclick="pauseTimer21()">Tạm dừng</button>
+                    <button class="timer-btn" onclick="startTimer22()">Bắt đầu</button>
+                    <button class="timer-btn" onclick="pauseTimer22()">Tạm dừng</button>
                   </div>
                 </div>
               </div>
@@ -1412,14 +1426,14 @@
           </div>
 
           <div style="text-align: right; margin-top: 16px;">
-            <button class="btn-action primary" onclick="goToSlide(22)">
+            <button class="btn-action primary" onclick="goToSlide(23)">
               BẮT ĐẦU LƯỢT 1 ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 22: DIỄN TẬP LƯỢT 1 ==================== -->
-        <section class="slide-card" id="slide-22">
+        <!-- ==================== SLIDE 23: DIỄN TẬP LƯỢT 1 ==================== -->
+        <section class="slide-card" id="slide-23">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 6 — ĐỨNG LỚP GIẢNG BÀI</div>
             <h2 class="slide-title">DIỄN TẬP LƯỢT 1</h2>
@@ -1429,9 +1443,9 @@
               <div class="notebook-box" style="border-left-color: #2563EB;">
                 <p style="font-size: 15px; font-weight: 800; color: #2563EB; margin-bottom: 10px;">TRÌNH TỰ 3 CHẶNG:</p>
                 <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: #334155; font-weight: 600;">
-                  <p id="c1_22">01:00 — A điều phối B.</p>
-                  <p id="c2_22">01:00 — B phản hồi.</p>
-                  <p id="c3_22">01:00 — A ghi 1 câu nhận xét của B vào vở.</p>
+                  <p>01:00 — A điều phối B.</p>
+                  <p>01:00 — B phản hồi.</p>
+                  <p>01:00 — A ghi 1 câu nhận xét của B vào vở.</p>
                 </div>
               </div>
 
@@ -1439,15 +1453,15 @@
                 <div class="timer-widget">
                   <div>
                     <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">TIMER 3 CHẶNG</div>
-                    <div class="timer-display" id="timerDisplay22">01:00</div>
+                    <div class="timer-display" id="timerDisplay23">01:00</div>
                   </div>
                   <div class="timer-controls">
-                    <button class="timer-btn" onclick="startTimer22()">Bắt đầu</button>
-                    <button class="timer-btn" onclick="pauseTimer22()">Tạm dừng</button>
-                    <button class="timer-btn" onclick="resetTimer22()">Đặt lại</button>
+                    <button class="timer-btn" onclick="startTimer23()">Bắt đầu</button>
+                    <button class="timer-btn" onclick="pauseTimer23()">Tạm dừng</button>
+                    <button class="timer-btn" onclick="resetTimer23()">Đặt lại</button>
                   </div>
                 </div>
-                <div id="status22" style="margin-top: 10px; font-size: 14px; font-weight: 800; color: #D97706;">
+                <div id="status23" style="margin-top: 10px; font-size: 14px; font-weight: 800; color: #D97706;">
                   Chặng 1: A điều phối B
                 </div>
               </div>
@@ -1455,14 +1469,14 @@
           </div>
 
           <div style="text-align: right; margin-top: 18px;">
-            <button class="btn-action primary" onclick="goToSlide(23)">
+            <button class="btn-action primary" onclick="goToSlide(24)">
               CHUYỂN SANG LƯỢT 2 ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 23: DIỄN TẬP LƯỢT 2 ==================== -->
-        <section class="slide-card" id="slide-23">
+        <!-- ==================== SLIDE 24: DIỄN TẬP LƯỢT 2 ==================== -->
+        <section class="slide-card" id="slide-24">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 6 — ĐỨNG LỚP GIẢNG BÀI</div>
             <h2 class="slide-title">DIỄN TẬP LƯỢT 2 (ĐỔI VAI)</h2>
@@ -1482,15 +1496,15 @@
                 <div class="timer-widget">
                   <div>
                     <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">TIMER 3 CHẶNG</div>
-                    <div class="timer-display" id="timerDisplay23">01:00</div>
+                    <div class="timer-display" id="timerDisplay24">01:00</div>
                   </div>
                   <div class="timer-controls">
-                    <button class="timer-btn" onclick="startTimer23()">Bắt đầu</button>
-                    <button class="timer-btn" onclick="pauseTimer23()">Tạm dừng</button>
-                    <button class="timer-btn" onclick="resetTimer23()">Đặt lại</button>
+                    <button class="timer-btn" onclick="startTimer24()">Bắt đầu</button>
+                    <button class="timer-btn" onclick="pauseTimer24()">Tạm dừng</button>
+                    <button class="timer-btn" onclick="resetTimer24()">Đặt lại</button>
                   </div>
                 </div>
-                <div id="status23" style="margin-top: 10px; font-size: 14px; font-weight: 800; color: #D97706;">
+                <div id="status24" style="margin-top: 10px; font-size: 14px; font-weight: 800; color: #D97706;">
                   Chặng 1: B điều phối A
                 </div>
               </div>
@@ -1498,14 +1512,14 @@
           </div>
 
           <div style="text-align: right; margin-top: 18px;">
-            <button class="btn-action primary" onclick="goToSlide(24)">
+            <button class="btn-action primary" onclick="goToSlide(25)">
               TRÌNH DIỄN TRƯỚC HỘI ĐỒNG ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 24: TRÌNH DIỄN TRƯỚC HỘI ĐỒNG ==================== -->
-        <section class="slide-card" id="slide-24">
+        <!-- ==================== SLIDE 25: TRÌNH DIỄN TRƯỚC HỘI ĐỒNG ==================== -->
+        <section class="slide-card" id="slide-25">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 6 — ĐỨNG LỚP GIẢNG BÀI</div>
             <h2 class="slide-title">TRÌNH DIỄN TRƯỚC HỘI ĐỒNG</h2>
@@ -1517,7 +1531,7 @@
               </p>
             </div>
 
-            <div id="boxSpeech24" class="sticky-note" style="margin-top: 14px; display: none;">
+            <div id="boxSpeech25" class="sticky-note" style="margin-top: 14px; display: none;">
               <p style="font-size: 14px; font-weight: 800; color: #854D0E;">💬 LỜI ĐIỀU PHỐI THAM KHẢO:</p>
               <p style="font-size: 15px; font-weight: 700; color: #713F12; line-height: 1.6;">
                 “Hùng và Tuấn đều có năng khiếu vẽ rất tốt! Thầy/cô đề xuất Hùng vẽ bố cục chính, Tuấn vẽ chi tiết mô hình và hai bạn cùng chia đôi phần viết báo cáo nhé. Khi cùng gánh vác trách nhiệm, sản phẩm của nhóm chắc chắn sẽ hoàn thành xuất sắc!”
@@ -1526,17 +1540,17 @@
           </div>
 
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 18px;">
-            <button class="btn-action secondary" onclick="revealSpeech24()">
+            <button class="btn-action secondary" onclick="revealSpeech25()">
               👁️ HIỆN LỜI ĐIỀU PHỐI THAM KHẢO
             </button>
-            <button class="btn-action primary" onclick="goToSlide(25)">
+            <button class="btn-action primary" onclick="goToSlide(26)">
               TIẾP TỤC SANG GIAI ĐOẠN 7 ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 25: MỞ GIAI ĐOẠN 7 ==================== -->
-        <section class="slide-card stage-intro-card" id="slide-25">
+        <!-- ==================== SLIDE 26: MỞ GIAI ĐOẠN 7 ==================== -->
+        <section class="slide-card stage-intro-card" id="slide-26">
           <div>
             <div class="stage-intro-badge">GIAI ĐOẠN 7</div>
             <h2 class="stage-intro-title">NHẬT KÝ NGƯỜI THẦY</h2>
@@ -1545,14 +1559,14 @@
             </p>
           </div>
           <div>
-            <button class="btn-action emerald" onclick="goToSlide(26)">
+            <button class="btn-action emerald" onclick="goToSlide(27)">
               ▶ BẮT ĐẦU
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 26: NHÌN LẠI CHÍNH MÌNH ==================== -->
-        <section class="slide-card" id="slide-26">
+        <!-- ==================== SLIDE 27: NHÌN LẠI CHÍNH MÌNH ==================== -->
+        <section class="slide-card" id="slide-27">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 7 — NHẬT KÝ NGƯỜI THẦY</div>
             <h2 class="slide-title">NHÌN LẠI CHÍNH MÌNH</h2>
@@ -1572,18 +1586,18 @@
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
             <div class="timer-widget" style="padding: 6px 16px;">
               <span style="font-size: 12px; font-weight: 800; color: #FDE047;">ĐẾM GIỜ:</span>
-              <span class="timer-display" id="timerDisplay26" style="font-size: 22px; min-width: 60px;">02:00</span>
-              <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="startTimer26()">Chạy</button>
-              <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="pauseTimer26()">Dừng</button>
+              <span class="timer-display" id="timerDisplay27" style="font-size: 22px; min-width: 60px;">02:00</span>
+              <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="startTimer27()">Chạy</button>
+              <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="pauseTimer27()">Dừng</button>
             </div>
-            <button class="btn-action primary" onclick="goToSlide(27)">
+            <button class="btn-action primary" onclick="goToSlide(28)">
               TIẾP TỤC SANG GIAI ĐOẠN 8 ▶
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 27: MỞ GIAI ĐOẠN 8 ==================== -->
-        <section class="slide-card stage-intro-card" id="slide-27">
+        <!-- ==================== SLIDE 28: MỞ GIAI ĐOẠN 8 ==================== -->
+        <section class="slide-card stage-intro-card" id="slide-28">
           <div>
             <div class="stage-intro-badge">GIAI ĐOẠN 8</div>
             <h2 class="stage-intro-title">LAN TỎA TRI THỨC</h2>
@@ -1592,14 +1606,14 @@
             </p>
           </div>
           <div>
-            <button class="btn-action emerald" onclick="goToSlide(28)">
+            <button class="btn-action emerald" onclick="goToSlide(29)">
               ▶ BẮT ĐẦU
             </button>
           </div>
         </section>
 
-        <!-- ==================== SLIDE 28: CAM KẾT LÀM VIỆC NHÓM TRONG TUẦN NÀY ==================== -->
-        <section class="slide-card" id="slide-28">
+        <!-- ==================== SLIDE 29: CAM KẾT LÀM VIỆC NHÓM TRONG TUẦN NÀY ==================== -->
+        <section class="slide-card" id="slide-29">
           <div>
             <div class="slide-tag">GIAI ĐOẠN 8 — LAN TỎA TRI THỨC</div>
             <h2 class="slide-title">CAM KẾT LÀM VIỆC NHÓM TRONG TUẦN NÀY</h2>
@@ -1616,7 +1630,7 @@
           </div>
 
           <div style="text-align: center; margin-top: 24px;">
-            <button class="btn-action emerald" id="btnFinish28" onclick="finishTiet1()">
+            <button class="btn-action emerald" id="btnFinish29" onclick="finishTiet1()">
               🎓 HOÀN THÀNH TIẾT 1
             </button>
           </div>
@@ -1630,7 +1644,7 @@
           <button class="btn-nav" id="btnPrev" onclick="prevSlide()">
             ◀ TRƯỚC
           </button>
-          <span class="slide-pagination" id="slidePagination">TRANG 01 / 28</span>
+          <span class="slide-pagination" id="slidePagination">TRANG 01 / 29</span>
           <button class="btn-nav primary" id="btnNext" onclick="nextSlide()">
             TIẾP ▶
           </button>
@@ -1649,9 +1663,7 @@
   </div>
 
   <script>
-    /* =========================================================
-       AUDIO SYNTHESIZER
-       ========================================================= */
+    /* AUDIO SYNTHESIZER */
     let audioCtx = null;
     let isAudioEnabled = true;
 
@@ -1725,10 +1737,8 @@
       } catch (e) {}
     }
 
-    /* =========================================================
-       NAVIGATION SYSTEM (28 SLIDES)
-       ========================================================= */
-    const totalSlides = 28;
+    /* NAVIGATION SYSTEM (29 SLIDES) */
+    const totalSlides = 29;
     let currentSlide = 1;
 
     function goToSlide(num) {
@@ -1773,7 +1783,7 @@
     }
 
     function toggleFullScreen() {
-      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(e => {});
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(err => {});
       else if (document.exitFullscreen) document.exitFullscreen();
     }
 
@@ -1782,110 +1792,107 @@
       else if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
     });
 
-    /* =========================================================
-       SPECIFIC SLIDE LOGIC
-       ========================================================= */
-
+    /* SPECIFIC SLIDE LOGIC */
     function formatTime(s) {
       const m = String(Math.floor(s / 60)).padStart(2, '0');
       const rem = String(s % 60).padStart(2, '0');
       return `${m}:${rem}`;
     }
 
-    // Slide 5: Gợi ý đối chiếu
-    function revealHint05() {
+    // Slide 6: Gợi ý đối chiếu
+    function revealHint06() {
       playSound('correct');
-      document.getElementById('boxHint05').style.display = 'block';
-      document.getElementById('btnRevealHint05').style.display = 'none';
+      document.getElementById('boxHint06').style.display = 'block';
+      document.getElementById('btnRevealHint06').style.display = 'none';
     }
 
-    // Slide 8: Timer 02:00
-    let timer08 = null;
-    let sec08 = 120;
-    function startTimer08() {
-      initAudio(); clearInterval(timer08);
-      timer08 = setInterval(() => {
-        if (sec08 > 0) {
-          sec08--;
-          document.getElementById('timerDisplay08').innerText = formatTime(sec08);
+    // Slide 9: Timer 02:00
+    let timer09 = null;
+    let sec09 = 120;
+    function startTimer09() {
+      initAudio(); clearInterval(timer09);
+      timer09 = setInterval(() => {
+        if (sec09 > 0) {
+          sec09--;
+          document.getElementById('timerDisplay09').innerText = formatTime(sec09);
         } else {
-          clearInterval(timer08);
+          clearInterval(timer09);
           playSound('alarm');
-          document.getElementById('msgTimer08').style.display = 'block';
+          document.getElementById('msgTimer09').style.display = 'block';
         }
       }, 1000);
     }
-    function pauseTimer08() { clearInterval(timer08); }
-    function resetTimer08() { clearInterval(timer08); sec08 = 120; document.getElementById('timerDisplay08').innerText = '02:00'; document.getElementById('msgTimer08').style.display = 'none'; }
-    function skipTimer08() { clearInterval(timer08); sec08 = 0; document.getElementById('timerDisplay08').innerText = '00:00'; document.getElementById('msgTimer08').style.display = 'block'; }
+    function pauseTimer09() { clearInterval(timer09); }
+    function resetTimer09() { clearInterval(timer09); sec09 = 120; document.getElementById('timerDisplay09').innerText = '02:00'; document.getElementById('msgTimer09').style.display = 'none'; }
+    function skipTimer09() { clearInterval(timer09); sec09 = 0; document.getElementById('timerDisplay09').innerText = '00:00'; document.getElementById('msgTimer09').style.display = 'block'; }
 
-    // Slide 9: Kiểm chứng phiếu phân tích
-    function revealCol09(num) {
+    // Slide 10: Kiểm chứng phiếu phân tích
+    function revealCol10(num) {
       playSound('correct');
       if (num === 1) {
-        document.getElementById('colCol09_1').innerHTML = '<span style="color: #1D4ED8;">Giành làm người nảy ý tưởng, vẽ trang trí nổi bật.</span>';
+        document.getElementById('colCol10_1').innerHTML = '<span style="color: #1D4ED8;">Giành làm người nảy ý tưởng, vẽ trang trí nổi bật.</span>';
       } else if (num === 2) {
-        document.getElementById('colCol09_2').innerHTML = '<span style="color: #D97706;">Đùn đẩy phần viết báo cáo thuyết minh.</span>';
+        document.getElementById('colCol10_2').innerHTML = '<span style="color: #D97706;">Đùn đẩy phần viết báo cáo thuyết minh.</span>';
       } else if (num === 3) {
-        document.getElementById('colCol09_3').innerHTML = '<span style="color: #DC2626;">Tiến độ đình trệ; phát sinh bất hòa; nhóm có nguy cơ đạt kết quả kém.</span>';
-        document.getElementById('boxConclusion09').style.display = 'block';
+        document.getElementById('colCol10_3').innerHTML = '<span style="color: #DC2626;">Tiến độ đình trệ; phát sinh bất hòa; nhóm có nguy cơ đạt kết quả kém.</span>';
+        document.getElementById('boxConclusion10').style.display = 'block';
       }
     }
-    function revealAllCols09() {
-      revealCol09(1); revealCol09(2); revealCol09(3);
+    function revealAllCols10() {
+      revealCol10(1); revealCol10(2); revealCol10(3);
     }
 
-    // Slide 11: Ghép nối
-    let selLeft11 = null;
-    let selRight11 = null;
-    let hist11 = [];
-    function selectMatch11(side, val) {
+    // Slide 12: Ghép nối
+    let selLeft12 = null;
+    let selRight12 = null;
+    let hist12 = [];
+    function selectMatch12(side, val) {
       playSound('click');
       if (side === 'left') {
-        selLeft11 = val;
+        selLeft12 = val;
         for (let i = 1; i <= 5; i++) {
-          const el = document.getElementById('left11-' + i);
+          const el = document.getElementById('left12-' + i);
           if (el && !el.classList.contains('matched')) el.classList.remove('selected');
         }
-        const target = document.getElementById('left11-' + val);
+        const target = document.getElementById('left12-' + val);
         if (target && !target.classList.contains('matched')) target.classList.add('selected');
       } else if (side === 'right') {
-        selRight11 = val;
+        selRight12 = val;
         ['A', 'B', 'C', 'D', 'E'].forEach(l => {
-          const el = document.getElementById('right11-' + l);
+          const el = document.getElementById('right12-' + l);
           if (el && !el.classList.contains('matched')) el.classList.remove('selected');
         });
-        const target = document.getElementById('right11-' + val);
+        const target = document.getElementById('right12-' + val);
         if (target && !target.classList.contains('matched')) target.classList.add('selected');
       }
 
-      if (selLeft11 && selRight11) {
-        const leftEl = document.getElementById('left11-' + selLeft11);
-        const rightEl = document.getElementById('right11-' + selRight11);
-        const tagEl = document.getElementById('tag11-' + selLeft11);
+      if (selLeft12 && selRight12) {
+        const leftEl = document.getElementById('left12-' + selLeft12);
+        const rightEl = document.getElementById('right12-' + selRight12);
+        const tagEl = document.getElementById('tag12-' + selLeft12);
 
         if (tagEl) {
-          tagEl.innerText = `➔ [${selRight11}]`;
+          tagEl.innerText = `➔ [${selRight12}]`;
           tagEl.style.color = '#2563EB';
           tagEl.style.fontWeight = '800';
         }
         if (leftEl) leftEl.classList.add('matched');
         if (rightEl) rightEl.classList.add('matched');
 
-        hist11.push({ left: selLeft11, right: selRight11 });
+        hist12.push({ left: selLeft12, right: selRight12 });
         playSound('correct');
 
-        selLeft11 = null;
-        selRight11 = null;
+        selLeft12 = null;
+        selRight12 = null;
       }
     }
 
-    function undoMatch11() {
-      if (hist11.length === 0) return;
-      const last = hist11.pop();
-      const leftEl = document.getElementById('left11-' + last.left);
-      const rightEl = document.getElementById('right11-' + last.right);
-      const tagEl = document.getElementById('tag11-' + last.left);
+    function undoMatch12() {
+      if (hist12.length === 0) return;
+      const last = hist12.pop();
+      const leftEl = document.getElementById('left12-' + last.left);
+      const rightEl = document.getElementById('right12-' + last.right);
+      const tagEl = document.getElementById('tag12-' + last.left);
 
       if (leftEl) leftEl.classList.remove('matched', 'selected');
       if (rightEl) rightEl.classList.remove('matched', 'selected');
@@ -1893,94 +1900,94 @@
       playSound('click');
     }
 
-    function resetMatch11() {
-      while (hist11.length > 0) undoMatch11();
+    function resetMatch12() {
+      while (hist12.length > 0) undoMatch12();
     }
 
-    let timer11 = null;
-    let sec11 = 180;
-    function startTimer11() {
-      initAudio(); clearInterval(timer11);
-      timer11 = setInterval(() => {
-        if (sec11 > 0) {
-          sec11--;
-          document.getElementById('timerDisplay11').innerText = formatTime(sec11);
+    let timer12 = null;
+    let sec12 = 180;
+    function startTimer12() {
+      initAudio(); clearInterval(timer12);
+      timer12 = setInterval(() => {
+        if (sec12 > 0) {
+          sec12--;
+          document.getElementById('timerDisplay12').innerText = formatTime(sec12);
         } else {
-          clearInterval(timer11);
+          clearInterval(timer12);
           playSound('alarm');
         }
       }, 1000);
     }
-    function pauseTimer11() { clearInterval(timer11); }
+    function pauseTimer12() { clearInterval(timer12); }
 
-    // Slide 12: Mở từng cặp
-    let pairIdx12 = 0;
-    function revealPair12() {
-      if (pairIdx12 < 5) {
-        pairIdx12++;
+    // Slide 13: Mở từng cặp
+    let pairIdx13 = 0;
+    function revealPair13() {
+      if (pairIdx13 < 5) {
+        pairIdx13++;
         playSound('correct');
-        const row = document.getElementById('pairRow12_' + pairIdx12);
+        const row = document.getElementById('pairRow13_' + pairIdx13);
         if (row) row.style.display = 'block';
       }
     }
 
-    // Slide 15: Tiêu chuẩn 4 Rõ
-    const roData15 = [
+    // Slide 16: Tiêu chuẩn 4 Rõ
+    const roData16 = [
       "Ai phụ trách?",
       "Cụ thể phải làm gì?",
       "Khi nào phải hoàn thành?",
       "Làm đến mức nào thì đạt?"
     ];
-    let roCount15 = 0;
-    function revealRo15(num) {
+    let roCount16 = 0;
+    function revealRo16(num) {
       playSound('correct');
-      const card = document.getElementById('cardRo15_' + num);
-      const txt = document.getElementById('txtRo15_' + num);
+      const card = document.getElementById('cardRo16_' + num);
+      const txt = document.getElementById('txtRo16_' + num);
       if (card && !card.classList.contains('revealed')) {
         card.classList.add('revealed');
-        roCount15++;
+        roCount16++;
       }
-      if (txt) { txt.innerText = roData15[num - 1]; txt.style.color = '#1E293B'; txt.style.fontWeight = '700'; }
-      if (roCount15 >= 4) document.getElementById('boxMsgRo15').style.display = 'block';
+      if (txt) { txt.innerText = roData16[num - 1]; txt.style.color = '#1E293B'; txt.style.fontWeight = '700'; }
+      if (roCount16 >= 4) document.getElementById('boxMsgRo16').style.display = 'block';
     }
-    function revealAllRo15() {
-      for (let i = 1; i <= 4; i++) revealRo15(i);
+    function revealAllRo16() {
+      for (let i = 1; i <= 4; i++) revealRo16(i);
     }
 
-    // Slide 18: Timer 05:00
-    let timer18 = null;
-    let sec18 = 300;
-    function startTimer18() {
-      initAudio(); clearInterval(timer18);
-      timer18 = setInterval(() => {
-        if (sec18 > 0) {
-          sec18--;
-          document.getElementById('timerDisplay18').innerText = formatTime(sec18);
+    // Slide 19: Timer 05:00
+    let timer19 = null;
+    let sec19 = 300;
+    function startTimer19() {
+      initAudio(); clearInterval(timer19);
+      timer19 = setInterval(() => {
+        if (sec19 > 0) {
+          sec19--;
+          document.getElementById('timerDisplay19').innerText = formatTime(sec19);
         } else {
-          clearInterval(timer18);
+          clearInterval(timer19);
           playSound('alarm');
         }
       }, 1000);
     }
-    function pauseTimer18() { clearInterval(timer18); }
-    function resetTimer18() { clearInterval(timer18); sec18 = 300; document.getElementById('timerDisplay18').innerText = '05:00'; }
+    function pauseTimer19() { clearInterval(timer19); }
+    function resetTimer19() { clearInterval(timer19); sec19 = 300; document.getElementById('timerDisplay19').innerText = '05:00'; }
 
-    // Slide 21: Timer 01:00
-    let timer21 = null;
-    let sec21 = 60;
-    function startTimer21() {
-      initAudio(); clearInterval(timer21);
-      timer21 = setInterval(() => {
-        if (sec21 > 0) {
-          sec21--;
-          document.getElementById('timerDisplay21').innerText = formatTime(sec21);
+    // Slide 22: Timer 01:00
+    let timer22 = null;
+    let sec22 = 60;
+    function startTimer22() {
+      initAudio(); clearInterval(timer22);
+      timer22 = setInterval(() => {
+        if (sec22 > 0) {
+          sec22--;
+          document.getElementById('timerDisplay22').innerText = formatTime(sec22);
         } else {
-          clearInterval(timer21);
+          clearInterval(timer22);
           playSound('alarm');
         }
       }, 1000);
     }
-    function pauseTimer21() { clearInterval(timer21); }
+    function pauseTimer22() { clearInterval(timer22); }
 
     function toggleRubric(el) {
       playSound('click');
@@ -1989,34 +1996,7 @@
       if (chk) chk.checked = el.classList.contains('checked');
     }
 
-    // Slide 22: Timer 3 chặng Lượt 1
-    let timer22 = null;
-    let sec22 = 60;
-    let stage22 = 1;
-    function startTimer22() {
-      initAudio(); clearInterval(timer22);
-      timer22 = setInterval(() => {
-        if (sec22 > 0) {
-          sec22--;
-          document.getElementById('timerDisplay22').innerText = formatTime(sec22);
-        } else {
-          if (stage22 === 1) {
-            stage22 = 2; sec22 = 60; playSound('alarm');
-            document.getElementById('status22').innerText = 'Chặng 2: B phản hồi';
-          } else if (stage22 === 2) {
-            stage22 = 3; sec22 = 60; playSound('alarm');
-            document.getElementById('status22').innerText = 'Chặng 3: A ghi nhận xét của B vào vở';
-          } else {
-            clearInterval(timer22); playSound('alarm');
-            document.getElementById('status22').innerText = '✅ Hoàn thành Lượt 1!';
-          }
-        }
-      }, 1000);
-    }
-    function pauseTimer22() { clearInterval(timer22); }
-    function resetTimer22() { clearInterval(timer22); sec22 = 60; stage22 = 1; document.getElementById('timerDisplay22').innerText = '01:00'; document.getElementById('status22').innerText = 'Chặng 1: A điều phối B'; }
-
-    // Slide 23: Timer 3 chặng Lượt 2
+    // Slide 23: Timer 3 chặng Lượt 1
     let timer23 = null;
     let sec23 = 60;
     let stage23 = 1;
@@ -2029,51 +2009,78 @@
         } else {
           if (stage23 === 1) {
             stage23 = 2; sec23 = 60; playSound('alarm');
-            document.getElementById('status23').innerText = 'Chặng 2: A phản hồi';
+            document.getElementById('status23').innerText = 'Chặng 2: B phản hồi';
           } else if (stage23 === 2) {
             stage23 = 3; sec23 = 60; playSound('alarm');
-            document.getElementById('status23').innerText = 'Chặng 3: B ghi nhận xét của A vào vở';
+            document.getElementById('status23').innerText = 'Chặng 3: A ghi nhận xét của B vào vở';
           } else {
             clearInterval(timer23); playSound('alarm');
-            document.getElementById('status23').innerText = '✅ Hoàn thành Lượt 2!';
+            document.getElementById('status23').innerText = '✅ Hoàn thành Lượt 1!';
           }
         }
       }, 1000);
     }
     function pauseTimer23() { clearInterval(timer23); }
-    function resetTimer23() { clearInterval(timer23); sec23 = 60; stage23 = 1; document.getElementById('timerDisplay23').innerText = '01:00'; document.getElementById('status23').innerText = 'Chặng 1: B điều phối A'; }
+    function resetTimer23() { clearInterval(timer23); sec23 = 60; stage23 = 1; document.getElementById('timerDisplay23').innerText = '01:00'; document.getElementById('status23').innerText = 'Chặng 1: A điều phối B'; }
 
-    // Slide 24: Lời điều phối tham khảo
-    function revealSpeech24() {
+    // Slide 24: Timer 3 chặng Lượt 2
+    let timer24 = null;
+    let sec24 = 60;
+    let stage24 = 1;
+    function startTimer24() {
+      initAudio(); clearInterval(timer24);
+      timer24 = setInterval(() => {
+        if (sec24 > 0) {
+          sec24--;
+          document.getElementById('timerDisplay24').innerText = formatTime(sec24);
+        } else {
+          if (stage24 === 1) {
+            stage24 = 2; sec24 = 60; playSound('alarm');
+            document.getElementById('status24').innerText = 'Chặng 2: A phản hồi';
+          } else if (stage24 === 2) {
+            stage24 = 3; sec24 = 60; playSound('alarm');
+            document.getElementById('status24').innerText = 'Chặng 3: B ghi nhận xét của A vào vở';
+          } else {
+            clearInterval(timer24); playSound('alarm');
+            document.getElementById('status24').innerText = '✅ Hoàn thành Lượt 2!';
+          }
+        }
+      }, 1000);
+    }
+    function pauseTimer24() { clearInterval(timer24); }
+    function resetTimer24() { clearInterval(timer24); sec24 = 60; stage24 = 1; document.getElementById('timerDisplay24').innerText = '01:00'; document.getElementById('status24').innerText = 'Chặng 1: B điều phối A'; }
+
+    // Slide 25: Lời điều phối tham khảo
+    function revealSpeech25() {
       playSound('correct');
-      document.getElementById('boxSpeech24').style.display = 'block';
+      document.getElementById('boxSpeech25').style.display = 'block';
     }
 
-    // Slide 26: Timer 02:00
-    let timer26 = null;
-    let sec26 = 120;
-    function startTimer26() {
-      initAudio(); clearInterval(timer26);
-      timer26 = setInterval(() => {
-        if (sec26 > 0) {
-          sec26--;
-          document.getElementById('timerDisplay26').innerText = formatTime(sec26);
+    // Slide 27: Timer 02:00
+    let timer27 = null;
+    let sec27 = 120;
+    function startTimer27() {
+      initAudio(); clearInterval(timer27);
+      timer27 = setInterval(() => {
+        if (sec27 > 0) {
+          sec27--;
+          document.getElementById('timerDisplay27').innerText = formatTime(sec27);
         } else {
-          clearInterval(timer26);
+          clearInterval(timer27);
           playSound('alarm');
         }
       }, 1000);
     }
-    function pauseTimer26() { clearInterval(timer26); }
+    function pauseTimer27() { clearInterval(timer27); }
 
-    // Slide 28: Hoàn thành
+    // Slide 29: Hoàn thành
     function finishTiet1() {
       playSound('stamp');
       try {
         confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
       } catch (e) {}
-      document.getElementById('btnFinish28').innerText = '🎉 ĐÃ HOÀN THÀNH TIẾT 1';
-      document.getElementById('btnFinish28').disabled = true;
+      document.getElementById('btnFinish29').innerText = '🎉 ĐÃ HOÀN THÀNH TIẾT 1';
+      document.getElementById('btnFinish29').disabled = true;
     }
 
     /* PREVENT COMPOUND WORD WRAPPING */
