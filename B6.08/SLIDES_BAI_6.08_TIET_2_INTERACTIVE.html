@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bài 6.08 — Tiết 2: Bác sĩ số cộng đồng — Giải mã 4 hồ sơ tình huống và tạo bản nháp Cẩm nang An toàn số</title>
+  <title>Bài 6.08 — Tiết 2: Bác sĩ số cộng đồng</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-clinic: #F8FAFC;
-      --bg-panel: rgba(255, 255, 255, 0.97);
+      --bg-panel: rgba(255, 255, 255, 0.98);
       --bg-panel-border: #CBD5E1;
       --card-bg: #FFFFFF;
       --card-border: #E2E8F0;
-      --medical-theme: #D97706;
-      --medical-accent: #EA580C;
+      --medical-theme: #0284C7;
+      --medical-accent: #0D9488;
       --hospital-red: #E11D48;
       --amber-warning: #D97706;
       --emerald-success: #059669;
@@ -138,10 +138,9 @@
       display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;
       border-bottom: 1.5px solid #E2E8F0; padding-bottom: 10px; flex-wrap: wrap; gap: 8px;
     }
-    .meta-left { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .stage-pill {
-      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 900; color: #0F766E;
-      background: #F0FDFA; border: 1px solid var(--medical-theme); padding: 4px 10px; border-radius: 6px;
+      font-family: 'Montserrat', sans-serif; font-size: 11.5px; font-weight: 900; color: #0F766E;
+      background: #F0FDFA; border: 1.5px solid var(--medical-theme); padding: 4px 12px; border-radius: 6px;
       letter-spacing: 0.8px; text-transform: uppercase;
     }
     .phase-pill {
@@ -149,32 +148,15 @@
       background: #F0F9FF; border: 1px solid #BAE6FD; padding: 4px 10px; border-radius: 6px;
       text-transform: uppercase;
     }
-    .activity-challenge-badge {
-      font-family: 'Be Vietnam Pro', sans-serif; font-size: 12px; font-weight: 800; color: #9A3412;
-      background: #FFFBEB; border: 1px solid #FCD34D; padding: 4px 10px; border-radius: 6px;
-    }
-    .case-id-tag {
-      font-family: 'Montserrat', monospace; font-size: 11.5px; font-weight: 800; color: #0369A1;
-      background: #F0F9FF; border: 1px solid #BAE6FD; padding: 4px 8px; border-radius: 6px;
-    }
 
     .slide-main-title {
       font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: var(--text-main); line-height: 1.35; margin-bottom: 14px;
     }
     .slide-main-title span { color: var(--medical-theme); }
 
-    /* PREP & GUIDE GRID */
-    .prep-guide-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;
-    }
-    .prep-badge-box {
-      background: #FFFBEB; border-left: 3.5px solid var(--amber-warning);
-      padding: 8px 12px; border-radius: 6px; font-size: 13px; color: #78350F; line-height: 1.4; border: 1px solid #FEF3C7;
-    }
-    .prep-badge-box strong { color: #B45309; text-transform: uppercase; font-size: 11px; margin-right: 4px; }
     .guide-badge-box {
       background: #F0FDFA; border-left: 3.5px solid var(--medical-theme);
-      padding: 8px 12px; border-radius: 6px; font-size: 13px; color: #0F766E; line-height: 1.4; border: 1px solid #CCFBF1;
+      padding: 8px 14px; border-radius: 6px; font-size: 13.5px; color: #0F766E; line-height: 1.4; border: 1px solid #CCFBF1;
     }
     .guide-badge-box strong { color: var(--medical-theme); text-transform: uppercase; font-size: 11px; margin-right: 4px; }
 
@@ -291,7 +273,7 @@
   <div class="app-container">
     <div class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <div class="clinic-tag">🏥 BỆNH VIỆN SỐ NOVA</div>
+        <div class="clinic-tag">🏥 PHÒNG KHÁM SỐ NOVA</div>
         <h2>BÀI 6.08 — TIẾT 2</h2>
         <p>Bác sĩ số cộng đồng</p>
       </div>
@@ -315,1575 +297,1428 @@
           <button class="btn-icon-action" onclick="toggleFullScreen()" title="Toàn màn hình">
             ⛶ Toàn màn hình
           </button>
-          <div class="current-slide-counter" id="slideCounter">Trang 01 / 31</div>
+          <div class="current-slide-counter" id="slideCounter">Trang 01 / 32</div>
         </div>
       </div>
 
       <div class="slide-stage-container" id="stageContainer">
         
         <!-- ==================== TRANG 01 ==================== -->
-        <div class="slide-card active" data-slide="1" data-stage="MỞ ĐẦU • KHAI MẠC CHIẾN DỊCH" data-title="BÀI 6.08: NHẬN DIỆN TÌNH HUỐNG KHÔNG AN TOÀN TRÊN INTERNET">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">MỞ ĐẦU • KHAI MẠC CHIẾN DỊCH</span>
-              <span class="phase-pill">BÌA BÀI HỌC</span>
-              <span class="activity-challenge-badge">🎯 Hồ sơ chiến dịch y tế số cộng đồng</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-01</span>
-          </div>
-
-          <h2 class="slide-main-title">BÀI 6.08: NHẬN DIỆN TÌNH HUỐNG KHÔNG AN TOÀN TRÊN INTERNET</h2>
-
+        <div class="slide-card active" data-slide="1" data-stage="Mở đầu" data-title="Bìa Bài Học — Tiết 2">
           
-
-          <div class="content-box">
-            
-          <div style="text-align: center; padding: 20px 10px;">
-            <div style="display: inline-flex; align-items: center; gap: 8px; background: #FFFBEB; border: 1.5px solid #F59E0B; color: #92400E; padding: 6px 18px; border-radius: 20px; font-weight: 800; font-size: 13px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">
-              <span>🏥</span> HỌC VIỆN KỸ NĂNG SỐNG NOVA • BỆNH VIỆN AN TOÀN SỐ
+            <div class="slide-header-meta">
+              <span class="stage-pill">MỞ ĐẦU • KHAI MẠC CHIẾN DỊCH</span>
+              <span class="phase-pill">SLIDE BÌA</span>
             </div>
             
-            <div style="font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 900; color: #D97706; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">
-              MÃ BÀI HỌC: BÀI 6.08
-            </div>
+          
+            <h2 class="slide-main-title">BÀI 6.08 — NHẬN DIỆN TÌNH HUỐNG KHÔNG AN TOÀN TRÊN INTERNET</h2>
             
-            <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.3; margin-bottom: 12px; max-width: 900px; margin-left: auto; margin-right: auto;">
-              NHẬN DIỆN TÌNH HUỐNG KHÔNG AN TOÀN TRÊN INTERNET
+            <div class="content-box">
+              
+          <div style="text-align: center; padding: 24px 10px;">
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: #ECFDF5; border: 1.5px solid #10B981; color: #065F46; padding: 6px 18px; border-radius: 20px; font-weight: 800; font-size: 13px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">
+              <span>🛡️</span> PHÒNG KHÁM SỐ NOVA • CHIẾN DỊCH CỘNG ĐỒNG
+            </div>
+            <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.35; margin-bottom: 14px; max-width: 920px; margin-left: auto; margin-right: auto;">
+              BÀI 6.08 — NHẬN DIỆN TÌNH HUỐNG KHÔNG AN TOÀN TRÊN INTERNET
             </h1>
-            
-            <div style="display: inline-block; background: linear-gradient(135deg, #D97706 0%, #EA580C 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; padding: 8px 24px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);">
-              TIẾT 2 / 3: BÁC SĨ SỐ CỘNG ĐỒNG — GIẢI MÃ 4 HỒ SƠ TÌNH HUỐNG VÀ TẠO BẢN NHÁP CẨM NANG AN TOÀN SỐ
+            <div style="display: inline-block; background: linear-gradient(135deg, #0284C7 0%, #0D9488 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; padding: 8px 24px; border-radius: 12px; margin-bottom: 22px; box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);">
+              TIẾT 2 — BÁC SĨ SỐ CỘNG ĐỒNG
             </div>
-            
-            <div class="grid-3col" style="max-width: 860px; margin: 0 auto 24px auto; text-align: left;">
-              <div class="cyber-card" style="border-left: 4px solid #D97706;">
-                <div class="cyber-card-header" style="color: #D97706;">🛡️ VAI NHẬP VAI</div>
-                <div class="cyber-card-body" style="color: #334155; font-weight: 700;">Bác Sĩ Số Cộng Đồng</div>
+            <div style="background: #FFFBEB; border: 1.5px dashed #F59E0B; padding: 18px 24px; border-radius: 14px; max-width: 820px; margin: 0 auto 28px auto; text-align: center;">
+              <div style="color: #B45309; font-size: 14px; font-weight: 900; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <span>❓</span> CÂU HỎI LỚN (BIG QUESTION):
               </div>
-              <div class="cyber-card" style="border-left: 4px solid #0D9488;">
-                <div class="cyber-card-header" style="color: #0D9488;">📁 4 HỒ SƠ HỌC ĐƯỜNG</div>
-                <div class="cyber-card-body" style="color: #334155; font-weight: 700;">An (#2A), Bình (#2B), Cường (#2C), Dung (#2D)</div>
-              </div>
-              <div class="cyber-card" style="border-left: 4px solid #059669;">
-                <div class="cyber-card-header" style="color: #059669;">📝 SẢN PHẨM TRỌNG TÂM</div>
-                <div class="cyber-card-body" style="color: #334155; font-weight: 700;">Bản nháp Cẩm nang An toàn số A4</div>
-              </div>
+              <p style="font-size: 18.5px; font-weight: 800; color: #78350F; line-height: 1.5;">
+                “Làm thế nào để vô hiệu hóa các thủ đoạn thao túng tâm lý và thiết lập lá chắn bảo vệ tài khoản, ranh giới cá nhân trên mạng?”
+              </p>
             </div>
-
             <button class="btn-action-hero" onclick="goToSlide(2); playSound('chime');">
-              <span>🛡️</span> KHỞI ĐỘNG CHIẾN DỊCH TIẾT 2 ➔
+              <span>🛡️</span> BẮT ĐẦU CA TRỰC CỘNG ĐỒNG ➔
             </button>
           </div>
         
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(1)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote1">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Trang bìa chính thức Tiết 2: Nêu tổng quan 4 hồ sơ và mục tiêu phác thảo cẩm nang.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang Hoạt động 1: Minigame Tin được không.</div>
             </div>
-          </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(1)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote1">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Giới thiệu mục tiêu Tiết 2 trong 30 giây.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang Chuẩn bị ca trực cộng đồng.</div>
+              </div>
+            </div>
+            
         </div>
         
         <!-- ==================== TRANG 02 ==================== -->
-        <div class="slide-card " data-slide="2" data-stage="GĐ1: Minigame phản xạ “Tin được không?”" data-title="HOẠT ĐỘNG 1: KHỞI ĐỘNG CHIẾN DỊCH — MINIGAME “TIN ĐƯỢC KHÔNG?”">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ1: Minigame phản xạ “Tin được không?”</span>
-              <span class="phase-pill">BƯỚC 1: TÊN HOẠT ĐỘNG</span>
-              <span class="activity-challenge-badge">🎯 Săn bẫy trong 30 giây</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-02</span>
-          </div>
-
-          <h2 class="slide-main-title">HOẠT ĐỘNG 1: KHỞI ĐỘNG CHIẾN DỊCH — MINIGAME “TIN ĐƯỢC KHÔNG?”</h2>
-
+        <div class="slide-card " data-slide="2" data-stage="Chuẩn bị" data-title="Chuẩn bị ca trực cộng đồng">
           
-
-          <div class="content-box">
+            <div class="slide-header-meta">
+              <span class="stage-pill">CHUẨN BỊ CA TRỰC</span>
+              <span class="phase-pill">SLIDE CHUẨN BỊ</span>
+            </div>
             
-          <div style="background: #FFFBEB; border-left: 4px solid #D97706; padding: 18px 22px; border-radius: 12px; margin-bottom: 18px; border: 1px solid #FEF3C7;">
-            <h3 style="color: #B45309; font-size: 19px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-              <span>🎮</span> HOẠT ĐỘNG 1: MINIGAME PHẢN XẠ NHANH: “TIN ĐƯỢC KHÔNG?”
-            </h3>
-            <p style="font-size: 15.5px; color: #334155; line-height: 1.6;">
-              <strong>Mục tiêu:</strong> Rèn luyện phản xạ phát hiện nhanh các dấu hiệu bất thường trong tin nhắn hàng ngày thông qua phân loại 6 tình huống điển hình.
-            </p>
-          </div>
-          <div style="background: #F0FDFA; border: 1.5px dashed #0D9488; padding: 16px 20px; border-radius: 12px;">
-            <h4 style="color: #0F766E; font-size: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-              <span>❓</span> CÂU HỎI LỚN TIẾT 2:
-            </h4>
-            <p style="font-size: 17.5px; font-weight: 700; color: #0F172A;">“Làm thế nào để vô hiệu hóa các thủ đoạn thao túng tâm lý và thiết lập lá chắn bảo vệ tài khoản, ranh giới cá nhân trên mạng?”</p>
+          
+            <h2 class="slide-main-title">CHUẨN BỊ CA TRỰC CỘNG ĐỒNG</h2>
+            
+            <div class="content-box">
+              
+          <div style="max-width: 720px; margin: 10px auto;">
+            <div class="check-item" onclick="this.classList.toggle('checked'); playSound('ting');">
+              <div class="check-box-icon">✓</div>
+              <span style="font-size: 16px; font-weight: 700; color: #0F172A;">📖 Vở Kỹ năng sống + Bút viết + Thước kẻ.</span>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('checked'); playSound('ting');">
+              <div class="check-box-icon">✓</div>
+              <span style="font-size: 16px; font-weight: 700; color: #0F172A;">📄 Mỗi nhóm 4–6 học sinh chuẩn bị 1 tờ giấy A4 trắng.</span>
+            </div>
+            <div class="check-item" onclick="this.classList.toggle('checked'); playSound('ting');">
+              <div class="check-box-icon">✓</div>
+              <span style="font-size: 16px; font-weight: 700; color: #0F172A;">👥 Giữ nguyên vị trí tại bàn theo nhóm.</span>
+            </div>
+            <div style="text-align: center; margin-top: 24px;">
+              <button class="btn-action-hero" onclick="goToSlide(3); playSound('chime');">
+                <span>🚀</span> TIẾP TỤC ➔
+              </button>
+            </div>
           </div>
         
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(2)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote2">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Giới thiệu minigame trong 30 giây.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang chuẩn bị quy ước ký hiệu.</div>
             </div>
-          </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(2)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote2">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Kiểm tra giấy A4 và đồ dùng của từng nhóm.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Giai đoạn 1.</div>
+              </div>
+            </div>
+            
         </div>
         
         <!-- ==================== TRANG 03 ==================== -->
-        <div class="slide-card " data-slide="3" data-stage="GĐ1: Minigame phản xạ “Tin được không?”" data-title="Hoạt động 1: Chuẩn bị — Quy ước 2 ký hiệu phản xạ tay (👍 Tin / ✋ Dừng)">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ1: Minigame phản xạ “Tin được không?”</span>
-              <span class="phase-pill">BƯỚC 2: CHUẨN BỊ</span>
-              <span class="activity-challenge-badge">🎯 Chuẩn bị ký hiệu phản xạ</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-03</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 1: Chuẩn bị — Quy ước 2 ký hiệu phản xạ tay (👍 Tin / ✋ Dừng)</h2>
-
+        <div class="slide-card " data-slide="3" data-stage="Giai đoạn 1" data-title="Giai đoạn 1: Mở khóa chiến dịch">
           
-
-          <div class="content-box">
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 1</span>
+              <span class="phase-pill">CHUYỂN TIẾP GIAI ĐOẠN</span>
+            </div>
             
-          <div class="grid-2col">
-            <div class="cyber-card active-card" style="border-color: #059669; background: #ECFDF5;">
-              <div class="cyber-card-header" style="color: #059669; font-size: 17px;">👍 KÝ HIỆU: CÓ THỂ TIN</div>
-              <div class="cyber-card-body" style="color: #064E3B;">Tin nhắn học tập thông thường, minh bạch; không đòi tiền, mật khẩu, link lạ hay ảnh riêng tư.</div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #E11D48; background: #FFF1F2;">
-              <div class="cyber-card-header" style="color: #E11D48; font-size: 17px;">✋ KÝ HIỆU: DỪNG LẠI</div>
-              <div class="cyber-card-body" style="color: #881337;">Tin nhắn bất thường: Quà tặng ảo, hối thúc thời gian, đe dọa, mạo danh vay tiền, gạ gửi ảnh.</div>
-            </div>
-          </div>
-        
-          </div>
-
           
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(3)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote3">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Cho cả lớp thử giơ 2 ký hiệu một lượt.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang hướng dẫn luật chơi 6 tin nhắn.</div>
+            <div style="text-align: center; padding: 40px 20px;">
+              <div style="display: inline-block; background: linear-gradient(135deg, #0284C7 0%, #0D9488 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 900; padding: 6px 22px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);">
+                GIAI ĐOẠN 1
+              </div>
+              <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.35; margin-bottom: 18px; max-width: 850px; margin-left: auto; margin-right: auto;">
+                MỞ KHÓA CHIẾN DỊCH SỐ
+              </h1>
+              <p style="font-size: 18px; color: #475569; max-width: 720px; margin: 0 auto 32px auto; line-height: 1.6;">
+                Bác sĩ số cộng đồng khởi động phản xạ để phát hiện tin nhắn có dấu hiệu bất thường.
+              </p>
+              <button class="btn-action-hero" onclick="goToSlide(4); playSound('chime');">
+                <span>🩺</span> BẮT ĐẦU ➔
+              </button>
             </div>
-          </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(3)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote3">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển pha 5–10 giây, bắt đầu thử thách phản xạ.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang Thử thách Tin được không.</div>
+              </div>
+            </div>
+            
         </div>
         
         <!-- ==================== TRANG 04 ==================== -->
-        <div class="slide-card " data-slide="4" data-stage="GĐ1: Minigame phản xạ “Tin được không?”" data-title="Hoạt động 1: Hướng dẫn — Luật săn bẫy 6 tin nhắn nhanh">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ1: Minigame phản xạ “Tin được không?”</span>
-              <span class="phase-pill">BƯỚC 3: HƯỚNG DẪN</span>
-              <span class="activity-challenge-badge">🎯 Hướng dẫn luật minigame</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-04</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 1: Hướng dẫn — Luật săn bẫy 6 tin nhắn nhanh</h2>
-
+        <div class="slide-card " data-slide="4" data-stage="Giai đoạn 1" data-title="Thử thách “Tin được không?”">
           
-
-          <div class="content-box">
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 1</span>
+              <span class="phase-pill">LUẬT CHƠI</span>
+            </div>
             
-          <div style="background: #FFFBEB; border: 1.5px solid #F59E0B; padding: 16px 20px; border-radius: 12px; line-height: 1.8; color: #78350F;">
-            👉 <strong>LUẬT CHƠI:</strong><br>
-            1. Có 6 tin nhắn lần lượt xuất hiện.<br>
-            2. Học sinh đọc nhanh nội dung tin nhắn.<br>
-            3. Ngay khi có hiệu lệnh, đồng loạt giơ ký hiệu <strong>👍 (Có thể tin)</strong> hoặc <strong>✋ (Dừng lại)</strong>.<br>
-            4. Bấm nút kiểm tra để xem kết quả và lời giải thích!
+          
+            <h2 class="slide-main-title">THỬ THÁCH “TIN ĐƯỢC KHÔNG?”</h2>
+            
+            <div class="content-box">
+              
+          <div style="background: #F0FDFA; border: 1.5px solid #0D9488; border-radius: 16px; padding: 22px; margin-bottom: 20px;">
+            <ul style="line-height: 2; font-size: 16px; color: #0F172A; padding-left: 20px;">
+              <li>⏱️ Mỗi tin nhắn xuất hiện trong <strong>5–7 giây</strong>.</li>
+              <li>👍 <strong>CÓ THỂ TIN</strong> — nếu là trao đổi thông thường.</li>
+              <li>✋ <strong>DỪNG LẠI</strong> — nếu có dấu hiệu bất thường.</li>
+              <li>🤐 Không giải thích ngay; chờ đủ 6 tin nhắn để bóc tách điểm chung.</li>
+            </ul>
+          </div>
+          <div style="text-align: center;">
+            <button class="btn-action-hero" onclick="goToSlide(5); playSound('chime');">
+              <span>🎮</span> BẮT ĐẦU SĂN BẪY 6 TIN NHẮN ➔
+            </button>
           </div>
         
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(4)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote4">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nhắc học sinh phản xạ nhanh nhưng dứt khoát.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang thực hiện minigame 6 tin nhắn.</div>
             </div>
-          </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(4)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote4">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Phổ biến luật chơi rõ ràng cho cả lớp.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Săn bẫy 6 tin nhắn.</div>
+              </div>
+            </div>
+            
         </div>
         
         <!-- ==================== TRANG 05 ==================== -->
-        <div class="slide-card " data-slide="5" data-stage="GĐ1: Minigame phản xạ “Tin được không?”" data-title="Hoạt động 1: Thực hiện — Săn bẫy 6 tin nhắn theo hiệu lệnh">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ1: Minigame phản xạ “Tin được không?”</span>
-              <span class="phase-pill">BƯỚC 4: THỰC HIỆN</span>
-              <span class="activity-challenge-badge">🎯 Thực hiện minigame phản xạ</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-05</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 1: Thực hiện — Săn bẫy 6 tin nhắn theo hiệu lệnh</h2>
-
+        <div class="slide-card " data-slide="5" data-stage="Giai đoạn 1" data-title="Săn bẫy 6 tin nhắn">
           
-
-          <div class="content-box">
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 1</span>
+              <span class="phase-pill">MINIGAME 6 TIN NHẮN</span>
+            </div>
             
-          <div class="grid-2col" id="gameMessagesGrid"></div>
-        
-          </div>
-
           
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(5)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote5">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Bấm lần lượt các tin nhắn để học sinh phản xạ.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang kiểm tra và bóc tách điểm chung.</div>
+            <h2 class="slide-main-title">SĂN BẪY 6 TIN NHẮN</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-3col" id="gameMessagesGrid5"></div>
+        
             </div>
-          </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(5)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote5">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Cho học sinh giơ tay chọn 👍 hoặc ✋ theo từng tin nhắn.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Bóc tách điểm chung.</div>
+              </div>
+            </div>
+            
         </div>
         
         <!-- ==================== TRANG 06 ==================== -->
-        <div class="slide-card " data-slide="6" data-stage="GĐ1: Minigame phản xạ “Tin được không?”" data-title="Hoạt động 1: Kiểm tra & Trình bày — Đối chiếu kết quả & Bóc tách điểm chung">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ1: Minigame phản xạ “Tin được không?”</span>
-              <span class="phase-pill">BƯỚC 5: KIỂM TRA ĐÁP ÁN / TRÌNH BÀY</span>
-              <span class="activity-challenge-badge">🎯 Hội chẩn mồi nhử</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-06</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 1: Kiểm tra & Trình bày — Đối chiếu kết quả & Bóc tách điểm chung</h2>
-
+        <div class="slide-card " data-slide="6" data-stage="Giai đoạn 1" data-title="Điểm chung của tin nhắn đáng ngờ">
           
-
-          <div class="content-box">
-            
-          <div class="grid-2col">
-            <div class="cyber-card" style="border-color: #059669;">
-              <div class="cyber-card-header" style="color: #059669;">👍 TIN NHẮN BÌNH THƯỜNG (Tin 2, 4)</div>
-              <div class="cyber-card-body">Nội dung học tập rõ ràng, không gây áp lực thời gian, không đòi hỏi nạp tiền hay chia sẻ thông tin nhạy cảm.</div>
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 1</span>
+              <span class="phase-pill">BÓC TÁCH ĐIỂM CHUNG</span>
             </div>
-            <div class="cyber-card" style="border-color: #E11D48;">
-              <div class="cyber-card-header" style="color: #E11D48;">✋ TIN NHẮN BẤT THƯỜNG (Tin 1, 3, 5, 6)</div>
-              <div class="cyber-card-body">Luôn chứa "mồi nhử": Quà tặng ảo, hối thúc thời gian, đe dọa khóa nick, mạo danh vay tiền hoặc gạ gẫm ảnh riêng tư.</div>
+            
+          
+            <h2 class="slide-main-title">ĐIỂM CHUNG CỦA TIN NHẮN ĐÁNG NGỜ</h2>
+            
+                <div class="guide-badge-box" style="margin-bottom: 16px;">
+                  <strong>👉 Hướng dẫn:</strong> Trao đổi nhóm đôi trong 30 giây.
+                </div>
+                
+            <div class="content-box">
+              
+          <div style="background: #FFFBEB; border: 1.5px solid #F59E0B; border-radius: 14px; padding: 18px; margin-bottom: 18px;">
+            <p style="font-size: 18px; font-weight: 800; color: #78350F;">
+              ❓ <strong>CÂU HỎI:</strong> Các tin nhắn mang ký hiệu ✋ có điểm gì giống nhau?
+            </p>
+          </div>
+          <div style="text-align: center; margin-bottom: 16px;">
+            <button class="btn-secondary" onclick="revealElement('hintSuspicious6');">
+              💡 HIỆN GỢI Ý
+            </button>
+          </div>
+          <div id="hintSuspicious6" class="hidden-reveal" style="background: #F0FDFA; border: 1.5px solid #0D9488; padding: 14px 18px; border-radius: 12px; color: #0F766E; font-size: 15.5px; line-height: 1.6;">
+            👉 <strong>Điểm chung:</strong> Thường dùng mồi nhử <em>quà tặng, hối thúc khẩn cấp, đe dọa sợ hãi, mạo danh bạn bè hoặc dụ dỗ vượt ranh giới an toàn</em>.
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(6)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote6">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Mời 2-3 cặp chia sẻ nhanh điểm chung.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Giai đoạn 2.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 07 ==================== -->
+        <div class="slide-card " data-slide="7" data-stage="Giai đoạn 2" data-title="Giai đoạn 2: Nhận nhiệm vụ cộng đồng">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 2</span>
+              <span class="phase-pill">CHUYỂN TIẾP GIAI ĐOẠN</span>
+            </div>
+            
+          
+            <div style="text-align: center; padding: 40px 20px;">
+              <div style="display: inline-block; background: linear-gradient(135deg, #0284C7 0%, #0D9488 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 900; padding: 6px 22px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);">
+                GIAI ĐOẠN 2
+              </div>
+              <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.35; margin-bottom: 18px; max-width: 850px; margin-left: auto; margin-right: auto;">
+                NHẬN NHIỆM VỤ CỘNG ĐỒNG
+              </h1>
+              <p style="font-size: 18px; color: #475569; max-width: 720px; margin: 0 auto 32px auto; line-height: 1.6;">
+                Bác sĩ số phân tích 4 thủ đoạn thao túng tâm lý và cách giữ bình tĩnh.
+              </p>
+              <button class="btn-action-hero" onclick="goToSlide(8); playSound('chime');">
+                <span>🩺</span> BẮT ĐẦU ➔
+              </button>
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(7)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote7">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển pha 5–10 giây, phân tích cơ chế thao túng tâm lý.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang 4 Thủ đoạn thao túng tâm lý.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 08 ==================== -->
+        <div class="slide-card " data-slide="8" data-stage="Giai đoạn 2" data-title="4 Thủ đoạn thao túng tâm lý">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 2</span>
+              <span class="phase-pill">4 THỦ ĐOẠN THAO TÚNG</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">4 THỦ ĐOẠN THAO TÚNG TÂM LÝ</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-2col">
+            <div class="cyber-card" onclick="revealTactic(1)">
+              <div class="cyber-card-header" style="color: #D97706;">1. TẠO CẢM GIÁC KHAN HIẾM GIẢ</div>
+              <div class="cyber-card-body" id="tactic-body-1"><em>(Bấm mở ví dụ & cơ chế)</em></div>
+            </div>
+            <div class="cyber-card" onclick="revealTactic(2)">
+              <div class="cyber-card-header" style="color: #E11D48;">2. HỐI THÚC THỜI GIAN</div>
+              <div class="cyber-card-body" id="tactic-body-2"><em>(Bấm mở ví dụ & cơ chế)</em></div>
+            </div>
+            <div class="cyber-card" onclick="revealTactic(3)">
+              <div class="cyber-card-header" style="color: #7C3AED;">3. ĐE DỌA LÀM SỢ HÃI</div>
+              <div class="cyber-card-body" id="tactic-body-3"><em>(Bấm mở ví dụ & cơ chế)</em></div>
+            </div>
+            <div class="cyber-card" onclick="revealTactic(4)">
+              <div class="cyber-card-header" style="color: #0284C7;">4. MẠO DANH NGƯỜI THÂN QUEN</div>
+              <div class="cyber-card-body" id="tactic-body-4"><em>(Bấm mở ví dụ & cơ chế)</em></div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 14px;">
+            <button class="btn-secondary" onclick="revealAllTactics();">
+              🔓 MỞ TẤT CẢ 4 THỦ ĐOẠN
+            </button>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(8)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote8">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Bấm mở từng thủ đoạn để giải thích cơ chế thao túng cảm xúc.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Phiếu phân tích thao túng.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 09 ==================== -->
+        <div class="slide-card " data-slide="9" data-stage="Giai đoạn 2" data-title="Phiếu phân tích thao túng">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 2</span>
+              <span class="phase-pill">CHUẨN BỊ BẢNG PHÂN TÍCH</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">PHIẾU PHÂN TÍCH THAO TÚNG</h2>
+            
+            <div class="content-box">
+              
+          <p style="font-size: 16px; margin-bottom: 12px; color: #0F766E; font-weight: 700;">
+            Kẻ bảng 3 cột vào vở Kỹ năng sống:
+          </p>
+          <table class="cyber-table">
+            <thead>
+              <tr>
+                <th style="width: 33%;">1. THỦ ĐOẠN THAO TÚNG</th>
+                <th style="width: 33%;">2. CẢM XÚC BỊ KÍCH HOẠT</th>
+                <th style="width: 34%;">3. HÀNH ĐỘNG TỰ VỆ NGAY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color: #64748B;">4 thủ đoạn tâm lý</td>
+                <td style="color: #64748B;">Sợ bỏ lỡ, vội vàng, sợ hãi, cả tin...</td>
+                <td style="color: #64748B;">Dừng lại, không vội, báo người lớn...</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="text-align: center; margin-top: 20px;">
+            <button class="btn-action-hero" onclick="goToSlide(10); playSound('chime');">
+              <span>⏱️</span> BẮT ĐẦU 4 PHÚT PHÂN TÍCH ➔
+            </button>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(9)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote9">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Học sinh kẻ bảng 3 cột vào vở.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang 4 phút phân tích.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 10 ==================== -->
+        <div class="slide-card " data-slide="10" data-stage="Giai đoạn 2" data-title="4 phút phân tích">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 2</span>
+              <span class="phase-pill">THỰC HIỆN PHÂN TÍCH</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">4 PHÚT PHÂN TÍCH</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-2col">
+            <div style="background: #F0FDFA; border: 1px solid #0D9488; padding: 16px; border-radius: 14px;">
+              <h4 style="color: #0F766E; font-size: 15.5px; margin-bottom: 8px;">📌 NHIỆM VỤ:</h4>
+              <p style="font-size: 14px; color: #334155; line-height: 1.6;">
+                Điền đủ 4 thủ đoạn vào bảng 3 cột trong vở.
+              </p>
+              <div style="background: #FFFBEB; border-left: 3px solid #F59E0B; padding: 8px 12px; border-radius: 6px; margin-top: 10px; font-size: 13px; color: #78350F;">
+                💡 <em>Càng bị hối thúc thời gian hoặc đe dọa, ta càng cần dừng lại để bình tĩnh kiểm chứng.</em>
+              </div>
+            </div>
+            <div class="timer-panel" style="margin: 0; flex-direction: column; justify-content: center; gap: 12px;">
+              <div class="timer-display">
+                <div class="pulse-dot"></div>
+                <span id="timer-display-10">04:00</span>
+              </div>
+              <div class="timer-controls">
+                <button class="btn-secondary" onclick="startTimer(10, 240)">▶ Bắt đầu 4p</button>
+                <button class="btn-secondary" onclick="pauseTimer(10)">⏸ Tạm dừng</button>
+                <button class="btn-secondary" onclick="resetTimer(10, 240)">🔄 Đặt lại</button>
+                <button class="btn-secondary" onclick="skipTimer(10)">⏭ Bỏ qua</button>
+              </div>
+            </div>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(10)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote10">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Học sinh tự hoàn thiện bảng 3 cột trong 4 phút.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang Hội chẩn 4 thủ đoạn.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 11 ==================== -->
+        <div class="slide-card " data-slide="11" data-stage="Giai đoạn 2" data-title="Hội chẩn 4 thủ đoạn">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 2</span>
+              <span class="phase-pill">HỘI CHẨN CHUẨN HÓA</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">HỘI CHẨN 4 THỦ ĐOẠN</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-2col">
+            <div class="cyber-card active-card" style="border-color: #D97706;">
+              <div class="cyber-card-header" style="color: #D97706;">KHAN HIẾM GIẢ</div>
+              <div class="cyber-card-body">Sợ bỏ lỡ ➔ <strong>Dừng lại, không vội làm theo.</strong></div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #E11D48;">
+              <div class="cyber-card-header" style="color: #E11D48;">HỐI THÚC THỜI GIAN</div>
+              <div class="cyber-card-body">Vội vàng/hoảng loạn ➔ <strong>Không thao tác ngay.</strong></div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #7C3AED;">
+              <div class="cyber-card-header" style="color: #7C3AED;">ĐE DỌA LÀM SỢ HÃI</div>
+              <div class="cyber-card-body">Sợ hãi ➔ <strong>Lưu bằng chứng, báo người lớn.</strong></div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #0284C7;">
+              <div class="cyber-card-header" style="color: #0284C7;">MẠO DANH NGƯỜI QUEN</div>
+              <div class="cyber-card-body">Cả tin ➔ <strong>Xác minh trực tiếp bằng gọi điện/gặp mặt.</strong></div>
+            </div>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(11)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote11">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuẩn hóa bảng phân tích cho học sinh đối chiếu.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Giai đoạn 3.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 12 ==================== -->
+        <div class="slide-card " data-slide="12" data-stage="Giai đoạn 3" data-title="Giai đoạn 3: Khảo sát thực trạng">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 3</span>
+              <span class="phase-pill">CHUYỂN TIẾP GIAI ĐOẠN</span>
+            </div>
+            
+          
+            <div style="text-align: center; padding: 40px 20px;">
+              <div style="display: inline-block; background: linear-gradient(135deg, #0284C7 0%, #0D9488 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 900; padding: 6px 22px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);">
+                GIAI ĐOẠN 3
+              </div>
+              <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.35; margin-bottom: 18px; max-width: 850px; margin-left: auto; margin-right: auto;">
+                KHẢO SÁT THỰC TRẠNG
+              </h1>
+              <p style="font-size: 18px; color: #475569; max-width: 720px; margin: 0 auto 32px auto; line-height: 1.6;">
+                Bác sĩ số cộng đồng tiếp nhận 4 hồ sơ An, Bình, Cường, Dung.
+              </p>
+              <button class="btn-action-hero" onclick="goToSlide(13); playSound('chime');">
+                <span>🩺</span> BẮT ĐẦU ➔
+              </button>
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(12)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote12">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển pha 5–10 giây, tiếp nhận 4 hồ sơ cộng đồng.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang 4 Hồ sơ cộng đồng.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 13 ==================== -->
+        <div class="slide-card " data-slide="13" data-stage="Giai đoạn 3" data-title="4 Hồ sơ cộng đồng">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 3</span>
+              <span class="phase-pill">TIẾP NHẬN HỒ SƠ</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">4 HỒ SƠ CỘNG ĐỒNG</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-2col">
+            <div class="cyber-card" onclick="revealCaseDossier('an')">
+              <div class="cyber-card-header" style="color: #D97706;">🎮 HỒ SƠ AN</div>
+              <div class="cyber-card-body" id="dossier-body-an"><em>(Bấm mở hồ sơ)</em></div>
+            </div>
+            <div class="cyber-card" onclick="revealCaseDossier('binh')">
+              <div class="cyber-card-header" style="color: #E11D48;">💬 HỒ SƠ BÌNH</div>
+              <div class="cyber-card-body" id="dossier-body-binh"><em>(Bấm mở hồ sơ)</em></div>
+            </div>
+            <div class="cyber-card" onclick="revealCaseDossier('cuong')">
+              <div class="cyber-card-header" style="color: #0284C7;">💰 HỒ SƠ CƯỜNG</div>
+              <div class="cyber-card-body" id="dossier-body-cuong"><em>(Bấm mở hồ sơ)</em></div>
+            </div>
+            <div class="cyber-card" onclick="revealCaseDossier('dung')">
+              <div class="cyber-card-header" style="color: #7C3AED;">💻 HỒ SƠ DUNG</div>
+              <div class="cyber-card-body" id="dossier-body-dung"><em>(Bấm mở hồ sơ)</em></div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 14px;">
+            <button class="btn-secondary" onclick="revealAllCaseDossiers();">
+              🔓 MỞ TẤT CẢ 4 HỒ SƠ
+            </button>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(13)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote13">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Bấm mở dữ kiện từng hồ sơ ca bệnh.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Phân công hồ sơ.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 14 ==================== -->
+        <div class="slide-card " data-slide="14" data-stage="Giai đoạn 3" data-title="Phân công hồ sơ">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 3</span>
+              <span class="phase-pill">PHÂN CÔNG NHÓM</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">PHÂN CÔNG HỒ SƠ</h2>
+            
+            <div class="content-box">
+              
+          <div style="background: #F0FDFA; border: 1.5px solid #0D9488; border-radius: 16px; padding: 20px; margin-bottom: 18px;">
+            <ul style="line-height: 1.8; font-size: 16px; color: #0F172A; padding-left: 20px;">
+              <li>👥 <strong>Mỗi hồ sơ do 2 nhóm phụ trách</strong> (Nhóm 1 & 2: An, Nhóm 3 & 4: Bình, Nhóm 5 & 6: Cường, Nhóm 7 & 8: Dung).</li>
+              <li>📝 <strong>Ghi vào vở:</strong> Tên nhân vật + rủi ro trực tiếp.</li>
+            </ul>
+          </div>
+          <div class="timer-panel">
+            <div class="timer-display">
+              <div class="pulse-dot"></div>
+              <span id="timer-display-14">01:00</span>
+            </div>
+            <div class="timer-controls">
+              <button class="btn-secondary" onclick="startTimer(14, 60)">▶ Bắt đầu (1p)</button>
+              <button class="btn-secondary" onclick="pauseTimer(14)">⏸ Tạm dừng</button>
+              <button class="btn-secondary" onclick="resetTimer(14, 60)">🔄 Đặt lại</button>
+              <button class="btn-secondary" onclick="skipTimer(14)">⏭ Bỏ qua</button>
+            </div>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(14)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote14">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Phân công nhanh hồ sơ cho các nhóm.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Giai đoạn 4.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 15 ==================== -->
+        <div class="slide-card " data-slide="15" data-stage="Giai đoạn 4" data-title="Giai đoạn 4: Phân tích nguy cơ">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 4</span>
+              <span class="phase-pill">CHUYỂN TIẾP GIAI ĐOẠN</span>
+            </div>
+            
+          
+            <div style="text-align: center; padding: 40px 20px;">
+              <div style="display: inline-block; background: linear-gradient(135deg, #0284C7 0%, #0D9488 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 900; padding: 6px 22px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);">
+                GIAI ĐOẠN 4
+              </div>
+              <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.35; margin-bottom: 18px; max-width: 850px; margin-left: auto; margin-right: auto;">
+                PHÂN TÍCH NGUY CƠ
+              </h1>
+              <p style="font-size: 18px; color: #475569; max-width: 720px; margin: 0 auto 32px auto; line-height: 1.6;">
+                Mỗi nhóm dùng quy trình an toàn để viết phương án xử lý hồ sơ được giao.
+              </p>
+              <button class="btn-action-hero" onclick="goToSlide(16); playSound('chime');">
+                <span>🩺</span> BẮT ĐẦU ➔
+              </button>
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(15)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote15">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển pha 5–10 giây, bắt đầu viết phương án xử lý.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang Khung xử lý 4 bước.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 16 ==================== -->
+        <div class="slide-card " data-slide="16" data-stage="Giai đoạn 4" data-title="Khung xử lý 4 bước">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 4</span>
+              <span class="phase-pill">KHUNG XỬ LÝ</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">KHUNG XỬ LÝ 4 BƯỚC</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-4col">
+            <div class="cyber-card active-card" style="border-color: #E11D48;">
+              <div class="cyber-card-header" style="color: #E11D48;">1. DỪNG LẠI</div>
+              <div class="cyber-card-body">Hành động dừng lại ngay lúc này.</div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #D97706;">
+              <div class="cyber-card-header" style="color: #D97706;">2. BẰNG CHỨNG</div>
+              <div class="cyber-card-body">Cách lưu giữ bằng chứng (chụp màn hình...).</div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #0284C7;">
+              <div class="cyber-card-header" style="color: #0284C7;">3. HỖ TRỢ & BÁO CÁO</div>
+              <div class="cyber-card-body">Tìm kiếm sự hỗ trợ từ cha mẹ, thầy cô, 111.</div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #059669;">
+              <div class="cyber-card-header" style="color: #059669;">4. KỸ THUẬT</div>
+              <div class="cyber-card-body">Biện pháp kỹ thuật khắc phục (đổi mật khẩu, chặn...).</div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 18px;">
+            <button class="btn-action-hero" onclick="goToSlide(17); playSound('chime');">
+              <span>⏱️</span> BẮT ĐẦU 5 PHÚT THẢO LUẬN ➔
+            </button>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(16)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote16">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Hướng dẫn khung 4 bước vào vở/nháp.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang 5 phút thảo luận.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 17 ==================== -->
+        <div class="slide-card " data-slide="17" data-stage="Giai đoạn 4" data-title="5 phút thảo luận hồ sơ">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 4</span>
+              <span class="phase-pill">THẢO LUẬN NHÓM</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">5 PHÚT THẢO LUẬN HỒ SƠ</h2>
+            
+                <div class="guide-badge-box" style="margin-bottom: 16px;">
+                  <strong>👉 Hướng dẫn:</strong> Viết phương án xử lý hồ sơ nhóm em theo đủ 4 bước.
+                </div>
+                
+            <div class="content-box">
+              
+          <div class="timer-panel">
+            <div class="timer-display">
+              <div class="pulse-dot"></div>
+              <span id="timer-display-17">05:00</span>
+            </div>
+            <div class="timer-controls">
+              <button class="btn-secondary" onclick="startTimer(17, 300)">▶ Bắt đầu (5p)</button>
+              <button class="btn-secondary" onclick="pauseTimer(17)">⏸ Tạm dừng</button>
+              <button class="btn-secondary" onclick="resetTimer(17, 300)">🔄 Đặt lại</button>
+              <button class="btn-secondary" onclick="skipTimer(17)">⏭ Bỏ qua</button>
+            </div>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(17)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote17">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Quan sát và hỗ trợ các nhóm thảo luận.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Giai đoạn 5.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 18 ==================== -->
+        <div class="slide-card " data-slide="18" data-stage="Giai đoạn 5" data-title="Giai đoạn 5: Kết luận & Chốt phương án">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 5</span>
+              <span class="phase-pill">CHUYỂN TIẾP GIAI ĐOẠN</span>
+            </div>
+            
+          
+            <div style="text-align: center; padding: 40px 20px;">
+              <div style="display: inline-block; background: linear-gradient(135deg, #0284C7 0%, #0D9488 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 900; padding: 6px 22px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);">
+                GIAI ĐOẠN 5
+              </div>
+              <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.35; margin-bottom: 18px; max-width: 850px; margin-left: auto; margin-right: auto;">
+                KẾT LUẬN VÀ CHỐT PHƯƠNG ÁN XỬ LÝ
+              </h1>
+              <p style="font-size: 18px; color: #475569; max-width: 720px; margin: 0 auto 32px auto; line-height: 1.6;">
+                Các nhóm báo cáo, bổ sung và chốt phương án an toàn cho cả 4 hồ sơ.
+              </p>
+              <button class="btn-action-hero" onclick="goToSlide(19); playSound('chime');">
+                <span>🩺</span> BẮT ĐẦU ➔
+              </button>
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(18)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote18">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển pha 5–10 giây, bắt đầu báo cáo hội đồng.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang Báo cáo hồ sơ An và Bình.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 19 ==================== -->
+        <div class="slide-card " data-slide="19" data-stage="Giai đoạn 5" data-title="Báo cáo hồ sơ An và Bình">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 5</span>
+              <span class="phase-pill">BÁO CÁO HỒ SƠ 1 & 2</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">BÁO CÁO HỒ SƠ AN VÀ BÌNH</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-2col">
+            <div class="cyber-card">
+              <div class="cyber-card-header" style="color: #D97706;">🎮 HỒ SƠ AN (Báo cáo 45–60s)</div>
+              <div class="cyber-card-body" id="sol-body-an">
+                <button class="btn-secondary" onclick="revealCaseSolution('an')">🔓 Xem giải pháp An</button>
+              </div>
+            </div>
+            <div class="cyber-card">
+              <div class="cyber-card-header" style="color: #E11D48;">💬 HỒ SƠ BÌNH (Báo cáo 45–60s)</div>
+              <div class="cyber-card-body" id="sol-body-binh">
+                <button class="btn-secondary" onclick="revealCaseSolution('binh')">🔓 Xem giải pháp Bình</button>
+              </div>
+            </div>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(19)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote19">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Mời nhóm chính báo cáo, nhóm cùng hồ sơ bổ sung.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Báo cáo Cường và Dung.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 20 ==================== -->
+        <div class="slide-card " data-slide="20" data-stage="Giai đoạn 5" data-title="Báo cáo hồ sơ Cường và Dung">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 5</span>
+              <span class="phase-pill">BÁO CÁO HỒ SƠ 3 & 4</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">BÁO CÁO HỒ SƠ CƯỜNG VÀ DUNG</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-2col">
+            <div class="cyber-card">
+              <div class="cyber-card-header" style="color: #0284C7;">💰 HỒ SƠ CƯỜNG (Báo cáo 45–60s)</div>
+              <div class="cyber-card-body" id="sol-body-cuong">
+                <button class="btn-secondary" onclick="revealCaseSolution('cuong')">🔓 Xem giải pháp Cường</button>
+              </div>
+            </div>
+            <div class="cyber-card">
+              <div class="cyber-card-header" style="color: #7C3AED;">💻 HỒ SƠ DUNG (Báo cáo 45–60s)</div>
+              <div class="cyber-card-body" id="sol-body-dung">
+                <button class="btn-secondary" onclick="revealCaseSolution('dung')">🔓 Xem giải pháp Dung</button>
+              </div>
+            </div>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(20)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote20">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Mời nhóm chính báo cáo, chuẩn hóa giải pháp.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Phác đồ xử lý sự cố chung.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 21 ==================== -->
+        <div class="slide-card " data-slide="21" data-stage="Giai đoạn 5" data-title="Phác đồ xử lý sự cố chung">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 5</span>
+              <span class="phase-pill">PHÁC ĐỒ XỬ LÝ CHUNG</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">PHÁC ĐỒ XỬ LÝ SỰ CỐ CHUNG</h2>
+            
+            <div class="content-box">
+              
+          <div style="background: #F0FDFA; border: 2px solid #0D9488; border-radius: 16px; padding: 22px;">
+            <ul style="line-height: 2; font-size: 16.5px; color: #0F172A; padding-left: 20px;">
+              <li>🛑 <strong>Dừng thao tác ngay lập tức.</strong></li>
+              <li>🚫 <strong>Không nạp thêm tiền / Không gửi thêm thông tin, hình ảnh.</strong></li>
+              <li>📸 <strong>Lưu giữ bằng chứng</strong> (chụp ảnh màn hình, lưu tin nhắn/đường link).</li>
+              <li>🛡️ <strong>Báo cáo vi phạm / Chặn tài khoản / Đổi mật khẩu.</strong></li>
+              <li>📞 <strong>Tìm kiếm sự hỗ trợ khẩn cấp</strong> từ cha mẹ, thầy cô hoặc <strong>Tổng đài 111</strong>.</li>
+            </ul>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(21)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote21">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chốt phác đồ xử lý sự cố 5 điểm cốt lõi.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Giai đoạn 6.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 22 ==================== -->
+        <div class="slide-card " data-slide="22" data-stage="Giai đoạn 6" data-title="Giai đoạn 6: Thiết kế giải pháp & Bản nháp cẩm nang">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 6</span>
+              <span class="phase-pill">CHUYỂN TIẾP GIAI ĐOẠN</span>
+            </div>
+            
+          
+            <div style="text-align: center; padding: 40px 20px;">
+              <div style="display: inline-block; background: linear-gradient(135deg, #0284C7 0%, #0D9488 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 900; padding: 6px 22px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);">
+                GIAI ĐOẠN 6
+              </div>
+              <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.35; margin-bottom: 18px; max-width: 850px; margin-left: auto; margin-right: auto;">
+                THIẾT KẾ GIẢI PHÁP TỰ VỆ SỐ VÀ LẬP BẢN NHÁP CẨM NANG
+              </h1>
+              <p style="font-size: 18px; color: #475569; max-width: 720px; margin: 0 auto 32px auto; line-height: 1.6;">
+                Bác sĩ số thiết kế lá chắn bảo vệ tài khoản, ranh giới cá nhân và tạo Bản nháp Cẩm nang An toàn số.
+              </p>
+              <button class="btn-action-hero" onclick="goToSlide(23); playSound('chime');">
+                <span>🩺</span> BẮT ĐẦU ➔
+              </button>
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(22)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote22">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển pha 5–10 giây, bắt đầu thiết kế giải pháp và cẩm nang.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang Lá chắn mật khẩu an toàn.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 23 ==================== -->
+        <div class="slide-card " data-slide="23" data-stage="Giai đoạn 6" data-title="Lá chắn mật khẩu an toàn">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 6</span>
+              <span class="phase-pill">LÁ CHẮN MẬT KHẨU</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">LÁ CHẮN MẬT KHẨU AN TOÀN</h2>
+            
+            <div class="content-box">
+              
+          <div style="background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 16px; padding: 20px; margin-bottom: 16px;">
+            <ul style="line-height: 1.8; font-size: 15.5px; color: #0F172A; padding-left: 20px;">
+              <li>🔒 Mật khẩu dài từ <strong>8–12 ký tự trở lên</strong>.</li>
+              <li>🔠 Kết hợp: <strong>Chữ hoa + Chữ thường + Chữ số + Ký tự đặc biệt</strong> (ví dụ: <code>B@csiSo#2026</code>).</li>
+              <li>🚫 Tuyệt đối không dùng: Họ tên, ngày sinh, số điện thoại, dãy số đơn giản (123456).</li>
+            </ul>
+          </div>
+          <div style="background: #FFF1F2; border: 2px dashed #F43F5E; padding: 12px 18px; border-radius: 12px; text-align: center; color: #E11D48; font-weight: 800;">
+            ⚠️ <strong>CẢNH BÁO:</strong> Chỉ tạo mật khẩu GIẢ LẬP để thực hành vào vở. Tuyệt đối KHÔNG ghi mật khẩu thật!
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(23)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote23">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nhắc nhở học sinh tuyệt đối không ghi mật khẩu thật.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Xác thực hai bước.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 24 ==================== -->
+        <div class="slide-card " data-slide="24" data-stage="Giai đoạn 6" data-title="Lá chắn xác thực hai bước">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 6</span>
+              <span class="phase-pill">XÁC THỰC HAI BƯỚC</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">LÁ CHẮN XÁC THỰC HAI BƯỚC (2FA)</h2>
+            
+                <div class="guide-badge-box" style="margin-bottom: 16px;">
+                  <strong>👉 Hướng dẫn:</strong> Ghi ngắn gọn cách hiểu vào vở.
+                </div>
+                
+            <div class="content-box">
+              
+          <div class="grid-2col">
+            <div class="cyber-card active-card" style="border-color: #0284C7;">
+              <div class="cyber-card-header" style="color: #0284C7;">🔑 LỚP 1: MẬT KHẨU</div>
+              <div class="cyber-card-body">Mật khẩu mạnh cá nhân mà em tự đặt.</div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #059669;">
+              <div class="cyber-card-header" style="color: #059669;">📱 LỚP 2: MÃ XÁC THỰC</div>
+              <div class="cyber-card-body">Mã OTP gửi qua tin nhắn điện thoại hoặc ứng dụng xác thực.</div>
+            </div>
+          </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(24)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote24">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Giải thích nguyên lý 2 lớp bảo vệ tài khoản.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Diễn tập lời từ chối.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 25 ==================== -->
+        <div class="slide-card " data-slide="25" data-stage="Giai đoạn 6" data-title="Diễn tập lời từ chối 3 phần">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 6</span>
+              <span class="phase-pill">LỜI TỪ CHỐI 3 PHẦN</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">DIỄN TẬP LỜI TỪ CHỐI 3 PHẦN</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-3col" style="margin-bottom: 16px;">
+            <div class="cyber-card active-card" style="border-color: #E11D48;">
+              <div class="cyber-card-header" style="color: #E11D48;">1. TỪ CHỐI RÕ RÀNG</div>
+              <div class="cyber-card-body">“Không, mình không thể làm việc này.”</div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #D97706;">
+              <div class="cyber-card-header" style="color: #D97706;">2. NÊU GIỚI HẠN</div>
+              <div class="cyber-card-body">“Đây là thông tin/hình ảnh riêng tư của mình.”</div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #059669;">
+              <div class="cyber-card-header" style="color: #059669;">3. HÀNH ĐỘNG DỨT KHOÁT</div>
+              <div class="cyber-card-body">“Nếu bạn còn tiếp tục, mình sẽ chặn và báo cáo.”</div>
             </div>
           </div>
           <div class="timer-panel">
             <div class="timer-display">
               <div class="pulse-dot"></div>
-              <span id="timer-display-6">00:30</span>
+              <span id="timer-display-25">04:00</span>
             </div>
             <div class="timer-controls">
-              <button class="btn-secondary" onclick="startTimer(6, 30)">▶ Bắt đầu thảo luận (30s)</button>
-              <button class="btn-secondary" onclick="pauseTimer(6)">⏸ Tạm dừng</button>
-              <button class="btn-secondary" onclick="resetTimer(6, 30)">🔄 Đặt lại</button>
-              <button class="btn-secondary" onclick="skipTimer(6)">⏭ Bỏ qua</button>
+              <button class="btn-secondary" onclick="startTimer(25, 240)">▶ Diễn tập nhóm đôi (4p)</button>
+              <button class="btn-secondary" onclick="pauseTimer(25)">⏸ Tạm dừng</button>
+              <button class="btn-secondary" onclick="resetTimer(25, 240)">🔄 Đặt lại</button>
+              <button class="btn-secondary" onclick="skipTimer(25)">⏭ Bỏ qua</button>
             </div>
           </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(6)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote6">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Mời học sinh phát biểu ngắn gọn.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang tổng kết Hoạt động 1.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 07 ==================== -->
-        <div class="slide-card " data-slide="7" data-stage="GĐ1: Minigame phản xạ “Tin được không?”" data-title="Hoạt động 1: Tổng kết — Bản chất thao túng cảm xúc của kẻ xấu">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ1: Minigame phản xạ “Tin được không?”</span>
-              <span class="phase-pill">BƯỚC 6: TỔNG KẾT</span>
-              <span class="activity-challenge-badge">🎯 Chốt bài học khởi động Tiết 2</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-07</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 1: Tổng kết — Bản chất thao túng cảm xúc của kẻ xấu</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div style="background: #FFFBEB; border: 2px solid #D97706; border-radius: 16px; padding: 20px; margin-bottom: 16px;">
-            <h3 style="color: #B45309; font-size: 18px; margin-bottom: 8px;">💡 BÀI HỌC CỐT LÕI HOẠT ĐỘNG 1:</h3>
-            <p style="font-size: 17.5px; font-weight: 700; color: #78350F; line-height: 1.6;">
-              “Kẻ xấu luôn đánh vào <strong>cảm xúc</strong> (ham quà, sợ hãi, vội vàng, cả tin) để kích hoạt hành vi bốc đồng. Nhận diện được cảm xúc bị kích thích là bước đầu tiên để vô hiệu hóa cạm bẫy!”
-            </p>
-          </div>
-          <div style="text-align: center; margin-top: 18px;">
-            <button class="btn-action-hero" onclick="goToSlide(8); playSound('chime');">
-              <span>🧠</span> CHUYỂN SANG HOẠT ĐỘNG 2: 4 THỦ ĐOẠN THAO TÚNG ➔
-            </button>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(7)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote7">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển tiếp sang Hoạt động 2.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Bắt đầu Hoạt động 2.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 08 ==================== -->
-        <div class="slide-card " data-slide="8" data-stage="GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý" data-title="HOẠT ĐỘNG 2: BÓC TRẦN 4 THỦ ĐOẠN THAO TÚNG TÂM LÝ TRÊN MẠNG">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý</span>
-              <span class="phase-pill">BƯỚC 1: TÊN HOẠT ĐỘNG</span>
-              <span class="activity-challenge-badge">🎯 Bản đồ thủ đoạn thao túng</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-08</span>
-          </div>
-
-          <h2 class="slide-main-title">HOẠT ĐỘNG 2: BÓC TRẦN 4 THỦ ĐOẠN THAO TÚNG TÂM LÝ TRÊN MẠNG</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div style="background: #FFFBEB; border-left: 4px solid #D97706; padding: 18px 22px; border-radius: 12px; margin-bottom: 18px; border: 1px solid #FEF3C7;">
-            <h3 style="color: #B45309; font-size: 19px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-              <span>🧠</span> HOẠT ĐỘNG 2: BÓC TRẦN 4 THỦ ĐOẠN THAO TÚNG TÂM LÝ TRÊN MẠNG
-            </h3>
-            <p style="font-size: 15.5px; color: #334155; line-height: 1.6;">
-              <strong>Mục tiêu:</strong> Nhận diện 4 thủ đoạn tinh vi kẻ xấu hay dùng, phân tích loại cảm xúc bị đánh vào và xác định hành động tự vệ tức thì.
-            </p>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(8)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote8">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nêu mục tiêu Hoạt động 2 trong 20 giây.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang chuẩn bị bảng 3 cột.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 09 ==================== -->
-        <div class="slide-card " data-slide="9" data-stage="GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý" data-title="Hoạt động 2: Chuẩn bị — Kẻ khung Bảng phân tích 3 cột vào vở">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý</span>
-              <span class="phase-pill">BƯỚC 2: CHUẨN BỊ</span>
-              <span class="activity-challenge-badge">🎯 Chuẩn bị khung phân tích thao túng</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-09</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 2: Chuẩn bị — Kẻ khung Bảng phân tích 3 cột vào vở</h2>
-
-          
-
-          <div class="content-box">
-            
-          <p style="font-size: 15.5px; margin-bottom: 12px; color: #0F766E; font-weight: 700;">
-            Học sinh kẻ khung Bảng phân tích 3 cột vào vở ghi:
-          </p>
-          <table class="cyber-table">
-            <thead>
-              <tr>
-                <th style="width: 34%;">1. THỦ ĐOẠN THAO TÚNG</th>
-                <th style="width: 33%;">2. CẢM XÚC BỊ KÍCH HOẠT</th>
-                <th style="width: 33%;">3. HÀNH ĐỘNG TỰ VỆ NGAY</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1. Khan hiếm giả & Hối thúc</td>
-                <td style="color: #64748B;">(Cảm xúc gì?)</td>
-                <td style="color: #64748B;">(Hành động gì?)</td>
-              </tr>
-              <tr>
-                <td>2. Đe dọa làm sợ hãi</td>
-                <td style="color: #64748B;">(Cảm xúc gì?)</td>
-                <td style="color: #64748B;">(Hành động gì?)</td>
-              </tr>
-              <tr>
-                <td>3. Mạo danh người quen</td>
-                <td style="color: #64748B;">(Cảm xúc gì?)</td>
-                <td style="color: #64748B;">(Hành động gì?)</td>
-              </tr>
-            </tbody>
-          </table>
-        
-          </div>
-
-          
-            <div style="background: #F0FDF4; border: 2px dashed #059669; border-radius: 14px; padding: 16px 20px; margin-top: 16px;">
-              <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 900; color: #065F46; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-                <span>📋</span> MẪU THỰC HÀNH / KHUNG BỆNH ÁN:
-              </div>
-              
-          <p style="font-size: 14px; color: #065F46; line-height: 1.6;">
-            <strong>MẪU BẢNG PHÂN TÍCH 3 CỘT TRONG VỞ:</strong><br>
-            • Cột 1: Thủ đoạn (Khan hiếm giả, Đe dọa, Mạo danh, Quà ảo)<br>
-            • Cột 2: Cảm xúc (Háo hức, lo sợ, vội vàng, cả tin)<br>
-            • Cột 3: Hành động tự vệ (Dừng lại 5s, không vội bấm, báo người lớn, gọi xác minh)
-          </p>
         
             </div>
             
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(9)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote9">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nhắc học sinh kẻ khung nhanh.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang hướng dẫn 4 thủ đoạn.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 10 ==================== -->
-        <div class="slide-card " data-slide="10" data-stage="GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý" data-title="Hoạt động 2: Hướng dẫn — 4 thủ đoạn thao túng & cơ chế cảm xúc">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý</span>
-              <span class="phase-pill">BƯỚC 3: HƯỚNG DẪN</span>
-              <span class="activity-challenge-badge">🎯 Hướng dẫn nhận diện 4 thủ đoạn</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-10</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 2: Hướng dẫn — 4 thủ đoạn thao túng & cơ chế cảm xúc</h2>
-
           
-
-          <div class="content-box">
-            
-          <div class="grid-4col">
-            <div class="cyber-card" onclick="toggleTactics(1); playSound('ting');">
-              <div class="cyber-card-header" style="color: #D97706;">⏳ 1. KHAN HIẾM GIẢ</div>
-              <div class="cyber-card-body" id="tac-1">
-                “Chỉ còn 3 phần quà duy nhất cho ai nhanh nhất!” ➔ <em>Sợ bỏ lỡ cơ hội.</em>
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(25)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote25">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Học sinh luyện nói dứt khoát cùng bạn bên cạnh.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Cấu trúc bản nháp cẩm nang.</div>
               </div>
             </div>
-            <div class="cyber-card" onclick="toggleTactics(2); playSound('ting');">
-              <div class="cyber-card-header" style="color: #E11D48;">⚡ 2. HỐI THÚC THỜI GIAN</div>
-              <div class="cyber-card-body" id="tac-2">
-                “Xác minh trong 60s nếu không nick sẽ bị khóa!” ➔ <em>Làm tê liệt suy nghĩ.</em>
-              </div>
-            </div>
-            <div class="cyber-card" onclick="toggleTactics(3); playSound('ting');">
-              <div class="cyber-card-header" style="color: #0284C7;">😱 3. ĐE DỌA SỢ HÃI</div>
-              <div class="cyber-card-body" id="tac-3">
-                “Nếu không làm theo sẽ gửi tin xấu cho bố mẹ!” ➔ <em>Gây hoảng loạn.</em>
-              </div>
-            </div>
-            <div class="cyber-card" onclick="toggleTactics(4); playSound('ting');">
-              <div class="cyber-card-header" style="color: #059669;">👥 4. MẠO DANH NGƯỜI QUEN</div>
-              <div class="cyber-card-body" id="tac-4">
-                “Mình là bạn cùng lớp, mua giúp mình thẻ cào!” ➔ <em>Lợi dụng lòng tin.</em>
-              </div>
-            </div>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(10)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote10">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Giải thích ngắn cơ chế của từng thủ đoạn.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang 4 phút thực hiện điền bảng.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 11 ==================== -->
-        <div class="slide-card " data-slide="11" data-stage="GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý" data-title="Hoạt động 2: Thực hiện — 4 phút hoàn thiện Bảng phân tích 3 cột">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý</span>
-              <span class="phase-pill">BƯỚC 4: THỰC HIỆN</span>
-              <span class="activity-challenge-badge">🎯 Thực hiện điền bảng 3 cột</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-11</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 2: Thực hiện — 4 phút hoàn thiện Bảng phân tích 3 cột</h2>
-
-          
-
-          <div class="content-box">
             
-          <div class="grid-2col">
-            <div style="background: #FFFBEB; border: 1px solid #D97706; padding: 16px; border-radius: 14px;">
-              <h4 style="color: #B45309; font-size: 16px; margin-bottom: 8px;">📋 GỢI Ý ĐIỀN CỘT 2 VÀ CỘT 3:</h4>
-              <ul style="padding-left: 18px; line-height: 1.8; font-size: 14px; color: #78350F;">
-                <li><strong>Cột 2 (Cảm xúc):</strong> Háo hức, sợ lỡ cơ hội, lo sợ, hoảng loạn, cả tin...</li>
-                <li><strong>Cột 3 (Tự vệ):</strong> Dừng lại 5s, không vội bấm, báo người lớn, gọi điện xác minh...</li>
-              </ul>
-            </div>
-            <div class="timer-panel" style="margin: 0; flex-direction: column; justify-content: center; gap: 12px;">
-              <div class="timer-display">
-                <div class="pulse-dot"></div>
-                <span id="timer-display-11">04:00</span>
-              </div>
-              <div class="timer-controls">
-                <button class="btn-secondary" onclick="startTimer(11, 240)">▶ Bắt đầu điền bảng (4p)</button>
-                <button class="btn-secondary" onclick="pauseTimer(11)">⏸ Tạm dừng</button>
-                <button class="btn-secondary" onclick="resetTimer(11, 240)">🔄 Đặt lại</button>
-                <button class="btn-secondary" onclick="skipTimer(11)">⏭ Bỏ qua</button>
-              </div>
-            </div>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(11)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote11">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Cho học sinh làm việc cá nhân 3p, trao đổi nhóm đôi 1p.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang kiểm tra đáp án bảng 3 cột.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 12 ==================== -->
-        <div class="slide-card " data-slide="12" data-stage="GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý" data-title="Hoạt động 2: Kiểm tra & Trình bày — Hội chẩn chuẩn hóa Bảng phân tích 3 cột">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý</span>
-              <span class="phase-pill">BƯỚC 5: KIỂM TRA ĐÁP ÁN / TRÌNH BÀY</span>
-              <span class="activity-challenge-badge">🎯 Hội chẩn chốt bảng phân tích</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-12</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 2: Kiểm tra & Trình bày — Hội chẩn chuẩn hóa Bảng phân tích 3 cột</h2>
-
-          
-
-          <div class="content-box">
-            
-          <table class="cyber-table">
-            <thead>
-              <tr>
-                <th style="width: 34%;">1. THỦ ĐOẠN THAO TÚNG</th>
-                <th style="width: 33%;">2. CẢM XÚC BỊ KÍCH HOẠT</th>
-                <th style="width: 33%;">3. HÀNH ĐỘNG TỰ VỆ NGAY</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1. Khan hiếm giả & hối thúc</td>
-                <td style="color: #D97706; font-weight: 700;">Háo hức, vội vàng, sợ lỡ cơ hội</td>
-                <td style="color: #059669; font-weight: 700;">Dừng lại 5s, không vội bấm link</td>
-              </tr>
-              <tr>
-                <td>2. Đe dọa làm sợ hãi</td>
-                <td style="color: #E11D48; font-weight: 700;">Lo lắng, hoảng sợ, mất bình tĩnh</td>
-                <td style="color: #059669; font-weight: 700;">Không làm theo, báo ngay người lớn</td>
-              </tr>
-              <tr>
-                <td>3. Mạo danh người quen</td>
-                <td style="color: #0284C7; font-weight: 700;">Cả tin, muốn giúp bạn bè</td>
-                <td style="color: #059669; font-weight: 700;">Xác minh trực tiếp qua gọi điện/gặp mặt</td>
-              </tr>
-            </tbody>
-          </table>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(12)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote12">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuẩn hóa bảng phân tích cho học sinh.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang tổng kết Hoạt động 2.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 13 ==================== -->
-        <div class="slide-card " data-slide="13" data-stage="GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý" data-title="Hoạt động 2: Tổng kết — Nguyên tắc vàng vô hiệu hóa thao túng tâm lý">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ2: Bóc trần 4 thủ đoạn thao túng tâm lý</span>
-              <span class="phase-pill">BƯỚC 6: TỔNG KẾT</span>
-              <span class="activity-challenge-badge">🎯 Chốt bài học thao túng tâm lý</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-13</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 2: Tổng kết — Nguyên tắc vàng vô hiệu hóa thao túng tâm lý</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div style="background: #ECFDF5; border: 2px solid #059669; border-radius: 16px; padding: 20px; margin-bottom: 16px;">
-            <h3 style="color: #065F46; font-size: 18px; margin-bottom: 8px;">🌟 NGUYÊN TẮC VÀNG VÔ HIỆU HÓA THAO TÚNG:</h3>
-            <p style="font-size: 17.5px; font-weight: 700; color: #064E3B; line-height: 1.6;">
-              “Càng bị hối thúc thời gian hoặc đe dọa làm sợ hãi, chúng ta càng phải <strong>DỪNG LẠI 5 GIÂY</strong> để lấy lại bình tĩnh và kiểm chứng sự thật cùng người lớn!”
-            </p>
-          </div>
-          <div style="text-align: center; margin-top: 18px;">
-            <button class="btn-action-hero" onclick="goToSlide(14); playSound('chime');">
-              <span>📁</span> CHUYỂN SANG HOẠT ĐỘNG 3: GIẢI MÃ 4 HỒ SƠ HỌC ĐƯỜNG ➔
-            </button>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(13)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote13">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển tiếp sang Hoạt động 3.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Bắt đầu Hoạt động 3.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 14 ==================== -->
-        <div class="slide-card " data-slide="14" data-stage="GĐ3: Giải mã 4 hồ sơ nguy cơ học đường" data-title="HOẠT ĐỘNG 3: TIẾP NHẬN & GIẢI MÃ 4 HỒ SƠ NGUY CƠ HỌC ĐƯỜNG">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ3: Giải mã 4 hồ sơ nguy cơ học đường</span>
-              <span class="phase-pill">BƯỚC 1: TÊN HOẠT ĐỘNG</span>
-              <span class="activity-challenge-badge">🎯 4 ca bệnh học đường</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-14</span>
-          </div>
-
-          <h2 class="slide-main-title">HOẠT ĐỘNG 3: TIẾP NHẬN & GIẢI MÃ 4 HỒ SƠ NGUY CƠ HỌC ĐƯỜNG</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div style="background: #F0FDFA; border-left: 4px solid #0D9488; padding: 18px 22px; border-radius: 12px; margin-bottom: 18px; border: 1px solid #CCFBF1;">
-            <h3 style="color: #0F766E; font-size: 19px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-              <span>📁</span> HOẠT ĐỘNG 3: TIẾP NHẬN & GIẢI MÃ 4 HỒ SƠ NGUY CƠ HỌC ĐƯỜNG
-            </h3>
-            <p style="font-size: 15.5px; color: #334155; line-height: 1.6;">
-              <strong>Mục tiêu:</strong> Phân tích và đưa ra giải pháp toàn diện cho 4 ca bệnh học đường điển hình (An, Bình, Cường, Dung) theo phác đồ chuẩn 4 bước.
-            </p>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(14)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote14">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nêu mục tiêu Hoạt động 3 trong 20 giây.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang chuẩn bị phân công 8 nhóm.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 15 ==================== -->
-        <div class="slide-card " data-slide="15" data-stage="GĐ3: Giải mã 4 hồ sơ nguy cơ học đường" data-title="Hoạt động 3: Chuẩn bị — Phân công 8 nhóm phụ trách 4 hồ sơ ca bệnh">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ3: Giải mã 4 hồ sơ nguy cơ học đường</span>
-              <span class="phase-pill">BƯỚC 2: CHUẨN BỊ</span>
-              <span class="activity-challenge-badge">🎯 Trạm phân luồng hồ sơ</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-15</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 3: Chuẩn bị — Phân công 8 nhóm phụ trách 4 hồ sơ ca bệnh</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div class="grid-4col">
-            <div class="cyber-card active-card" style="border-color: #D97706; background: #FFFBEB;">
-              <div class="cyber-card-header" style="color: #D97706;">NHÓM 1 & NHÓM 2</div>
-              <div class="cyber-card-body">Phụ trách: <strong>Hồ sơ 1 (An - Bẫy nạp thẻ mua nick)</strong></div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #E11D48; background: #FFF1F2;">
-              <div class="cyber-card-header" style="color: #E11D48;">NHÓM 3 & NHÓM 4</div>
-              <div class="cyber-card-body">Phụ trách: <strong>Hồ sơ 2 (Bình - Dụ gửi ảnh riêng tư)</strong></div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #0284C7; background: #F0F9FF;">
-              <div class="cyber-card-header" style="color: #0284C7;">NHÓM 5 & NHÓM 6</div>
-              <div class="cyber-card-body">Phụ trách: <strong>Hồ sơ 3 (Cường - Kiếm tiền online nạp cọc)</strong></div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #059669; background: #ECFDF5;">
-              <div class="cyber-card-header" style="color: #059669;">NHÓM 7 & NHÓM 8</div>
-              <div class="cyber-card-body">Phụ trách: <strong>Hồ sơ 4 (Dung - Mã độc tệp tin .exe)</strong></div>
-            </div>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(15)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote15">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Kiểm tra sự phân công của các nhóm.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang hướng dẫn khung 4 bước xử lý.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 16 ==================== -->
-        <div class="slide-card " data-slide="16" data-stage="GĐ3: Giải mã 4 hồ sơ nguy cơ học đường" data-title="Hoạt động 3: Hướng dẫn — Khung 4 bước xử lý sự cố & Đọc dữ kiện">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ3: Giải mã 4 hồ sơ nguy cơ học đường</span>
-              <span class="phase-pill">BƯỚC 3: HƯỚNG DẪN</span>
-              <span class="activity-challenge-badge">🎯 Mẫu phác đồ xử lý hồ sơ</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-16</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 3: Hướng dẫn — Khung 4 bước xử lý sự cố & Đọc dữ kiện</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div class="grid-4col">
-            <div class="cyber-card" onclick="playSound('ting'); this.classList.toggle('active-card');">
-              <div class="cyber-card-header" style="color: #D97706;">📁 HỒ SƠ 1: AN</div>
-              <div class="cyber-card-body">Nạp 50k mua nick game bị báo lỗi, web đòi nạp thêm 200k mở khóa.</div>
-            </div>
-            <div class="cyber-card" onclick="playSound('ting'); this.classList.toggle('active-card');">
-              <div class="cyber-card-header" style="color: #E11D48;">📁 HỒ SƠ 2: BÌNH</div>
-              <div class="cyber-card-body">Bạn quen qua mạng đòi ảnh chụp cơ thể trong phòng ngủ để đổi đồ hiếm.</div>
-            </div>
-            <div class="cyber-card" onclick="playSound('ting'); this.classList.toggle('active-card');">
-              <div class="cyber-card-header" style="color: #0284C7;">📁 HỒ SƠ 3: CƯỜNG</div>
-              <div class="cyber-card-body">Nhóm xem video kiếm tiền mồi 20k, sau đó đòi nạp cọc 500k để nhận việc lớn.</div>
-            </div>
-            <div class="cyber-card" onclick="playSound('ting'); this.classList.toggle('active-card');">
-              <div class="cyber-card-header" style="color: #059669;">📁 HỒ SƠ 4: DUNG</div>
-              <div class="cyber-card-body">Nhận file đuôi <code>.exe</code> báo virus máy tính, yêu cầu mở file quét virus.</div>
-            </div>
-          </div>
-          <div style="background: #F0FDFA; border-left: 4px solid #0D9488; padding: 10px 14px; border-radius: 8px; margin-top: 12px; color: #0F766E; font-size: 13.5px;">
-            👉 <strong>KHUNG 4 BƯỚC:</strong> 1. Dừng lại ➔ 2. Lưu bằng chứng ➔ 3. Tìm trợ giúp (người lớn / 111) ➔ 4. Biện pháp kỹ thuật (chặn, đổi mật khẩu).
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(16)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote16">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nhắc học sinh bám sát khung 4 bước.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang 5 phút thực hiện thảo luận nhóm.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 17 ==================== -->
-        <div class="slide-card " data-slide="17" data-stage="GĐ3: Giải mã 4 hồ sơ nguy cơ học đường" data-title="Hoạt động 3: Thực hiện — 5 phút thảo luận nhóm hoàn thiện phương án">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ3: Giải mã 4 hồ sơ nguy cơ học đường</span>
-              <span class="phase-pill">BƯỚC 4: THỰC HIỆN</span>
-              <span class="activity-challenge-badge">🎯 Ca trực nhóm 5 phút</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-17</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 3: Thực hiện — 5 phút thảo luận nhóm hoàn thiện phương án</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div class="grid-2col">
-            <div style="background: #FFFBEB; border: 1px solid #D97706; padding: 16px; border-radius: 14px;">
-              <h4 style="color: #B45309; font-size: 16px; margin-bottom: 8px;">📋 YÊU CẦU THỰC HIỆN NHÓM:</h4>
-              <ol style="padding-left: 20px; line-height: 1.8; font-size: 14px; color: #78350F;">
-                <li><strong>Dừng lại:</strong> Nhân vật dừng ngay thao tác nào?</li>
-                <li><strong>Lưu bằng chứng:</strong> Cần chụp lại những gì?</li>
-                <li><strong>Hỗ trợ:</strong> Cần báo ai để được bảo vệ?</li>
-                <li><strong>Kỹ thuật:</strong> Thực hiện chặn/đổi mật khẩu ra sao?</li>
-              </ol>
-            </div>
-            <div class="timer-panel" style="margin: 0; flex-direction: column; justify-content: center; gap: 12px;">
-              <div class="timer-display">
-                <div class="pulse-dot"></div>
-                <span id="timer-display-17">05:00</span>
-              </div>
-              <div class="timer-controls">
-                <button class="btn-secondary" onclick="startTimer(17, 300)">▶ Bắt đầu thảo luận (5p)</button>
-                <button class="btn-secondary" onclick="pauseTimer(17)">⏸ Tạm dừng</button>
-                <button class="btn-secondary" onclick="resetTimer(17, 300)">🔄 Đặt lại</button>
-                <button class="btn-secondary" onclick="skipTimer(17)">⏭ Bỏ qua</button>
-              </div>
-            </div>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(17)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote17">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Quan sát và hỗ trợ các nhóm hoàn thiện phương án.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang báo cáo và đối chiếu đáp án chuẩn.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 18 ==================== -->
-        <div class="slide-card " data-slide="18" data-stage="GĐ3: Giải mã 4 hồ sơ nguy cơ học đường" data-title="Hoạt động 3: Kiểm tra & Trình bày — Báo cáo hội đồng 4 hồ sơ & Đối chiếu đáp án">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ3: Giải mã 4 hồ sơ nguy cơ học đường</span>
-              <span class="phase-pill">BƯỚC 5: KIỂM TRA ĐÁP ÁN / TRÌNH BÀY</span>
-              <span class="activity-challenge-badge">🎯 Hội đồng kiểm tra 4 hồ sơ</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-18</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 3: Kiểm tra & Trình bày — Báo cáo hội đồng 4 hồ sơ & Đối chiếu đáp án</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div class="grid-2col">
-            <div class="cyber-card" onclick="revealCaseSol('A'); playSound('ting');">
-              <div class="cyber-card-header" style="color: #D97706;">📁 HỒ SƠ 1: AN</div>
-              <div class="cyber-card-body" id="sol-case-A"><em>(Bấm để xem đáp án chuẩn)</em></div>
-            </div>
-            <div class="cyber-card" onclick="revealCaseSol('B'); playSound('ting');">
-              <div class="cyber-card-header" style="color: #E11D48;">📁 HỒ SƠ 2: BÌNH</div>
-              <div class="cyber-card-body" id="sol-case-B"><em>(Bấm để xem đáp án chuẩn)</em></div>
-            </div>
-            <div class="cyber-card" onclick="revealCaseSol('C'); playSound('ting');">
-              <div class="cyber-card-header" style="color: #0284C7;">📁 HỒ SƠ 3: CƯỜNG</div>
-              <div class="cyber-card-body" id="sol-case-C"><em>(Bấm để xem đáp án chuẩn)</em></div>
-            </div>
-            <div class="cyber-card" onclick="revealCaseSol('D'); playSound('ting');">
-              <div class="cyber-card-header" style="color: #059669;">📁 HỒ SƠ 4: DUNG</div>
-              <div class="cyber-card-body" id="sol-case-D"><em>(Bấm để xem đáp án chuẩn)</em></div>
-            </div>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(18)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote18">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Mời các nhóm báo cáo nhanh trước khi bấm mở đáp án chuẩn.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang tổng kết Hoạt động 3.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 19 ==================== -->
-        <div class="slide-card " data-slide="19" data-stage="GĐ3: Giải mã 4 hồ sơ nguy cơ học đường" data-title="Hoạt động 3: Tổng kết — Phác đồ xử lý sự cố mạng học đường">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ3: Giải mã 4 hồ sơ nguy cơ học đường</span>
-              <span class="phase-pill">BƯỚC 6: TỔNG KẾT</span>
-              <span class="activity-challenge-badge">🎯 Chốt phác đồ sự cố mạng</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-19</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 3: Tổng kết — Phác đồ xử lý sự cố mạng học đường</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div class="grid-3col">
-            <div class="cyber-card active-card" style="border-color: #E11D48; background: #FFF1F2;">
-              <div class="cyber-card-header" style="color: #E11D48;">1. DỪNG THAO TÁC</div>
-              <div class="cyber-card-body">Không nạp tiền, không bấm link, không gửi ảnh, không gửi OTP.</div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #D97706; background: #FFFBEB;">
-              <div class="cyber-card-header" style="color: #D97706;">2. LƯU BẰNG CHỨNG</div>
-              <div class="cyber-card-body">Chụp màn hình tin nhắn, link web, số điện thoại, số tài khoản.</div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #059669; background: #ECFDF5;">
-              <div class="cyber-card-header" style="color: #059669;">3. BÁO CÁO & HỖ TRỢ</div>
-              <div class="cyber-card-body">Báo cha mẹ, thầy cô, chặn tài khoản xấu, gọi <strong>Tổng đài 111</strong>.</div>
-            </div>
-          </div>
-          <div style="text-align: center; margin-top: 18px;">
-            <button class="btn-action-hero" onclick="goToSlide(20); playSound('chime');">
-              <span>🛡️</span> CHUYỂN SANG HOẠT ĐỘNG 4: THIẾT LẬP LÁ CHẮN TÀI KHOẢN ➔
-            </button>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(19)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote19">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển tiếp sang Hoạt động 4.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Bắt đầu Hoạt động 4.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 20 ==================== -->
-        <div class="slide-card " data-slide="20" data-stage="GĐ4: Thiết lập lá chắn tài khoản (2FA)" data-title="HOẠT ĐỘNG 4: THIẾT LẬP LÁ CHẮN TÀI KHOẢN & RANH GIỚI AN TOÀN">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ4: Thiết lập lá chắn tài khoản (2FA)</span>
-              <span class="phase-pill">BƯỚC 1: TÊN HOẠT ĐỘNG</span>
-              <span class="activity-challenge-badge">🎯 Lá chắn bảo mật số</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-20</span>
-          </div>
-
-          <h2 class="slide-main-title">HOẠT ĐỘNG 4: THIẾT LẬP LÁ CHẮN TÀI KHOẢN & RANH GIỚI AN TOÀN</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div style="background: #F0FDFA; border-left: 4px solid #0D9488; padding: 18px 22px; border-radius: 12px; margin-bottom: 18px; border: 1px solid #CCFBF1;">
-            <h3 style="color: #0F766E; font-size: 19px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-              <span>🛡️</span> HOẠT ĐỘNG 4: THIẾT LẬP LÁ CHẮN TÀI KHOẢN & RANH GIỚI AN TOÀN CÁ NHÂN
-            </h3>
-            <p style="font-size: 15.5px; color: #334155; line-height: 1.6;">
-              <strong>Mục tiêu:</strong> Nắm vững công thức đặt mật khẩu an toàn 4 yếu tố, hiểu cơ chế xác thực hai bước (2FA) và rèn luyện mẫu câu từ chối dứt khoát 3 phần.
-            </p>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(20)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote20">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nêu mục tiêu Hoạt động 4 trong 20 giây.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang chuẩn bị công thức mật khẩu.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 21 ==================== -->
-        <div class="slide-card " data-slide="21" data-stage="GĐ4: Thiết lập lá chắn tài khoản (2FA)" data-title="Hoạt động 4: Chuẩn bị — Khung ghi chép công thức 3 lớp lá chắn">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ4: Thiết lập lá chắn tài khoản (2FA)</span>
-              <span class="phase-pill">BƯỚC 2: CHUẨN BỊ</span>
-              <span class="activity-challenge-badge">🎯 Chuẩn bị khung lá chắn</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-21</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 4: Chuẩn bị — Khung ghi chép công thức 3 lớp lá chắn</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div class="grid-3col">
-            <div style="background: #F0FDFA; border: 1.5px solid #0D9488; border-radius: 12px; padding: 14px; text-align: center;">
-              <h4 style="color: #0F766E; font-size: 15px; margin-bottom: 4px;">LÁ CHẮN 1</h4>
-              <p style="font-size: 13.5px; color: #334155;">Công thức mật khẩu 4 yếu tố an toàn</p>
-            </div>
-            <div style="background: #ECFDF5; border: 1.5px solid #059669; border-radius: 12px; padding: 14px; text-align: center;">
-              <h4 style="color: #059669; font-size: 15px; margin-bottom: 4px;">LÁ CHẮN 2</h4>
-              <p style="font-size: 13.5px; color: #064E3B;">Xác thực hai bước 2FA bảo vệ</p>
-            </div>
-            <div style="background: #FFFBEB; border: 1.5px solid #D97706; border-radius: 12px; padding: 14px; text-align: center;">
-              <h4 style="color: #D97706; font-size: 15px; margin-bottom: 4px;">LÁ CHẮN 3</h4>
-              <p style="font-size: 13.5px; color: #78350F;">Lời từ chối dứt khoát 3 phần</p>
-            </div>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(21)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote21">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nhắc học sinh tuyệt đối không ghi mật khẩu thật vào vở.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang hướng dẫn 3 kỹ năng tự vệ.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 22 ==================== -->
-        <div class="slide-card " data-slide="22" data-stage="GĐ4: Thiết lập lá chắn tài khoản (2FA)" data-title="Hoạt động 4: Hướng dẫn — Mật khẩu 4 yếu tố, 2FA & Lời từ chối 3 phần">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ4: Thiết lập lá chắn tài khoản (2FA)</span>
-              <span class="phase-pill">BƯỚC 3: HƯỚNG DẪN</span>
-              <span class="activity-challenge-badge">🎯 Hướng dẫn 3 kỹ năng bảo vệ</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-22</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 4: Hướng dẫn — Mật khẩu 4 yếu tố, 2FA & Lời từ chối 3 phần</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div class="grid-2col">
-            <div style="background: #F0FDFA; border: 1px solid #0D9488; padding: 14px; border-radius: 12px;">
-              <h4 style="color: #0F766E; font-size: 15px; margin-bottom: 4px;">🔑 CÔNG THỨC MẬT KHẨU (4 YẾU TỐ):</h4>
-              <p style="font-size: 13.5px; color: #334155; line-height: 1.6;">
-                Độ dài 8–12 ký tự: <strong>Chữ hoa + Chữ thường + Số + Ký tự đặc biệt</strong>.<br>
-                Mẫu giả lập: <code style="color: #059669; background: #ECFDF5; padding: 2px 6px; border-radius: 4px;">AnToan#608Nova!</code>
-              </p>
-            </div>
-            <div style="background: #FFF1F2; border: 1px solid #F43F5E; padding: 14px; border-radius: 12px;">
-              <h4 style="color: #E11D48; font-size: 15px; margin-bottom: 4px;">🗣️ TỪ CHỐI 3 PHẦN:</h4>
-              <p style="font-size: 13.5px; color: #881337; line-height: 1.6;">
-                1. <strong>Từ chối:</strong> “Tôi không gửi ảnh/tiền.”<br>
-                2. <strong>Nêu giới hạn:</strong> “Dừng ngay hành vi này.”<br>
-                3. <strong>Hành động:</strong> “Tôi sẽ chặn và báo người lớn!”
-              </p>
-            </div>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(22)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote22">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nhấn mạnh cách phát ngôn dứt khoát.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang 4 phút thực hành tạo mật khẩu & luyện nói.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 23 ==================== -->
-        <div class="slide-card " data-slide="23" data-stage="GĐ4: Thiết lập lá chắn tài khoản (2FA)" data-title="Hoạt động 4: Thực hiện — Tạo mật khẩu giả lập & Luyện từ chối 3 phần">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ4: Thiết lập lá chắn tài khoản (2FA)</span>
-              <span class="phase-pill">BƯỚC 4: THỰC HIỆN</span>
-              <span class="activity-challenge-badge">🎯 Luyện tập kỹ năng tự vệ</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-23</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 4: Thực hiện — Tạo mật khẩu giả lập & Luyện từ chối 3 phần</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div class="grid-2col">
-            <div style="background: #FFFBEB; border: 1px solid #D97706; padding: 16px; border-radius: 14px;">
-              <h4 style="color: #B45309; font-size: 16px; margin-bottom: 8px;">👥 TIẾN TRÌNH LUYỆN TẬP:</h4>
-              <ul style="padding-left: 18px; line-height: 1.8; font-size: 14px; color: #78350F;">
-                <li><strong>2 phút đầu:</strong> Viết 1 mật khẩu giả lập vào vở.</li>
-                <li><strong>1 phút:</strong> Bạn A đọc tin nhắn dụ dỗ, Bạn B nói lời từ chối 3 phần.</li>
-                <li><strong>1 phút:</strong> Đổi vai cho nhau!</li>
-              </ul>
-            </div>
-            <div class="timer-panel" style="margin: 0; flex-direction: column; justify-content: center; gap: 12px;">
-              <div class="timer-display">
-                <div class="pulse-dot"></div>
-                <span id="timer-display-23">04:00</span>
-              </div>
-              <div class="timer-controls">
-                <button class="btn-secondary" onclick="startTimer(23, 240)">▶ Bắt đầu luyện tập (4p)</button>
-                <button class="btn-secondary" onclick="pauseTimer(23)">⏸ Tạm dừng</button>
-                <button class="btn-secondary" onclick="resetTimer(23, 240)">🔄 Đặt lại</button>
-                <button class="btn-secondary" onclick="skipTimer(23)">⏭ Bỏ qua</button>
-              </div>
-            </div>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(23)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote23">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Báo mốc đổi vai sau 3 phút.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang kiểm tra và trình diễn.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 24 ==================== -->
-        <div class="slide-card " data-slide="24" data-stage="GĐ4: Thiết lập lá chắn tài khoản (2FA)" data-title="Hoạt động 4: Kiểm tra & Trình bày — Đối chiếu mật khẩu & Trình diễn từ chối">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ4: Thiết lập lá chắn tài khoản (2FA)</span>
-              <span class="phase-pill">BƯỚC 5: KIỂM TRA ĐÁP ÁN / TRÌNH BÀY</span>
-              <span class="activity-challenge-badge">🎯 Trình diễn lá chắn an toàn</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-24</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 4: Kiểm tra & Trình bày — Đối chiếu mật khẩu & Trình diễn từ chối</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div class="grid-2col">
-            <div class="cyber-card active-card" style="border-color: #0D9488;">
-              <div class="cyber-card-header" style="color: #0D9488;">🔑 TIÊU CHÍ MẬT KHẨU ĐÚNG:</div>
-              <div class="cyber-card-body">
-                • Đủ từ 8 ký tự trở lên.<br>
-                • Có chữ HOA, chữ thường, số, ký tự đặc biệt.<br>
-                • Không chứa họ tên, ngày sinh thật.<br>
-                • Ví dụ: <code>ThcsNova#2026!</code>
-              </div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #059669;">
-              <div class="cyber-card-header" style="color: #059669;">🗣️ TIÊU CHÍ TỪ CHỐI ĐÚNG:</div>
-              <div class="cyber-card-body">
-                • Giọng nói to, rõ ràng, dứt khoát.<br>
-                • Nêu rõ hành động từ chối (Không làm theo).<br>
-                • Nêu giới hạn an toàn.<br>
-                • Tuyên bố chặn và báo người lớn/Tổng đài 111.
-              </div>
-            </div>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(24)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote24">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Khen ngợi học sinh nói to, dứt khoát, tự tin.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang tổng kết Hoạt động 4.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 25 ==================== -->
-        <div class="slide-card " data-slide="25" data-stage="GĐ4: Thiết lập lá chắn tài khoản (2FA)" data-title="Hoạt động 4: Tổng kết — 3 lớp lá chắn tự vệ số bất khả xâm phạm">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ4: Thiết lập lá chắn tài khoản (2FA)</span>
-              <span class="phase-pill">BƯỚC 6: TỔNG KẾT</span>
-              <span class="activity-challenge-badge">🎯 Chốt bộ lá chắn số</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-25</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 4: Tổng kết — 3 lớp lá chắn tự vệ số bất khả xâm phạm</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div style="background: #ECFDF5; border: 2px solid #059669; border-radius: 16px; padding: 20px; margin-bottom: 16px;">
-            <h3 style="color: #065F46; font-size: 18px; margin-bottom: 8px;">🛡️ BỘ 3 LÁ CHẮN TỰ VỆ SỐ:</h3>
-            <p style="font-size: 17px; font-weight: 700; color: #064E3B; line-height: 1.6;">
-              1. <strong>Mật khẩu mạnh:</strong> Khóa chặt cửa vào tài khoản.<br>
-              2. <strong>Xác thực 2FA:</strong> Thêm lớp bảo vệ thứ 2 không thể xuyên thủng.<br>
-              3. <strong>Từ chối 3 phần:</strong> Giữ vững ranh giới an toàn cá nhân!
-            </p>
-          </div>
-          <div style="text-align: center; margin-top: 18px;">
-            <button class="btn-action-hero" onclick="goToSlide(26); playSound('chime');">
-              <span>📝</span> CHUYỂN SANG HOẠT ĐỘNG 5: PHÁC THẢO CẨM NANG A4 ➔
-            </button>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(25)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote25">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển tiếp sang Hoạt động 5.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Bắt đầu Hoạt động 5.</div>
-            </div>
-          </div>
         </div>
         
         <!-- ==================== TRANG 26 ==================== -->
-        <div class="slide-card " data-slide="26" data-stage="GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ" data-title="HOẠT ĐỘNG 5: PHÁC THẢO BẢN NHÁP CẨM NANG A4 & PHẢN XẠ MÃ ĐỎ 60S">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ</span>
-              <span class="phase-pill">BƯỚC 1: TÊN HOẠT ĐỘNG</span>
-              <span class="activity-challenge-badge">🎯 Phác thảo ấn phẩm cẩm nang</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-26</span>
-          </div>
-
-          <h2 class="slide-main-title">HOẠT ĐỘNG 5: PHÁC THẢO BẢN NHÁP CẨM NANG A4 & PHẢN XẠ MÃ ĐỎ 60S</h2>
-
+        <div class="slide-card " data-slide="26" data-stage="Giai đoạn 6" data-title="Cấu trúc bản nháp cẩm nang">
           
-
-          <div class="content-box">
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 6</span>
+              <span class="phase-pill">CẤU TRÚC CẨM NANG</span>
+            </div>
             
-          <div style="background: #F0FDFA; border-left: 4px solid #0D9488; padding: 18px 22px; border-radius: 12px; margin-bottom: 18px; border: 1px solid #CCFBF1;">
-            <h3 style="color: #0F766E; font-size: 19px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-              <span>📝</span> HOẠT ĐỘNG 5: PHÁC THẢO BẢN NHÁP CẨM NANG AN TOÀN SỐ A4 & PHẢN XẠ MÃ ĐỎ 60S
-            </h3>
-            <p style="font-size: 15.5px; color: #334155; line-height: 1.6;">
-              <strong>Mục tiêu:</strong> Tổng hợp toàn bộ kiến thức, kỹ năng của Tiết 1 và Tiết 2 vào <strong>Bản nháp Cẩm nang An toàn số 4 phần</strong> trên giấy A4 và rèn luyện phản xạ khẩn cấp mã đỏ 60 giây.
-            </p>
+          
+            <h2 class="slide-main-title">CẤU TRÚC BẢN NHÁP CẨM NANG (TỜ A4)</h2>
+            
+            <div class="content-box">
+              
+          <div class="grid-4col">
+            <div class="cyber-card active-card" style="border-color: #D97706;">
+              <div class="cyber-card-header" style="color: #D97706;">PHẦN 1</div>
+              <div class="cyber-card-body"><strong>4 Cạm bẫy mạng:</strong> Nhận diện & dấu hiệu.</div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #E11D48;">
+              <div class="cyber-card-header" style="color: #E11D48;">PHẦN 2</div>
+              <div class="cyber-card-body"><strong>Quy tắc tự vệ 3 bước:</strong> Dừng lại — Suy nghĩ — Kiểm tra.</div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #0284C7;">
+              <div class="cyber-card-header" style="color: #0284C7;">PHẦN 3</div>
+              <div class="cyber-card-body"><strong>Kỹ thuật bảo vệ:</strong> Mật khẩu mạnh, 2FA, Lời từ chối.</div>
+            </div>
+            <div class="cyber-card active-card" style="border-color: #059669;">
+              <div class="cyber-card-header" style="color: #059669;">PHẦN 4</div>
+              <div class="cyber-card-body"><strong>Kênh hỗ trợ khẩn cấp:</strong> Cha mẹ, Thầy cô, <strong>Tổng đài 111</strong>.</div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 18px;">
+            <button class="btn-action-hero" onclick="goToSlide(27); playSound('chime');">
+              <span>📐</span> BẮT ĐẦU 7 PHÚT TẠO BẢN NHÁP ➔
+            </button>
           </div>
         
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(26)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote26">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nêu mục tiêu Hoạt động 5 trong 20 giây.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang chuẩn bị giấy A4 và dụng cụ.</div>
             </div>
-          </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(26)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote26">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Hướng dẫn chia tờ giấy A4 thành 4 ô.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang 7 phút tạo bản nháp.</div>
+              </div>
+            </div>
+            
         </div>
         
         <!-- ==================== TRANG 27 ==================== -->
-        <div class="slide-card " data-slide="27" data-stage="GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ" data-title="Hoạt động 5: Chuẩn bị — Giấy A4 & Phân công 4 thành viên phụ trách 4 phần">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ</span>
-              <span class="phase-pill">BƯỚC 2: CHUẨN BỊ</span>
-              <span class="activity-challenge-badge">🎯 Chuẩn bị bàn phác thảo cẩm nang</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-27</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 5: Chuẩn bị — Giấy A4 & Phân công 4 thành viên phụ trách 4 phần</h2>
-
+        <div class="slide-card " data-slide="27" data-stage="Giai đoạn 6" data-title="7 phút tạo bản nháp cẩm nang">
           
-
-          <div class="content-box">
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 6</span>
+              <span class="phase-pill">THỰC HÀNH CẨM NANG</span>
+            </div>
             
-          <div class="grid-4col">
-            <div class="cyber-card active-card" style="border-color: #D97706;">
-              <div class="cyber-card-header" style="color: #D97706;">PHẦN 1: 4 CẠM BẪY MẠNG</div>
-              <div class="cyber-card-body">Bạn 1 phụ trách: Lừa nạp thẻ, Link giả mạo, Dụ dỗ người lạ, Đánh cắp thông tin.</div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #0284C7;">
-              <div class="cyber-card-header" style="color: #0284C7;">PHẦN 2: QUY TẮC 3 BƯỚC</div>
-              <div class="cyber-card-body">Bạn 2 phụ trách: Dừng lại 5s ➔ Suy nghĩ phản biện ➔ Kiểm tra & Báo cáo.</div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #E11D48;">
-              <div class="cyber-card-header" style="color: #E11D48;">PHẦN 3: BẢO VỆ TÀI KHOẢN</div>
-              <div class="cyber-card-body">Bạn 3 phụ trách: Mật khẩu an toàn, Xác thực 2FA, Lời từ chối 3 phần.</div>
-            </div>
-            <div class="cyber-card active-card" style="border-color: #059669;">
-              <div class="cyber-card-header" style="color: #059669;">PHẦN 4: KÊNH HỖ TRỢ</div>
-              <div class="cyber-card-body">Bạn 4 phụ trách: Cha mẹ, Thầy cô giáo, <strong>Tổng đài Quốc gia 111</strong>.</div>
-            </div>
-          </div>
-        
-          </div>
-
           
-            <div style="background: #F0FDF4; border: 2px dashed #059669; border-radius: 14px; padding: 16px 20px; margin-top: 16px;">
-              <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 900; color: #065F46; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-                <span>📋</span> MẪU THỰC HÀNH / KHUNG BỆNH ÁN:
-              </div>
+            <h2 class="slide-main-title">7 PHÚT TẠO BẢN NHÁP CẨM NANG</h2>
+            
+            <div class="content-box">
               
-          <p style="font-size: 14px; color: #065F46; line-height: 1.6;">
-            <strong>MẪU BẢN NHÁP CẨM NANG A4 CHIA 4 Ô:</strong><br>
-            • Ô trên-trái (Phần 1): 4 cạm bẫy mạng | Ô trên-phải (Phần 2): Quy tắc 3 bước C-A-B<br>
-            • Ô dưới-trái (Phần 3): Mật khẩu/2FA/Từ chối | Ô dưới-phải (Phần 4): Tổng đài 111 & Kênh hỗ trợ
-          </p>
-        
-            </div>
-            
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(27)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote27">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Kiểm tra sự phân công của nhóm trưởng.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang hướng dẫn phác thảo cẩm nang & sự cố mã đỏ.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 28 ==================== -->
-        <div class="slide-card " data-slide="28" data-stage="GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ" data-title="Hoạt động 5: Hướng dẫn — Quy cách Cẩm nang A4 & Tình huống Mã đỏ">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ</span>
-              <span class="phase-pill">BƯỚC 3: HƯỚNG DẪN</span>
-              <span class="activity-challenge-badge">🎯 Hướng dẫn phác thảo & Sự cố mã đỏ</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-28</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 5: Hướng dẫn — Quy cách Cẩm nang A4 & Tình huống Mã đỏ</h2>
-
-          
-
-          <div class="content-box">
-            
-          <div style="background: #F0FDFA; border: 1px solid #0D9488; padding: 14px; border-radius: 12px; margin-bottom: 12px;">
-            <h4 style="color: #0F766E; font-size: 15px; margin-bottom: 4px;">📐 BỐ CỤC CẨM NANG A4:</h4>
-            <p style="font-size: 13.5px; color: #334155; line-height: 1.5;">
-              Viết từ khóa ngắn gọn, gạch đầu dòng rõ ràng, vẽ biểu tượng sinh động, đóng khung nổi bật <strong>Tổng đài 111</strong> và <strong>Quy tắc 3 bước</strong>.
-            </p>
-          </div>
-          <div style="background: #FFF1F2; border: 2px solid #F43F5E; border-radius: 12px; padding: 14px;">
-            <div style="color: #E11D48; font-weight: 900; font-size: 15px; margin-bottom: 4px;">
-              🚨 SỰ CỐ MÃ ĐỎ (PHẢN XẠ 60S):
-            </div>
-            <p style="font-size: 14.5px; color: #881337; line-height: 1.5;">
-              Lúc 20h00 tối, tài khoản của bạn Lớp trưởng gửi link lạ vào nhóm chat lớp: <code style="color: #B45309; background: #FEF3C7; padding: 2px 6px; border-radius: 4px;">binhchon-nhanh2026.info</code> bảo bình chọn. Em sẽ làm gì ngay?
-            </p>
-          </div>
-        
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(28)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote28">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Nhắc học sinh viết từ khóa xúc tích.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang 7 phút phác thảo & 60s phản xạ.</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ==================== TRANG 29 ==================== -->
-        <div class="slide-card " data-slide="29" data-stage="GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ" data-title="Hoạt động 5: Thực hiện — 7 phút phác thảo nhóm & 60s phản xạ Mã đỏ">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ</span>
-              <span class="phase-pill">BƯỚC 4: THỰC HIỆN</span>
-              <span class="activity-challenge-badge">🎯 Thực hiện phác thảo cẩm nang</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-29</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 5: Thực hiện — 7 phút phác thảo nhóm & 60s phản xạ Mã đỏ</h2>
-
-          
-
-          <div class="content-box">
-            
           <div class="grid-2col">
             <div style="background: #F0FDFA; border: 1px solid #0D9488; padding: 16px; border-radius: 14px;">
-              <h4 style="color: #0F766E; font-size: 16px; margin-bottom: 8px;">✏️ TIẾN TRÌNH:</h4>
+              <h4 style="color: #0F766E; font-size: 15.5px; margin-bottom: 8px;">🎨 HƯỚNG DẪN NHÓM:</h4>
               <ul style="padding-left: 18px; line-height: 1.8; font-size: 14px; color: #334155;">
-                <li><strong>6 phút đầu:</strong> Nhóm cùng điền 4 phần vào giấy A4.</li>
-                <li><strong>1 phút cuối (Mã đỏ):</strong> Cá nhân viết 3 hành động xử lý nick lớp trưởng vào vở!</li>
+                <li>Nhóm gấp/kẻ giấy A4 thành 4 phần.</li>
+                <li>Phân công mỗi thành viên phụ trách 1 phần.</li>
+                <li>Hoàn thiện bản nháp sẵn sàng cho Tiết 3.</li>
               </ul>
             </div>
             <div class="timer-panel" style="margin: 0; flex-direction: column; justify-content: center; gap: 12px;">
               <div class="timer-display">
                 <div class="pulse-dot"></div>
-                <span id="timer-display-29">07:00</span>
+                <span id="timer-display-27">07:00</span>
               </div>
               <div class="timer-controls">
-                <button class="btn-secondary" onclick="startTimer(29, 420)">▶ Bắt đầu phác thảo (7p)</button>
-                <button class="btn-secondary" onclick="pauseTimer(29)">⏸ Tạm dừng</button>
-                <button class="btn-secondary" onclick="resetTimer(29, 420)">🔄 Đặt lại</button>
-                <button class="btn-secondary" onclick="skipTimer(29)">⏭ Bỏ qua</button>
+                <button class="btn-secondary" onclick="startTimer(27, 420)">▶ Bắt đầu (7p)</button>
+                <button class="btn-secondary" onclick="pauseTimer(27)">⏸ Tạm dừng</button>
+                <button class="btn-secondary" onclick="resetTimer(27, 420)">🔄 Đặt lại</button>
+                <button class="btn-secondary" onclick="skipTimer(27)">⏭ Bỏ qua</button>
               </div>
             </div>
           </div>
         
-          </div>
-
+            </div>
+            
           
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(29)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote29">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Báo mốc 1 phút cuối để cả lớp phản xạ tình huống mã đỏ.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang kiểm tra sản phẩm & chốt hành động mã đỏ.</div>
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(27)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote27">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Hỗ trợ các nhóm phác thảo nội dung cẩm nang.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Giai đoạn 7.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 28 ==================== -->
+        <div class="slide-card " data-slide="28" data-stage="Giai đoạn 7" data-title="Giai đoạn 7: Nhật ký Bác sĩ cộng đồng">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 7</span>
+              <span class="phase-pill">CHUYỂN TIẾP GIAI ĐOẠN</span>
+            </div>
+            
+          
+            <div style="text-align: center; padding: 40px 20px;">
+              <div style="display: inline-block; background: linear-gradient(135deg, #0284C7 0%, #0D9488 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 900; padding: 6px 22px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);">
+                GIAI ĐOẠN 7
+              </div>
+              <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.35; margin-bottom: 18px; max-width: 850px; margin-left: auto; margin-right: auto;">
+                NHẬT KÝ BÁC SĨ CỘNG ĐỒNG
+              </h1>
+              <p style="font-size: 18px; color: #475569; max-width: 720px; margin: 0 auto 32px auto; line-height: 1.6;">
+                Bác sĩ số kiểm tra phản xạ nhanh khi phát hiện sự cố trong nhóm lớp.
+              </p>
+              <button class="btn-action-hero" onclick="goToSlide(29); playSound('chime');">
+                <span>🩺</span> BẮT ĐẦU ➔
+              </button>
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(28)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote28">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển pha 5–10 giây, phản xạ nhanh tình huống lớp học.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang Thử thách phản xạ 60 giây.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 29 ==================== -->
+        <div class="slide-card " data-slide="29" data-stage="Giai đoạn 7" data-title="Thử thách phản xạ 60 giây">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 7</span>
+              <span class="phase-pill">PHẢN XẠ 60 GIÂY</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">THỬ THÁCH PHẢN XẠ 60 GIÂY</h2>
+            
+                <div class="guide-badge-box" style="margin-bottom: 16px;">
+                  <strong>👉 Hướng dẫn:</strong> Trong 60 giây, viết 3 hành động khẩn cấp cần làm.
+                </div>
+                
+            <div class="content-box">
+              
+          <div style="background: #FFF1F2; border: 2px solid #F43F5E; border-radius: 16px; padding: 18px; margin-bottom: 16px;">
+            <p style="font-size: 17.5px; font-weight: 800; color: #881337; line-height: 1.5;">
+              🚨 <strong>TÌNH HUỐNG MÃ ĐỎ:</strong> Tài khoản mạng xã hội của lớp trưởng bất ngờ gửi một đường link lạ vào nhóm chat chung của lớp và nhờ tất cả các bạn bấm vào bình chọn!
+            </p>
+          </div>
+          <div class="timer-panel">
+            <div class="timer-display">
+              <div class="pulse-dot"></div>
+              <span id="timer-display-29b">01:00</span>
+            </div>
+            <div class="timer-controls">
+              <button class="btn-secondary" onclick="startTimer('29b', 60)">▶ Bắt đầu 60s</button>
+              <button class="btn-secondary" onclick="pauseTimer('29b')">⏸ Tạm dừng</button>
+              <button class="btn-secondary" onclick="resetTimer('29b', 60)">🔄 Đặt lại</button>
+              <button class="btn-secondary" onclick="skipTimer('29b')">⏭ Bỏ qua</button>
             </div>
           </div>
+        
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(29)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote29">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Học sinh viết nhanh 3 hành động vào vở trong 60 giây.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Chốt 3 hành động khẩn cấp.</div>
+              </div>
+            </div>
+            
         </div>
         
         <!-- ==================== TRANG 30 ==================== -->
-        <div class="slide-card " data-slide="30" data-stage="GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ" data-title="Hoạt động 5: Kiểm tra & Trình bày — Chốt 3 hành động Mã đỏ & Kiểm tra bản nháp">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ</span>
-              <span class="phase-pill">BƯỚC 5: KIỂM TRA ĐÁP ÁN / TRÌNH BÀY</span>
-              <span class="activity-challenge-badge">🎯 Hội đồng kiểm tra bản nháp</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-30</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 5: Kiểm tra & Trình bày — Chốt 3 hành động Mã đỏ & Kiểm tra bản nháp</h2>
-
+        <div class="slide-card " data-slide="30" data-stage="Giai đoạn 7" data-title="Chốt 3 hành động khẩn cấp">
           
-
-          <div class="content-box">
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 7</span>
+              <span class="phase-pill">CHỐT HÀNH ĐỘNG</span>
+            </div>
             
+          
+            <h2 class="slide-main-title">CHỐT 3 HÀNH ĐỘNG KHẨN CẤP</h2>
+            
+            <div class="content-box">
+              
           <div class="grid-3col">
-            <div class="cyber-card active-card" style="border-color: #E11D48; background: #FFF1F2;">
-              <div class="cyber-card-header" style="color: #E11D48;">1. CẢNH BÁO NHÓM CHAT</div>
-              <div class="cyber-card-body">Nhắn ngay: “Mọi người dừng lại, không ai bấm link này, nick lớp trưởng có thể đang bị hack!”</div>
+            <div class="cyber-card active-card" style="border-color: #E11D48;">
+              <div class="cyber-card-header" style="color: #E11D48;">1. CẢNH BÁO NHÓM</div>
+              <div class="cyber-card-body">Nhắn ngay vào nhóm: “Tài khoản lớp trưởng có thể bị hack, không ai bấm link!”</div>
             </div>
-            <div class="cyber-card active-card" style="border-color: #D97706; background: #FFFBEB;">
+            <div class="cyber-card active-card" style="border-color: #D97706;">
               <div class="cyber-card-header" style="color: #D97706;">2. XÁC MINH NGOẠI TUYẾN</div>
-              <div class="cyber-card-body">Gọi điện thoại trực tiếp hoặc liên hệ phụ huynh lớp trưởng để xác minh tài khoản.</div>
+              <div class="cyber-card-body">Gọi điện thoại trực tiếp hoặc gặp bạn lớp trưởng ngoài đời để xác minh.</div>
             </div>
-            <div class="cyber-card active-card" style="border-color: #059669; background: #ECFDF5;">
-              <div class="cyber-card-header" style="color: #059669;">3. BÁO CÁO THẦY CÔ</div>
-              <div class="cyber-card-body">Báo Giáo viên chủ nhiệm để tạm khóa quyền gửi tin nhóm và gỡ bỏ đường link độc hại.</div>
+            <div class="cyber-card active-card" style="border-color: #059669;">
+              <div class="cyber-card-header" style="color: #059669;">3. BÁO GIÁO VIÊN</div>
+              <div class="cyber-card-body">Báo ngay cho Giáo viên chủ nhiệm để xử lý link và khóa quyền gửi tin tạm thời.</div>
             </div>
           </div>
         
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(30)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote30">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Tuyên dương tinh thần phản xạ nhanh và sự hợp tác của các nhóm.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang tổng kết Tiết 2 & bàn giao sản phẩm.</div>
             </div>
-          </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(30)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote30">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Khắc sâu 3 hành động phản xạ kịp thời bảo vệ tập thể.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển tiếp sang Giai đoạn 8.</div>
+              </div>
+            </div>
+            
         </div>
         
         <!-- ==================== TRANG 31 ==================== -->
-        <div class="slide-card " data-slide="31" data-stage="GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ" data-title="Hoạt động 5: Tổng kết Tiết 2 — Cam kết cá nhân & Bàn giao sản phẩm sang Tiết 3">
-          <div class="slide-header-meta">
-            <div class="meta-left">
-              <span class="stage-pill">GĐ5: Phác thảo cẩm nang A4 & Phản xạ mã đỏ</span>
-              <span class="phase-pill">BƯỚC 6: TỔNG KẾT</span>
-              <span class="activity-challenge-badge">🎯 Tổng kết toàn bộ Tiết 2</span>
-            </div>
-            <span class="case-id-tag">#SLIDE-31</span>
-          </div>
-
-          <h2 class="slide-main-title">Hoạt động 5: Tổng kết Tiết 2 — Cam kết cá nhân & Bàn giao sản phẩm sang Tiết 3</h2>
-
+        <div class="slide-card " data-slide="31" data-stage="Giai đoạn 8" data-title="Giai đoạn 8: Cam kết phòng ngừa">
           
-
-          <div class="content-box">
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 8</span>
+              <span class="phase-pill">CHUYỂN TIẾP GIAI ĐOẠN</span>
+            </div>
             
-          <div style="background: #FFFBEB; border: 2px solid #D97706; border-radius: 16px; padding: 20px; margin-bottom: 18px;">
-            <h3 style="color: #B45309; font-size: 18px; margin-bottom: 8px;">📌 CAM KẾT CÁ NHÂN TIẾT 2 (GHI VÀO VỞ):</h3>
-            <p style="font-size: 17.5px; font-weight: 700; color: #0F172A; line-height: 1.6;">
-              “Hôm nay về nhà, em sẽ cùng người lớn kiểm tra và bật tính năng xác thực hai bước (2FA) cho các tài khoản quan trọng có hỗ trợ tính năng này.”
+          
+            <div style="text-align: center; padding: 40px 20px;">
+              <div style="display: inline-block; background: linear-gradient(135deg, #0284C7 0%, #0D9488 100%); color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 900; padding: 6px 22px; border-radius: 20px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);">
+                GIAI ĐOẠN 8
+              </div>
+              <h1 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0F172A; line-height: 1.35; margin-bottom: 18px; max-width: 850px; margin-left: auto; margin-right: auto;">
+                CAM KẾT PHÒNG NGỪA RỦI RO SỐ
+              </h1>
+              <p style="font-size: 18px; color: #475569; max-width: 720px; margin: 0 auto 32px auto; line-height: 1.6;">
+                Học sinh ghi cam kết cá nhân và bàn giao Bản nháp Cẩm nang để tiếp tục ở Tiết 3.
+              </p>
+              <button class="btn-action-hero" onclick="goToSlide(32); playSound('chime');">
+                <span>🩺</span> BẮT ĐẦU ➔
+              </button>
+            </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(31)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote31">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Chuyển pha 5–10 giây, xác lập cam kết Tiết 2.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Chuyển sang Cam kết và bàn giao sản phẩm.</div>
+              </div>
+            </div>
+            
+        </div>
+        
+        <!-- ==================== TRANG 32 ==================== -->
+        <div class="slide-card " data-slide="32" data-stage="Giai đoạn 8" data-title="Cam kết và bàn giao sản phẩm">
+          
+            <div class="slide-header-meta">
+              <span class="stage-pill">GIAI ĐOẠN 8</span>
+              <span class="phase-pill">TỔNG KẾT TIẾT 2</span>
+            </div>
+            
+          
+            <h2 class="slide-main-title">CAM KẾT VÀ BÀN GIAO SẢN PHẨM</h2>
+            
+                <div class="guide-badge-box" style="margin-bottom: 16px;">
+                  <strong>👉 Hướng dẫn:</strong> Ghi cam kết vào vở.
+                </div>
+                
+            <div class="content-box">
+              
+          <div style="background: #F0FDFA; border: 2px solid #0D9488; border-radius: 16px; padding: 20px; margin-bottom: 20px; text-align: center;">
+            <p style="font-size: 18px; font-weight: 800; color: #0F766E; line-height: 1.6;">
+              “Hôm nay về nhà, em sẽ cùng người lớn kiểm tra và bật tính năng xác thực hai bước cho các tài khoản quan trọng có hỗ trợ tính năng này.”
             </p>
           </div>
-          <div style="background: #F0FDFA; border-left: 4px solid #0D9488; padding: 12px 16px; border-radius: 8px;">
-            <h4 style="color: #0F766E; font-size: 15px; margin-bottom: 4px;">🎒 BÀN GIAO SẢN PHẨM CHO TIẾT 3:</h4>
-            <p style="font-size: 14.5px; color: #334155;">
-              Nhóm trưởng thu và cất giữ cẩn thận <strong>Bản nháp Cẩm nang An toàn số 4 phần</strong> để mang đến hoàn thiện và sử dụng trong phiên tư vấn Tiết 3!
-            </p>
+          <div style="background: #FFFBEB; border-left: 4px solid #F59E0B; padding: 12px 18px; border-radius: 8px; margin-bottom: 24px;">
+            <span style="font-size: 15px; color: #78350F; font-weight: 700;">
+              📦 <strong>BÀN GIAO:</strong> Nhóm trưởng cất giữ cẩn thận Bản nháp Cẩm nang để mang đến hoàn thiện ở Tiết 3!
+            </span>
           </div>
-          <div style="text-align: center; margin-top: 22px;">
+          <div style="text-align: center;">
             <button class="btn-action-hero" onclick="triggerCelebration();">
-              🎉 HOÀN THÀNH XUẤT SẮC CA TRỰC TIẾT 2
+              🎉 HOÀN THÀNH TIẾT 2
             </button>
           </div>
         
-          </div>
-
-          
-
-          <div class="teacher-collapsible-wrapper">
-            <button class="btn-toggle-teacher" onclick="toggleTeacherNote(31)">
-              <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
-            </button>
-            <div class="teacher-note-panel" id="teacherNote31">
-              <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Khen ngợi tinh thần làm việc của các Bác sĩ số cộng đồng.</div>
-              <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Kết thúc Tiết 2.</div>
             </div>
-          </div>
+            
+          
+            <div class="teacher-collapsible-wrapper">
+              <button class="btn-toggle-teacher" onclick="toggleTeacherNote(32)">
+                <span>🧑‍🏫 Hướng dẫn Giáo viên & Chuyển tiếp ▾</span>
+              </button>
+              <div class="teacher-note-panel" id="teacherNote32">
+                <div class="teacher-note-content"><strong>Ghi chú Giáo viên:</strong> Tổng kết Tiết 2, dặn dò nhóm trưởng bảo quản bản nháp cẩm nang.</div>
+                <div class="transition-note-content"><strong>Chuyển tiếp:</strong> Kết thúc Tiết 2.</div>
+              </div>
+            </div>
+            
         </div>
         
       </div>
@@ -1894,7 +1729,7 @@
         </button>
         <div style="display: flex; gap: 8px;">
           <button class="nav-btn btn-prev" onclick="goToSlide(1)">⏮ Trang đầu</button>
-          <button class="nav-btn btn-prev" onclick="goToSlide(31)">⏭ Trang cuối</button>
+          <button class="nav-btn btn-prev" onclick="goToSlide(32)">⏭ Trang cuối</button>
         </div>
         <button class="nav-btn btn-next" onclick="nextSlide()" id="btnNext">
           TRANG TIẾP THEO ▶
@@ -1906,7 +1741,7 @@
 
   <script>
     let currentSlide = 1;
-    const totalSlides = 31;
+    const totalSlides = 32;
     let isMuted = false;
     let audioCtx = null;
 
@@ -2080,8 +1915,8 @@
           timers[id].remaining--;
           displayElem.textContent = formatTime(timers[id].remaining);
 
-          if (id === 11 && timers[id].remaining === 60) {
-            const notice = document.getElementById('hoangNotice11');
+          if (id === 9 && timers[id].remaining === 60) {
+            const notice = document.getElementById('hoangNotice9');
             if (notice) notice.classList.add('show');
             playSound('ting');
           }
@@ -2125,14 +1960,15 @@
     function revealElement(elemId) {
       const elem = document.getElementById(elemId);
       if (elem) elem.classList.toggle('show');
+      playSound('ting');
     }
 
     /* Hoang Case Helpers */
     const hoangData = {
-      h1: "Hoàng, 12 tuổi, học sinh lớp 6A, rất thích chơi trò chơi trực tuyến và sưu tầm vật phẩm ảo.",
-      h2: "Thấy bài đăng tặng 1000 kim cương và trang phục hiếm miễn phí tại link <code>nhanquafreefire-garena2026.xyz</code>, yêu cầu nhận ngay trong 5 phút.",
-      h3: "Hoàng vội vàng bấm vào đường link lạ, nhập tên đăng nhập và mật khẩu tài khoản mạng xã hội mà không kiểm tra.",
-      h4: "Tài khoản bị đổi mật khẩu ngay lập tức; kẻ xấu dùng tài khoản của Hoàng nhắn tin nhờ tất cả bạn bè nạp thẻ cào 50.000đ."
+      h1: "Hoàng, 12 tuổi, học sinh lớp 6A, rất thích chơi game trực tuyến và sưu tầm vật phẩm ảo.",
+      h2: "Thấy bài đăng tặng 1000 kim cương và trang phục miễn phí, yêu cầu nhận ngay trong 5 phút.",
+      h3: "Hoàng vội vàng bấm vào link lạ, nhập tên đăng nhập và mật khẩu mà không kiểm tra.",
+      h4: "Tài khoản bị đổi mật khẩu ngay sau đó; kẻ xấu dùng tài khoản nhắn bạn bè nhờ nạp thẻ cào."
     };
 
     function revealCard(key) {
@@ -2149,10 +1985,10 @@
     }
 
     const colAnswers = {
-      1: "💎 <strong>Mồi nhử:</strong> Kim cương & trang phục miễn phí; tạo áp lực thời gian gấp 5 phút.",
-      2: "⚡ <strong>Tâm lý:</strong> Ham quà miễn phí, tò mò, vội vàng bấm link, không kiểm tra tên miền chính thức.",
-      3: "💥 <strong>Hậu quả:</strong> Mất quyền kiểm soát tài khoản; bạn bè có nguy cơ bị lừa gạt tiền bạc.",
-      4: "🛡️ <strong>Hướng xử lý:</strong> Báo ngay cho cha mẹ/thầy cô, khóa/báo cáo tài khoản, cảnh báo bạn bè cảnh giác."
+      1: "💎 <strong>Mồi nhử:</strong> Quà tặng kim cương/trang phục miễn phí + hối thúc 5 phút.",
+      2: "⚡ <strong>Tâm lý:</strong> Ham quà, vội vàng, không kiểm tra kênh chính thức.",
+      3: "💥 <strong>Hậu quả:</strong> Mất quyền kiểm soát tài khoản; bạn bè có nguy cơ bị lừa.",
+      4: "🛡️ <strong>Hướng xử lý:</strong> Báo cha mẹ/thầy cô, nhờ hỗ trợ khóa tài khoản, cảnh báo bạn bè."
     };
 
     function revealCol(colNum) {
@@ -2160,23 +1996,24 @@
       if (elem) elem.innerHTML = colAnswers[colNum];
     }
 
-    /* Symptoms Slide 16 & 17 Helpers */
+    function revealAllCol() {
+      [1, 2, 3, 4].forEach(n => revealCol(n));
+    }
+
+    /* Symptoms Slide 12 */
     const symptoms = [
-      { id: 1, text: "Nạp thẻ 50k nhận gấp 10 lần giá trị vào game.", group: 1 },
-      { id: 2, text: "Trúng xe máy điện, yêu cầu chuyển 500k tiền cước nhận quà.", group: 1 },
-      { id: 3, text: "Trang web giống mạng xã hội quen thuộc yêu cầu nhập mật khẩu.", group: 2 },
-      { id: 4, text: "Email lạ yêu cầu bấm đường link để xác minh tài khoản.", group: 2 },
-      { id: 5, text: "Người lạ qua mạng hỏi địa chỉ nhà và giờ bố mẹ đi vắng.", group: 3 },
-      { id: 6, text: "Tài khoản lạ đòi gửi ảnh chụp cơ thể riêng tư trong phòng ngủ.", group: 3 },
-      { id: 7, text: "Trang web bói toán yêu cầu nhập họ tên, ngày sinh, SĐT bố mẹ.", group: 4 },
-      { id: 8, text: "Ứng dụng trò chơi yêu cầu quyền đọc toàn bộ danh bạ và định vị.", group: 4 }
+      { id: 1, text: "Nạp thẻ 50k nhận gấp 10 lần giá trị vào game." },
+      { id: 2, text: "Trúng xe máy điện, yêu cầu chuyển 500k tiền cước nhận quà." },
+      { id: 3, text: "Trang web giống mạng xã hội quen thuộc yêu cầu nhập mật khẩu." },
+      { id: 4, text: "Email lạ yêu cầu bấm đường link để xác minh tài khoản." },
+      { id: 5, text: "Người lạ qua mạng hỏi địa chỉ nhà và giờ bố mẹ đi vắng." },
+      { id: 6, text: "Tài khoản lạ đòi gửi ảnh chụp cơ thể riêng tư trong phòng ngủ." },
+      { id: 7, text: "Trang web bói toán yêu cầu nhập họ tên, ngày sinh, SĐT bố mẹ." },
+      { id: 8, text: "Ứng dụng trò chơi yêu cầu quyền đọc toàn bộ danh bạ và định vị." }
     ];
 
-    let selectedSymptomId = null;
-    const userAssignments = { 1: [], 2: [], 3: [], 4: [] };
-
-    function buildSymptomsSlide16() {
-      const grid = document.getElementById('symptomsGrid');
+    function buildSymptomsSlide12() {
+      const grid = document.getElementById('symptomsGrid12');
       if (!grid) return;
       grid.innerHTML = '';
       symptoms.forEach(s => {
@@ -2188,49 +2025,9 @@
       });
     }
 
-    function buildClassificationSlide17() {
-      const pool = document.getElementById('cardsPool');
-      if (!pool) return;
-      pool.innerHTML = '';
-      symptoms.forEach(s => {
-        const chip = document.createElement('button');
-        chip.className = 'btn-secondary';
-        chip.id = `chip-${s.id}`;
-        chip.style.fontSize = '12.5px'; chip.style.padding = '5px 10px'; chip.style.minHeight = '34px';
-        chip.textContent = `Thẻ ${s.id}: ${s.text.substring(0, 24)}...`;
-        chip.onclick = () => selectCardToClassify(s.id);
-        pool.appendChild(chip);
-      });
-    }
-
-    function selectCardToClassify(id) {
-      playSound('ting');
-      selectedSymptomId = id;
-      document.querySelectorAll('#cardsPool button').forEach(b => b.style.borderColor = 'var(--medical-theme)');
-      const activeChip = document.getElementById(`chip-${id}`);
-      if (activeChip) activeChip.style.borderColor = 'var(--emerald-success)';
-    }
-
-    function assignCardToGroup(groupId) {
-      if (!selectedSymptomId) {
-        alert("Vui lòng nhấp chọn 1 Thẻ tình huống ở trên trước!");
-        return;
-      }
-      playSound('beep');
-      const container = document.getElementById(`groupItems${groupId}`);
-      if (!userAssignments[groupId].includes(selectedSymptomId)) {
-        userAssignments[groupId].push(selectedSymptomId);
-        container.innerHTML = userAssignments[groupId].map(id => `<span class="slide-badge" style="margin: 2px;">Thẻ ${id}</span>`).join(' ');
-      }
-    }
-
-    function resetClassification() {
-      for (let g = 1; g <= 4; g++) {
-        userAssignments[g] = [];
-        const el = document.getElementById(`groupItems${g}`);
-        if (el) el.innerHTML = '<em>(Chưa có thẻ)</em>';
-      }
-      selectedSymptomId = null;
+    function revealAllSymptoms() {
+      document.querySelectorAll('#symptomsGrid12 .cyber-card').forEach(c => c.classList.add('active-card'));
+      playSound('success');
     }
 
     let selectedOrder = [];
@@ -2245,18 +2042,18 @@
       if (elem) elem.textContent = selectedOrder.length ? selectedOrder.join(' ➔ ') : 'Chưa chọn';
     }
 
-    /* Period 2 Minigame Helpers */
+    /* Period 2 Minigame Slide 5 */
     const gameMsgs = [
-      { id: 1, text: "“Chúc mừng! Nhận 500 kim cương miễn phí, bấm link trong 2 phút.”", isTrust: false, reason: "Mồi quà tặng ảo + hối thúc thời gian" },
+      { id: 1, text: "“Nhận 500 kim cương miễn phí, bấm link trong 2 phút.”", isTrust: false, reason: "Mồi quà tặng ảo + hối thúc thời gian" },
       { id: 2, text: "“Mai nhớ mang compa nhé, tiết Toán có bài thực hành.”", isTrust: true, reason: "Tin nhắn học tập thông thường" },
       { id: 3, text: "“Tài khoản sắp bị khóa, đăng nhập link này ngay.”", isTrust: false, reason: "Đe dọa sợ hãi + ép đăng nhập link lạ" },
       { id: 4, text: "“Chiều nay nhóm mình họp lúc 3 giờ ở thư viện nhé.”", isTrust: true, reason: "Trao đổi học nhóm rõ ràng" },
-      { id: 5, text: "“Mình là Minh, điện thoại hỏng, chuyển gấp 100k cho mình nhé.”", isTrust: false, reason: "Mạo danh bạn bè + vay tiền khẩn cấp" },
-      { id: 6, text: "“Gửi ảnh riêng tư, mình tặng vật phẩm hiếm trong game.”", isTrust: false, reason: "Dụ dỗ vượt ranh giới an toàn cá nhân" }
+      { id: 5, text: "“Mình là Minh, điện thoại hỏng, chuyển gấp 100.000 đồng cho mình nhé.”", isTrust: false, reason: "Mạo danh bạn bè + vay tiền khẩn cấp" },
+      { id: 6, text: "“Gửi ảnh riêng tư, mình tặng vật phẩm hiếm.”", isTrust: false, reason: "Dụ dỗ vượt ranh giới an toàn cá nhân" }
     ];
 
     function buildGameSlide5() {
-      const grid = document.getElementById('gameMessagesGrid');
+      const grid = document.getElementById('gameMessagesGrid5');
       if (!grid) return;
       grid.innerHTML = '';
       gameMsgs.forEach(m => {
@@ -2290,44 +2087,60 @@
       }
     }
 
-    function toggleTactics(num) {
-      const el = document.getElementById(`tac-${num}`);
-      if (el) el.parentElement.classList.toggle('active-card');
-    }
-
-    const caseSols = {
-      A: "👉 <strong>Hướng xử lý An:</strong><br>1. Dừng lại, tuyệt đối không nạp thêm 200k.<br>2. Chụp màn hình lưu bằng chứng trang web.<br>3. Báo ngay cho cha mẹ/thầy cô giáo.<br>4. Báo cáo trang web lừa đảo và đổi mật khẩu.",
-      B: "👉 <strong>Hướng xử lý Bình:</strong><br>1. Dừng ngay trò chuyện; nhận diện đây là hành vi dụ dỗ nguy hiểm.<br>2. Kiên quyết từ chối theo mẫu 3 phần.<br>3. Chụp màn hình lưu bằng chứng tin nhắn.<br>4. Chặn nick, báo cáo và gọi Tổng đài Quốc gia 111.",
-      C: "👉 <strong>Hướng xử lý Cường:</strong><br>1. Dừng lại, không nạp 500k tiền cọc.<br>2. Chụp ảnh màn hình tin nhắn và thông tin nhóm.<br>3. Báo cáo nhóm vi phạm và rời nhóm.<br>4. Cảnh báo cho bạn bè không tham gia bẫy nạp cọc.",
-      D: "👉 <strong>Hướng xử lý Dung:</strong><br>1. Dừng lại, tuyệt đối không mở tệp lạ đuôi <code>.exe</code>.<br>2. Không tải phần mềm theo đường link lạ.<br>3. Xóa ngay tệp tin lạ khỏi thiết bị.<br>4. Nhờ người lớn quét virus cho máy tính."
+    const tacticData = {
+      1: "👉 <strong>1. Tạo cảm giác khan hiếm giả:</strong> “Chỉ còn 3 phần quà duy nhất cho ai nhanh nhất!” ➔ Kích hoạt tâm lý sợ bỏ lỡ cơ hội.",
+      2: "👉 <strong>2. Hối thúc thời gian:</strong> “Xác minh trong 60s nếu không tài khoản sẽ bị xóa!” ➔ Làm tê liệt khả năng suy nghĩ bình tĩnh.",
+      3: "👉 <strong>3. Đe dọa làm sợ hãi:</strong> “Nếu không làm theo sẽ gửi tin xấu cho bố mẹ!” ➔ Gây tâm lý hoảng loạn, sợ hãi.",
+      4: "👉 <strong>4. Mạo danh người thân quen:</strong> “Mình là bạn cùng lớp, mua giúp mình thẻ nạp!” ➔ Lợi dụng lòng tin và sự nhiệt tình."
     };
 
-    function revealCaseSol(key) {
-      const elem = document.getElementById(`sol-case-${key}`);
-      if (elem) {
-        elem.innerHTML = caseSols[key];
-        elem.parentElement.classList.add('active-card');
+    function revealTactic(num) {
+      const el = document.getElementById(`tactic-body-${num}`);
+      if (el) {
+        el.innerHTML = tacticData[num];
+        el.parentElement.classList.add('active-card');
+        playSound('ting');
       }
     }
 
-    /* Period 3 Core Parts Helpers */
-    const corePartsData = {
-      1: "👉 <strong>1. 4 Cạm bẫy mạng:</strong><br>• Lừa nạp thẻ / Quà ảo<br>• Giả mạo đường link<br>• Dụ dỗ từ người lạ<br>• Đánh cắp thông tin cá nhân",
-      2: "👉 <strong>2. Quy tắc tự vệ 3 bước:</strong><br>• 🛑 Dừng lại 5 giây<br>• 🧠 Suy nghĩ phản biện<br>• 🔍 Kiểm tra & Báo cáo",
-      3: "👉 <strong>3. Kỹ năng bảo vệ tài khoản:</strong><br>• Mật khẩu an toàn 4 yếu tố<br>• Xác thực hai bước 2FA<br>• Mẫu câu từ chối dứt khoát 3 phần",
-      4: "👉 <strong>4. Kênh tìm kiếm trợ giúp khẩn cấp:</strong><br>• Cha mẹ, người thân trong gia đình<br>• Thầy cô giáo, ban giám hiệu nhà trường<br>• <strong>Tổng đài Quốc gia Bảo vệ Trẻ em: 111</strong> (miễn cước 24/7)"
+    function revealAllTactics() {
+      [1, 2, 3, 4].forEach(n => revealTactic(n));
+    }
+
+    const caseDossiers = {
+      an: "<strong>Hồ sơ An:</strong> Mua tài khoản game VIP giá rẻ 50.000đ trên mạng. Sau khi nạp tiền, trang web báo lỗi và yêu cầu nạp thêm 200.000đ tiền cọc để mở khóa tài khoản.",
+      binh: "<strong>Hồ sơ Bình:</strong> Một người bạn mới quen qua mạng thường xuyên trò chuyện, sau đó gạ gẫm Bình gửi ảnh chụp cơ thể riêng tư trong phòng ngủ để đổi lấy trang phục hiếm trong game.",
+      cuong: "<strong>Hồ sơ Cường:</strong> Tham gia nhóm xem video kiếm tiền online, được tặng 20.000đ ban đầu, sau đó quản trị viên yêu cầu nạp 500.000đ tiền cọc để nhận nhiệm vụ hoa hồng lớn.",
+      dung: "<strong>Hồ sơ Dung:</strong> Nhận được tin nhắn kèm tệp tin lạ đuôi <code>.exe</code> thông báo máy tính đang bị nhiễm virus nặng, yêu cầu bấm mở tệp ngay để quét và diệt virus."
     };
 
-    function toggleCorePart(num) {
-      const body = document.getElementById(`core-${num}`);
-      if (body) {
-        body.innerHTML = corePartsData[num];
-        body.parentElement.classList.add('active-card');
+    function revealCaseDossier(key) {
+      const el = document.getElementById(`dossier-body-${key}`);
+      if (el) {
+        el.innerHTML = caseDossiers[key];
+        el.parentElement.classList.add('active-card');
+        playSound('ting');
       }
     }
 
-    function revealAllCoreParts() {
-      [1, 2, 3, 4].forEach(n => toggleCorePart(n));
+    function revealAllCaseDossiers() {
+      ['an', 'binh', 'cuong', 'dung'].forEach(k => revealCaseDossier(k));
+    }
+
+    const caseSolutions = {
+      an: "👉 <strong>Phương án xử lý An:</strong><br>1. Dừng lại, tuyệt đối không nạp thêm 200k.<br>2. Chụp màn hình trang web và hóa đơn nạp.<br>3. Báo ngay cho cha mẹ/thầy cô giáo.<br>4. Báo cáo trang web lừa đảo và chặn liên hệ.",
+      binh: "👉 <strong>Phương án xử lý Bình:</strong><br>1. Dừng ngay trò chuyện, không gửi bất kỳ ảnh nào.<br>2. Kiên quyết từ chối theo mẫu 3 phần.<br>3. Chụp màn hình tin nhắn làm bằng chứng.<br>4. Chặn tài khoản, báo cáo và gọi Tổng đài 111.",
+      cuong: "👉 <strong>Phương án xử lý Cường:</strong><br>1. Dừng lại, không nạp 500k tiền cọc.<br>2. Chụp màn hình tin nhắn và nhóm chat.<br>3. Báo cáo nhóm lừa đảo và rời khỏi nhóm.<br>4. Cảnh báo bạn bè không tham gia bẫy kiếm tiền nạp cọc.",
+      dung: "👉 <strong>Phương án xử lý Dung:</strong><br>1. Dừng lại, tuyệt đối không mở tệp lạ đuôi <code>.exe</code>.<br>2. Xóa ngay tệp tin lạ khỏi thiết bị.<br>3. Không tải phần mềm từ nguồn không rõ ràng.<br>4. Nhờ người lớn quét virus cho máy tính bằng phần mềm chính thống."
+    };
+
+    function revealCaseSolution(key) {
+      const el = document.getElementById(`sol-body-${key}`);
+      if (el) {
+        el.innerHTML = caseSolutions[key];
+        el.parentElement.classList.add('active-card');
+        playSound('ting');
+      }
     }
 
     function triggerCelebration() {
@@ -2385,8 +2198,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       buildSidebar();
-      buildSymptomsSlide16();
-      buildClassificationSlide17();
+      buildSymptomsSlide12();
       buildGameSlide5();
       applyNonBreakingSpaces();
       goToSlide(1);
