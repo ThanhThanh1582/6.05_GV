@@ -13,7 +13,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #F8FAFC;
+      background: #F1F5F9;
       color: #0F172A;
       font-family: 'Be Vietnam Pro', sans-serif;
       overflow-x: hidden;
@@ -23,24 +23,40 @@
       position: relative;
     }
 
+    /* BACKGROUND TRƯỜNG HỌC & GIÁO DỤC */
     .edu-bg {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       background: 
-        radial-gradient(circle at 10% 15%, rgba(79, 70, 229, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 90% 85%, rgba(217, 119, 6, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(245, 158, 11, 0.1) 0%, transparent 45%),
         linear-gradient(135deg, #F8FAFC 0%, #EEF2FF 50%, #F1F5F9 100%);
       z-index: 1;
       pointer-events: none;
     }
-    .edu-grid {
+    .grid-notebook {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
-      background-image: linear-gradient(rgba(79, 70, 229, 0.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(79, 70, 229, 0.03) 1px, transparent 1px);
-      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(rgba(59, 130, 246, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.035) 1px, transparent 1px);
+      background-size: 28px 28px;
       z-index: 1;
       pointer-events: none;
+    }
+
+    /* DOODLE HỌC ĐƯỜNG TRÔI NỔI */
+    .doodle {
+      position: fixed;
+      font-size: 34px;
+      opacity: 0.15;
+      z-index: 1;
+      pointer-events: none;
+      animation: floatIcon 9s ease-in-out infinite alternate;
+    }
+    @keyframes floatIcon {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-18px) rotate(10deg); }
     }
 
     .app-container {
@@ -53,7 +69,7 @@
     /* SIDEBAR ĐIỀU HƯỚNG */
     .sidebar {
       width: 380px;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(20px);
       border-right: 2px solid #CBD5E1;
       display: flex;
@@ -65,21 +81,21 @@
     .sidebar.collapsed { width: 0; overflow: hidden; border: none; }
     .sidebar-header {
       padding: 20px;
-      background: linear-gradient(135deg, #312E81 0%, #1E1B4B 100%);
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
       color: #FFFFFF;
-      border-bottom: 3px solid #D97706;
+      border-bottom: 4px solid #D97706;
     }
-    .sidebar-header h2 { font-family: 'Montserrat', sans-serif; font-size: 16px; color: #FDE047; letter-spacing: 0.5px; }
-    .sidebar-header p { font-size: 12px; color: #A5B4FC; font-weight: 700; margin-top: 4px; }
+    .sidebar-header h2 { font-family: 'Montserrat', sans-serif; font-size: 15px; color: #FDE047; letter-spacing: 0.5px; }
+    .sidebar-header p { font-size: 12px; color: #94A3B8; font-weight: 700; margin-top: 4px; }
     
     .sidebar-nav { flex: 1; overflow-y: auto; padding: 14px; }
     
     .activity-header {
       font-size: 12px;
       font-weight: 900;
-      color: #312E81;
-      background: #EEF2FF;
-      border-left: 4px solid #D97706;
+      color: #1E3A8A;
+      background: #EFF6FF;
+      border-left: 4px solid #3B82F6;
       padding: 8px 12px;
       border-radius: 6px;
       margin-top: 14px;
@@ -102,7 +118,7 @@
       border: 1px solid transparent;
     }
     .nav-item:hover { background: #E0E7FF; color: #4338CA; font-weight: 700; }
-    .nav-item.active { background: #EEF2FF; color: #312E81; font-weight: 800; border-left: 4px solid #4F46E5; border-color: #C7D2FE; }
+    .nav-item.active { background: #EEF2FF; color: #1E1B4B; font-weight: 800; border-left: 4px solid #4F46E5; border-color: #C7D2FE; }
     .nav-item .slide-num { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 11px; background: #E2E8F0; color: #475569; padding: 2px 6px; border-radius: 4px; }
     .nav-item.active .slide-num { background: #4F46E5; color: #FFFFFF; }
 
@@ -119,7 +135,7 @@
     /* HEADER */
     .top-header {
       height: 64px;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(15px);
       border-bottom: 2px solid #CBD5E1;
       display: flex;
@@ -129,16 +145,16 @@
       box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
       z-index: 5;
     }
-    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-left { display: flex; align-items: center; gap: 12px; }
     .btn-toggle-sidebar {
-      background: #F1F5F9;
-      border: 1px solid #CBD5E1;
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
       color: #334155;
       padding: 8px 14px;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 800;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -147,16 +163,16 @@
     .btn-toggle-sidebar:hover { background: #E2E8F0; color: #0F172A; }
     
     .theme-badge {
-      background: linear-gradient(135deg, #4F46E5, #312E81);
-      color: #FFFFFF;
+      background: linear-gradient(135deg, #1E293B, #0F172A);
+      color: #FDE047;
+      border: 1.5px solid #D97706;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 13px;
-      font-weight: 800;
+      font-size: 12px;
+      font-weight: 900;
       display: flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
     }
     .role-badge {
       background: #FEF3C7;
@@ -164,17 +180,17 @@
       border: 1px solid #FCD34D;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
     }
 
     .header-right { display: flex; align-items: center; gap: 12px; }
     .header-tool-btn {
       background: #FFFFFF;
-      border: 1px solid #CBD5E1;
+      border: 1.5px solid #CBD5E1;
       color: #334155;
       padding: 7px 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 13px;
       font-weight: 700;
@@ -197,15 +213,15 @@
     }
 
     .slide-card {
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(25px);
       border: 2px solid #CBD5E1;
-      border-radius: 24px;
+      border-radius: 28px;
       padding: 36px 44px;
       width: 100%;
       max-width: 1100px;
       min-height: 540px;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 20px 50px rgba(30, 58, 138, 0.08);
       display: none;
       flex-direction: column;
       justify-content: space-between;
@@ -224,30 +240,52 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: #EEF2FF;
-      color: #4338CA;
+      background: #EFF6FF;
+      color: #1D4ED8;
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 900;
       padding: 5px 14px;
       border-radius: 30px;
-      border: 1px solid #C7D2FE;
+      border: 1px solid #BFDBFE;
       margin-bottom: 12px;
       width: fit-content;
     }
     .slide-title {
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 900;
       color: #1E1B4B;
       line-height: 1.3;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-family: 'Montserrat', sans-serif;
     }
     .slide-subtitle {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 600;
       color: #475569;
       line-height: 1.5;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* SỔ TAY VỞ GHI */
+    .notebook-box {
+      background: #FFFFFF;
+      border: 2px solid #CBD5E1;
+      border-left: 6px solid #EF4444;
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      position: relative;
+    }
+
+    /* GIẤY GHI CHÚ VÀNG (STICKY NOTE) */
+    .sticky-note {
+      background: #FEF9C3;
+      border: 1px solid #FDE047;
+      border-left: 5px solid #EAB308;
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: #713F12;
+      box-shadow: 0 6px 16px rgba(234, 179, 8, 0.12);
     }
 
     .teacher-instruction-bar {
@@ -257,8 +295,8 @@
       border-top: 1px solid #FDE68A;
       border-bottom: 1px solid #FDE68A;
       padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 14px;
+      border-radius: 10px;
+      font-size: 13px;
       color: #92400E;
       font-weight: 600;
       margin-top: 16px;
@@ -271,7 +309,7 @@
     /* FOOTER */
     .bottom-bar {
       height: 68px;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(15px);
       border-top: 2px solid #CBD5E1;
       display: flex;
@@ -304,25 +342,24 @@
     }
     .btn-nav:disabled { opacity: 0.4; cursor: not-allowed; }
     .btn-nav.primary {
-      background: linear-gradient(135deg, #4F46E5, #3730A3);
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
       color: #FFFFFF;
-      border-color: #4338CA;
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+      border-color: #1E40AF;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
     }
     .btn-nav.primary:hover:not(:disabled) {
-      background: linear-gradient(135deg, #4338CA, #312E81);
-      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+      background: linear-gradient(135deg, #1D4ED8, #1E3A8A);
     }
 
     .slide-pagination {
       font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 900;
-      color: #4338CA;
-      background: #EEF2FF;
+      color: #1D4ED8;
+      background: #EFF6FF;
       padding: 8px 18px;
       border-radius: 20px;
-      border: 1px solid #C7D2FE;
+      border: 1px solid #BFDBFE;
     }
 
     .progress-track {
@@ -337,40 +374,40 @@
     .progress-fill {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, #4F46E5, #D97706);
+      background: linear-gradient(90deg, #3B82F6, #F59E0B);
       border-radius: 10px;
       transition: width 0.3s ease;
     }
 
     /* BUTTONS */
     .btn-action {
-      background: linear-gradient(135deg, #4F46E5, #3730A3);
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
       color: #FFFFFF;
       border: none;
-      padding: 14px 32px;
+      padding: 13px 30px;
       border-radius: 14px;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 800;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
       transition: all 0.2s;
     }
     .btn-action:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(79, 70, 229, 0.35);
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.35);
     }
     .btn-action.secondary {
       background: #FFFFFF;
-      color: #4338CA;
-      border: 2px solid #C7D2FE;
+      color: #1D4ED8;
+      border: 2px solid #BFDBFE;
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
     }
     .btn-action.secondary:hover {
-      background: #EEF2FF;
-      border-color: #818CF8;
+      background: #EFF6FF;
+      border-color: #60A5FA;
     }
     .btn-action.amber {
       background: linear-gradient(135deg, #D97706, #B45309);
@@ -383,15 +420,15 @@
       box-shadow: 0 8px 20px rgba(5, 150, 105, 0.25);
     }
 
-    /* BOXES & CARDS */
+    /* BOXES */
     .content-box {
       background: #FFFFFF;
       border: 2px solid #E2E8F0;
       border-radius: 16px;
-      padding: 24px;
+      padding: 22px;
       box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
     }
-    .content-box.highlight { border-color: #818CF8; background: #F8FAFC; }
+    .content-box.highlight { border-color: #93C5FD; background: #F8FAFC; }
     .content-box.amber { border-color: #FCD34D; background: #FFFDF5; }
 
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -409,8 +446,8 @@
       background: #FFFFFF;
     }
     .edu-table th {
-      background: #EEF2FF;
-      color: #312E81;
+      background: #EFF6FF;
+      color: #1E3A8A;
       font-weight: 800;
       font-size: 15px;
       padding: 14px 18px;
@@ -428,23 +465,23 @@
     .edu-table tr:nth-child(even) td { background: #F8FAFC; }
 
     .timer-widget {
-      background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%);
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
       border: 3px solid #D97706;
       border-radius: 20px;
-      padding: 18px 28px;
+      padding: 16px 26px;
       color: #FFFFFF;
       display: inline-flex;
       align-items: center;
-      gap: 20px;
-      box-shadow: 0 10px 30px rgba(49, 46, 129, 0.25);
+      gap: 18px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
     }
     .timer-display {
       font-family: 'Montserrat', monospace;
-      font-size: 42px;
+      font-size: 38px;
       font-weight: 900;
       color: #FDE047;
       letter-spacing: 2px;
-      min-width: 130px;
+      min-width: 120px;
       text-align: center;
     }
     .timer-controls { display: flex; gap: 8px; }
@@ -452,9 +489,9 @@
       background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.3);
       color: #FFFFFF;
-      padding: 8px 14px;
+      padding: 7px 12px;
       border-radius: 10px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       cursor: pointer;
       transition: all 0.2s;
@@ -465,14 +502,14 @@
       background: #FFFFFF;
       border: 2px solid #CBD5E1;
       border-radius: 16px;
-      padding: 20px;
+      padding: 18px;
       text-align: center;
       transition: all 0.3s;
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
     }
-    .reveal-card:hover { border-color: #4F46E5; transform: translateY(-2px); }
-    .reveal-card.revealed { border-color: #4F46E5; background: #F8FAFC; }
+    .reveal-card:hover { border-color: #2563EB; transform: translateY(-2px); }
+    .reveal-card.revealed { border-color: #2563EB; background: #F8FAFC; }
 
     .stamp-seal {
       position: absolute;
@@ -481,9 +518,9 @@
       border: 4px dashed #DC2626;
       color: #DC2626;
       font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 900;
-      padding: 12px 28px;
+      padding: 10px 24px;
       border-radius: 12px;
       transform: rotate(-5deg) scale(0);
       opacity: 0;
@@ -501,18 +538,18 @@
       background: #F8FAFC;
       border: 1px solid #E2E8F0;
       border-radius: 10px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       color: #334155;
       margin-bottom: 8px;
       cursor: pointer;
       transition: all 0.2s;
     }
-    .rubric-item:hover { background: #EEF2FF; border-color: #C7D2FE; }
+    .rubric-item:hover { background: #EFF6FF; border-color: #BFDBFE; }
     .rubric-item.checked { background: #ECFDF5; border-color: #A7F3D0; color: #065F46; }
     .rubric-item input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       accent-color: #059669;
       cursor: pointer;
     }
@@ -520,21 +557,27 @@
     .btn-tf {
       padding: 12px 28px;
       border-radius: 12px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 900;
       cursor: pointer;
       border: 2px solid #CBD5E1;
       background: #FFFFFF;
       transition: all 0.2s;
     }
-    .btn-tf:hover { border-color: #4F46E5; }
-    .btn-tf.selected { background: #4F46E5; color: #FFFFFF; border-color: #3730A3; }
+    .btn-tf:hover { border-color: #2563EB; }
+    .btn-tf.selected { background: #2563EB; color: #FFFFFF; border-color: #1E40AF; }
   </style>
 </head>
 <body>
 
   <div class="edu-bg"></div>
-  <div class="edu-grid"></div>
+  <div class="grid-notebook"></div>
+
+  <!-- FLOATING DOODLES -->
+  <div class="doodle" style="top: 8%; left: 4%;">📚</div>
+  <div class="doodle" style="top: 12%; right: 5%;">✏️</div>
+  <div class="doodle" style="bottom: 12%; left: 5%;">📐</div>
+  <div class="doodle" style="bottom: 10%; right: 4%;">🎓</div>
 
   <div class="app-container">
     
@@ -582,12 +625,12 @@
           <button class="btn-toggle-sidebar" onclick="toggleSidebar()">
             <span>☰</span> DANH SÁCH BÀI HỌC
           </button>
-          <div class="theme-badge">🎓 NOVA ACADEMY</div>
+          <div class="theme-badge">🏫 TRƯỜNG THCS NOVA</div>
           <div class="role-badge" id="headerRoleBadge">Thành viên Hội đồng Sư phạm tập sự</div>
         </div>
         <div class="header-right">
           <button class="header-tool-btn" id="btnAudioToggle" onclick="toggleAudio()">
-            🔊 Âm thanh: BẬT
+            🔔 Chuông trường: BẬT
           </button>
           <button class="header-tool-btn" onclick="toggleFullScreen()">
             ⛶ Toàn màn hình
@@ -605,16 +648,16 @@
             <h1 class="slide-title">BÀI 6.05 — TIẾT 2<br>PHÂN TÍCH TÌNH HUỐNG SƯ PHẠM VÀ ĐIỀU CHỈNH PHƯƠNG PHÁP</h1>
             <p class="slide-subtitle">Hội đồng Sư phạm Nhí Nova — Xử lý 4 rào cản đùn đẩy công việc nhóm</p>
             
-            <div class="content-box highlight" style="margin-bottom: 16px;">
-              <p style="font-size: 16px; font-weight: 700; color: #1E1B4B; margin-bottom: 6px;">📋 THÔNG ĐIỆP NHẬP VAI:</p>
+            <div class="notebook-box" style="margin-bottom: 16px;">
+              <p style="font-size: 15px; font-weight: 800; color: #1E3A8A; margin-bottom: 6px;">📋 THÔNG ĐIỆP NHẬP VAI:</p>
               <p style="font-size: 16px; color: #334155; line-height: 1.6;">
                 4 tình huống làm việc nhóm đang gặp rắc rối nghiêm trọng do các biểu hiện đùn đẩy, né tránh trách nhiệm. Nhiệm vụ của em: Phân tích nguyên nhân và tìm ra phương án phân công công bằng – hợp tác – có trách nhiệm.
               </p>
             </div>
 
-            <div class="content-box amber">
-              <p style="font-size: 15px; font-weight: 800; color: #B45309; margin-bottom: 4px;">❓ CÂU HỎI LỚN:</p>
-              <p style="font-size: 17px; font-weight: 700; color: #92400E;">
+            <div class="sticky-note">
+              <p style="font-size: 14px; font-weight: 800; color: #854D0E; margin-bottom: 2px;">❓ CÂU HỎI LỚN:</p>
+              <p style="font-size: 17px; font-weight: 700; color: #713F12;">
                 “Làm thế nào để xử lý việc đùn đẩy công việc và giúp nhóm cùng hoàn thành trách nhiệm?”
               </p>
             </div>
@@ -639,32 +682,32 @@
             <h2 class="slide-title">KHO KIẾN THỨC CỦA HỘI ĐỒNG</h2>
             <p class="slide-subtitle">Gợi nhớ nhanh 5 nguyên tắc Học tập hợp tác đã học ở Tiết 1</p>
 
-            <div class="grid-5" style="margin-top: 20px;">
+            <div class="grid-5" style="margin-top: 18px;">
               <div class="reveal-card" id="cardKn1">
-                <div style="font-size: 24px; font-weight: 900; color: #4F46E5;">①</div>
-                <div id="knText1" style="font-weight: 800; font-size: 15px; color: #64748B; margin-top: 8px;">?</div>
+                <div style="font-size: 22px; font-weight: 900; color: #2563EB;">①</div>
+                <div id="knText1" style="font-weight: 800; font-size: 14px; color: #64748B; margin-top: 6px;">?</div>
               </div>
               <div class="reveal-card" id="cardKn2">
-                <div style="font-size: 24px; font-weight: 900; color: #4F46E5;">②</div>
-                <div id="knText2" style="font-weight: 800; font-size: 15px; color: #64748B; margin-top: 8px;">?</div>
+                <div style="font-size: 22px; font-weight: 900; color: #2563EB;">②</div>
+                <div id="knText2" style="font-weight: 800; font-size: 14px; color: #64748B; margin-top: 6px;">?</div>
               </div>
               <div class="reveal-card" id="cardKn3">
-                <div style="font-size: 24px; font-weight: 900; color: #4F46E5;">③</div>
-                <div id="knText3" style="font-weight: 800; font-size: 15px; color: #64748B; margin-top: 8px;">?</div>
+                <div style="font-size: 22px; font-weight: 900; color: #2563EB;">③</div>
+                <div id="knText3" style="font-weight: 800; font-size: 14px; color: #64748B; margin-top: 6px;">?</div>
               </div>
               <div class="reveal-card" id="cardKn4">
-                <div style="font-size: 24px; font-weight: 900; color: #4F46E5;">④</div>
-                <div id="knText4" style="font-weight: 800; font-size: 15px; color: #64748B; margin-top: 8px;">?</div>
+                <div style="font-size: 22px; font-weight: 900; color: #2563EB;">④</div>
+                <div id="knText4" style="font-weight: 800; font-size: 14px; color: #64748B; margin-top: 6px;">?</div>
               </div>
               <div class="reveal-card" id="cardKn5">
-                <div style="font-size: 24px; font-weight: 900; color: #4F46E5;">⑤</div>
-                <div id="knText5" style="font-weight: 800; font-size: 15px; color: #64748B; margin-top: 8px;">?</div>
+                <div style="font-size: 22px; font-weight: 900; color: #2563EB;">⑤</div>
+                <div id="knText5" style="font-weight: 800; font-size: 14px; color: #64748B; margin-top: 6px;">?</div>
               </div>
             </div>
           </div>
 
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 18px;">
               <button class="btn-action secondary" onclick="revealNextPrinciple()">
                 🔓 MỞ KHO KIẾN THỨC (TỪNG Ô)
               </button>
@@ -685,11 +728,11 @@
             <h2 class="slide-title">KIỂM TRA PHẢN XẠ NHANH</h2>
             <p class="slide-subtitle">Học sinh giơ 1 ngón tay nếu Đúng, 2 ngón tay nếu Sai</p>
 
-            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 14px;">
-              <div class="content-box highlight" style="display: flex; align-items: center; justify-content: space-between; padding: 18px 24px;">
+            <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 12px;">
+              <div class="notebook-box" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-left-color: #2563EB;">
                 <div style="max-width: 70%;">
-                  <p style="font-size: 14px; font-weight: 800; color: #4F46E5;">PHÁT BIỂU 1:</p>
-                  <p style="font-size: 16px; font-weight: 700; color: #1E1B4B; margin-top: 4px;">
+                  <p style="font-size: 13px; font-weight: 800; color: #2563EB;">PHÁT BIỂU 1:</p>
+                  <p style="font-size: 15px; font-weight: 700; color: #1E1B4B; margin-top: 2px;">
                     “Phụ thuộc tích cực nghĩa là đùn đẩy toàn bộ phần việc khó cho nhóm trưởng giải quyết.”
                   </p>
                 </div>
@@ -699,10 +742,10 @@
                 </div>
               </div>
 
-              <div class="content-box amber" style="display: flex; align-items: center; justify-content: space-between; padding: 18px 24px;">
+              <div class="notebook-box" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-left-color: #D97706;">
                 <div style="max-width: 70%;">
-                  <p style="font-size: 14px; font-weight: 800; color: #B45309;">PHÁT BIỂU 2:</p>
-                  <p style="font-size: 16px; font-weight: 700; color: #92400E; margin-top: 4px;">
+                  <p style="font-size: 13px; font-weight: 800; color: #D97706;">PHÁT BIỂU 2:</p>
+                  <p style="font-size: 15px; font-weight: 700; color: #92400E; margin-top: 2px;">
                     “Phân chia công việc công bằng là dựa trên năng lực và sự đồng thuận của tất cả các thành viên.”
                   </p>
                 </div>
@@ -715,7 +758,7 @@
           </div>
 
           <div>
-            <div style="text-align: right; margin-top: 16px;">
+            <div style="text-align: right; margin-top: 14px;">
               <button class="btn-action primary" onclick="goToSlide(4)">
                 🔍 KIỂM CHỨNG KẾT QUẢ ▶
               </button>
@@ -733,24 +776,24 @@
             <h2 class="slide-title">KIỂM CHỨNG KẾT QUẢ PHẢN XẠ</h2>
             <p class="slide-subtitle">Phân tích vì sao Đúng / Sai để khắc sâu bản chất của làm việc nhóm</p>
 
-            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
-              <div id="boxAns1" class="content-box" style="border-left: 6px solid #DC2626; display: none;">
-                <p style="font-size: 16px; font-weight: 800; color: #DC2626;">❌ PHÁT BIỂU 1 ➔ SAI</p>
-                <p style="font-size: 15px; color: #334155; margin-top: 4px;">
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px;">
+              <div id="boxAns1" class="notebook-box" style="border-left-color: #DC2626; display: none;">
+                <p style="font-size: 15px; font-weight: 800; color: #DC2626;">❌ PHÁT BIỂU 1 ➔ SAI</p>
+                <p style="font-size: 14px; color: #334155; margin-top: 3px;">
                   Phụ thuộc tích cực là các thành viên hỗ trợ lẫn nhau để cùng tiến bộ, cùng gánh vác trách nhiệm chứ không phải dồn đẩy việc khó cho một người.
                 </p>
               </div>
 
-              <div id="boxAns2" class="content-box" style="border-left: 6px solid #059669; display: none;">
-                <p style="font-size: 16px; font-weight: 800; color: #059669;">✅ PHÁT BIỂU 2 ➔ ĐÚNG</p>
-                <p style="font-size: 15px; color: #334155; margin-top: 4px;">
+              <div id="boxAns2" class="notebook-box" style="border-left-color: #059669; display: none;">
+                <p style="font-size: 15px; font-weight: 800; color: #059669;">✅ PHÁT BIỂU 2 ➔ ĐÚNG</p>
+                <p style="font-size: 14px; color: #334155; margin-top: 3px;">
                   Phân công công bằng đòi hỏi phải dựa trên sở trường, năng lực và nhận được sự đồng thuận tự giác của toàn bộ thành viên.
                 </p>
               </div>
 
-              <div id="boxInvite" class="content-box amber" style="display: none;">
-                <p style="font-size: 15px; font-weight: 800; color: #B45309;">🎙️ CÂU HỎI THẢO LUẬN: “Vì sao phát biểu 1 lại sai hoàn toàn?”</p>
-                <p style="font-size: 16px; font-weight: 700; color: #92400E; margin-top: 4px;">
+              <div id="boxInvite" class="sticky-note" style="display: none;">
+                <p style="font-size: 14px; font-weight: 800; color: #854D0E;">🎙️ CÂU HỎI THẢO LUẬN: “Vì sao phát biểu 1 lại sai hoàn toàn?”</p>
+                <p style="font-size: 15px; font-weight: 700; color: #713F12; margin-top: 2px;">
                   Hợp tác đúng nghĩa đòi hỏi mỗi thành viên tự giác gánh vác trách nhiệm, tuyệt đối không ỷ lại vào nhóm trưởng.
                 </p>
               </div>
@@ -779,35 +822,35 @@
             <h2 class="slide-title">4 HỒ SƠ CẦN HỘI ĐỒNG HỖ TRỢ</h2>
             <p class="slide-subtitle">Bấm vào từng hồ sơ để khám phá rào cản đùn đẩy việc của 4 nhân vật</p>
 
-            <div class="grid-2" style="margin-top: 14px;">
+            <div class="grid-2" style="margin-top: 12px;">
               <div class="reveal-card" id="caseNam" onclick="revealCase('Nam')">
-                <div style="font-size: 28px; margin-bottom: 6px;">👤</div>
-                <h3 style="font-size: 18px; font-weight: 900; color: #312E81;">HỒ SƠ 01 — BẠN NAM</h3>
-                <p id="txtNam" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm để mở dữ kiện)</p>
+                <div style="font-size: 26px; margin-bottom: 4px;">👤</div>
+                <h3 style="font-size: 17px; font-weight: 900; color: #1E3A8A;">HỒ SƠ 01 — BẠN NAM</h3>
+                <p id="txtNam" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm để mở dữ kiện)</p>
               </div>
 
               <div class="reveal-card" id="caseSon" onclick="revealCase('Son')">
-                <div style="font-size: 28px; margin-bottom: 6px;">👤</div>
-                <h3 style="font-size: 18px; font-weight: 900; color: #D97706;">HỒ SƠ 02 — BẠN SƠN</h3>
-                <p id="txtSon" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm để mở dữ kiện)</p>
+                <div style="font-size: 26px; margin-bottom: 4px;">👤</div>
+                <h3 style="font-size: 17px; font-weight: 900; color: #D97706;">HỒ SƠ 02 — BẠN SƠN</h3>
+                <p id="txtSon" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm để mở dữ kiện)</p>
               </div>
 
               <div class="reveal-card" id="caseDuc" onclick="revealCase('Duc')">
-                <div style="font-size: 28px; margin-bottom: 6px;">👤</div>
-                <h3 style="font-size: 18px; font-weight: 900; color: #059669;">HỒ SƠ 03 — BẠN ĐỨC</h3>
-                <p id="txtDuc" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm để mở dữ kiện)</p>
+                <div style="font-size: 26px; margin-bottom: 4px;">👤</div>
+                <h3 style="font-size: 17px; font-weight: 900; color: #059669;">HỒ SƠ 03 — BẠN ĐỨC</h3>
+                <p id="txtDuc" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm để mở dữ kiện)</p>
               </div>
 
               <div class="reveal-card" id="caseViet" onclick="revealCase('Viet')">
-                <div style="font-size: 28px; margin-bottom: 6px;">👤</div>
-                <h3 style="font-size: 18px; font-weight: 900; color: #7C3AED;">HỒ SƠ 04 — BẠN VIỆT</h3>
-                <p id="txtViet" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm để mở dữ kiện)</p>
+                <div style="font-size: 26px; margin-bottom: 4px;">👤</div>
+                <h3 style="font-size: 17px; font-weight: 900; color: #7C3AED;">HỒ SƠ 04 — BẠN VIỆT</h3>
+                <p id="txtViet" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm để mở dữ kiện)</p>
               </div>
             </div>
           </div>
 
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
               <button class="btn-action secondary" onclick="revealAllCases()">
                 📂 MỞ ĐỦ 4 HỒ SƠ
               </button>
@@ -828,15 +871,15 @@
             <h2 class="slide-title">MỖI THÀNH VIÊN NHẬN 1 HỒ SƠ</h2>
             <p class="slide-subtitle">Nhóm 4 phân chia mỗi bạn phụ trách chẩn đoán 01 nhân vật</p>
 
-            <div class="grid-2" style="align-items: center; margin-top: 14px;">
-              <div class="content-box highlight">
-                <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 10px;">📋 NHIỆM VỤ NHÓM 4:</p>
-                <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: #334155; font-weight: 600;">
+            <div class="grid-2" style="align-items: center; margin-top: 12px;">
+              <div class="notebook-box">
+                <p style="font-size: 15px; font-weight: 800; color: #1E3A8A; margin-bottom: 8px;">📋 NHIỆM VỤ NHÓM 4:</p>
+                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #334155; font-weight: 600;">
                   <p>• Thành viên 1: Chẩn đoán hồ sơ <strong>Nam</strong> (Tranh thuyết trình, đùn đẩy tài liệu).</p>
                   <p>• Thành viên 2: Chẩn đoán hồ sơ <strong>Sơn</strong> (Từ chối dọn dẹp vệ sinh hậu cần).</p>
                   <p>• Thành viên 3: Chẩn đoán hồ sơ <strong>Đức</strong> (Ngại đường xa không chịu đi in tài liệu).</p>
                   <p>• Thành viên 4: Chẩn đoán hồ sơ <strong>Việt</strong> (Đẩy phần tính chi phí cho nhóm trưởng).</p>
-                  <div style="margin-top: 8px; padding: 8px 12px; background: #FEF3C7; border-radius: 8px; color: #92400E;">
+                  <div style="margin-top: 6px; padding: 6px 10px; background: #FEF3C7; border-radius: 8px; color: #92400E; font-size: 13px;">
                     ✍️ Ghi vào vở: Tên nhân vật + Biểu hiện đùn đẩy công việc của bạn ấy.
                   </div>
                 </div>
@@ -845,7 +888,7 @@
               <div style="text-align: center;">
                 <div class="timer-widget">
                   <div>
-                    <div style="font-size: 12px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">THỜI GIAN NHẬN VIỆC</div>
+                    <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">THỜI GIAN NHẬN VIỆC</div>
                     <div class="timer-display" id="timerDisplayT2_6">01:00</div>
                   </div>
                   <div class="timer-controls">
@@ -854,7 +897,7 @@
                     <button class="timer-btn" onclick="resetTimerT2_6()">Đặt lại</button>
                   </div>
                 </div>
-                <div id="msgT2_6" style="margin-top: 14px; font-size: 15px; font-weight: 800; color: #059669; display: none;">
+                <div id="msgT2_6" style="margin-top: 12px; font-size: 14px; font-weight: 800; color: #059669; display: none;">
                   ✅ Mỗi thành viên đã có hồ sơ của mình! Chuyển sang giai đoạn chẩn đoán.
                 </div>
               </div>
@@ -862,7 +905,7 @@
           </div>
 
           <div>
-            <div style="text-align: right; margin-top: 16px;">
+            <div style="text-align: right; margin-top: 14px;">
               <button class="btn-action primary" onclick="goToSlide(7)">
                 📊 KẺ BẢNG PHÂN TÍCH VÀO VỞ ▶
               </button>
@@ -880,7 +923,7 @@
             <h2 class="slide-title">BẢNG KẾ HOẠCH PHÂN CÔNG CÔNG BẰNG</h2>
             <p class="slide-subtitle">Kẻ khung bảng 3 cột vào vở để bắt đầu phân tích ca bệnh của em</p>
 
-            <table class="edu-table" style="margin-top: 14px;">
+            <table class="edu-table" style="margin-top: 12px;">
               <thead>
                 <tr>
                   <th style="width: 30%;">CỘT 1: Biểu hiện đùn đẩy việc</th>
@@ -889,7 +932,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr style="height: 130px;">
+                <tr style="height: 120px;">
                   <td style="vertical-align: top; color: #64748B; font-style: italic;">(Ghi biểu hiện né tránh của nhân vật em nhận...)</td>
                   <td style="vertical-align: top; color: #64748B; font-style: italic;">(Chọn 1 nguyên tắc phù hợp để uốn nắn...)</td>
                   <td style="vertical-align: top; color: #64748B; font-style: italic;">(Đề xuất cách phân công mới công bằng, hợp tác...)</td>
@@ -897,15 +940,15 @@
               </tbody>
             </table>
 
-            <div class="content-box highlight" style="margin-top: 14px;">
-              <p style="font-size: 15px; font-weight: 700; color: #4338CA;">
+            <div class="notebook-box" style="margin-top: 12px;">
+              <p style="font-size: 14px; font-weight: 700; color: #1E3A8A;">
                 📌 Lưu ý: Em chỉ cần hoàn thành phân tích cho duy nhất 01 nhân vật mà em đang phụ trách.
               </p>
             </div>
           </div>
 
           <div>
-            <div style="text-align: center; margin-top: 16px;">
+            <div style="text-align: center; margin-top: 14px;">
               <button class="btn-action" onclick="goToSlide(8)">
                 ⏱️ TÔI ĐÃ KẺ BẢNG — BẮT ĐẦU 5 PHÚT CHẨN ĐOÁN
               </button>
@@ -923,17 +966,17 @@
             <h2 class="slide-title">5 PHÚT CHẨN ĐOÁN CÁ NHÂN</h2>
             <p class="slide-subtitle">Độc lập suy ngẫm và hoàn thành 3 cột chẩn đoán hồ sơ của em</p>
 
-            <div class="grid-2" style="align-items: center; margin-top: 14px;">
-              <div class="content-box highlight">
-                <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 12px;">🔍 3 CÂU HỎI ĐỊNH HƯỚNG CHẨN ĐOÁN:</p>
-                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #334155; font-weight: 600;">
-                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #4F46E5;">
+            <div class="grid-2" style="align-items: center; margin-top: 12px;">
+              <div class="notebook-box">
+                <p style="font-size: 15px; font-weight: 800; color: #1E3A8A; margin-bottom: 10px;">🔍 3 CÂU HỎI ĐỊNH HƯỚNG CHẨN ĐOÁN:</p>
+                <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: #334155; font-weight: 600;">
+                  <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #2563EB;">
                     ① Biểu hiện nào của nhân vật là chưa hợp tác?
                   </div>
-                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #D97706;">
+                  <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #D97706;">
                     ② Nguyên tắc nào trong 5 nguyên tắc có thể uốn nắn điều này?
                   </div>
-                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #059669;">
+                  <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #059669;">
                     ③ Nên phân công lại phần việc cụ thể như thế nào cho công bằng?
                   </div>
                 </div>
@@ -942,7 +985,7 @@
               <div style="text-align: center;">
                 <div class="timer-widget">
                   <div>
-                    <div style="font-size: 12px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ ĐẾM NGƯỢC</div>
+                    <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ ĐẾM NGƯỢC</div>
                     <div class="timer-display" id="timerDisplayT2_8">05:00</div>
                   </div>
                   <div class="timer-controls">
@@ -951,10 +994,10 @@
                     <button class="timer-btn" onclick="resetTimerT2_8()">Đặt lại</button>
                   </div>
                 </div>
-                <div id="warnT2_8" style="margin-top: 14px; font-size: 15px; font-weight: 800; color: #D97706; display: none;">
+                <div id="warnT2_8" style="margin-top: 12px; font-size: 14px; font-weight: 800; color: #D97706; display: none;">
                   ⏳ Còn 1 phút — Hoàn thiện Cột 3 (Phân công mới)!
                 </div>
-                <div id="msgT2_8" style="margin-top: 14px; font-size: 15px; font-weight: 800; color: #DC2626; display: none;">
+                <div id="msgT2_8" style="margin-top: 12px; font-size: 14px; font-weight: 800; color: #DC2626; display: none;">
                   🔔 Dừng bút! Chuẩn bị kiểm chứng phương án tham khảo.
                 </div>
               </div>
@@ -962,7 +1005,7 @@
           </div>
 
           <div>
-            <div style="text-align: right; margin-top: 16px;">
+            <div style="text-align: right; margin-top: 14px;">
               <button class="btn-action primary" onclick="goToSlide(9)">
                 🔍 ĐỐI CHIẾU 4 PHƯƠNG ÁN ▶
               </button>
@@ -981,48 +1024,48 @@
             <p class="slide-subtitle">Bấm từng hồ sơ để đối chiếu chẩn đoán với tiêu chuẩn sư phạm</p>
 
             <div class="grid-2" style="margin-top: 10px;">
-              <div class="content-box" style="border-left: 5px solid #4F46E5;">
+              <div class="notebook-box" style="border-left-color: #2563EB;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <strong style="color: #312E81; font-size: 16px;">HỒ SƠ 01 — BẠN NAM</strong>
-                  <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealRefCase('Nam')">Xem gợi ý</button>
+                  <strong style="color: #1E3A8A; font-size: 15px;">HỒ SƠ 01 — BẠN NAM</strong>
+                  <button class="btn-action secondary" style="padding: 5px 10px; font-size: 11px;" onclick="revealRefCase('Nam')">Xem gợi ý</button>
                 </div>
-                <div id="refNam" style="margin-top: 8px; font-size: 14px; color: #475569; display: none;">
+                <div id="refNam" style="margin-top: 6px; font-size: 13px; color: #475569; display: none;">
                   <p>• <strong>Biểu hiện:</strong> Giành làm thuyết trình nổi bật, đẩy việc tìm tài liệu.</p>
                   <p>• <strong>Nguyên tắc:</strong> Trách nhiệm cá nhân.</p>
-                  <p style="color: #4F46E5; font-weight: 700;">• <strong>Phân công mới:</strong> Nam tìm một nửa tài liệu và cùng thuyết trình với bạn.</p>
+                  <p style="color: #2563EB; font-weight: 700;">• <strong>Phân công mới:</strong> Nam tìm một nửa tài liệu và cùng thuyết trình với bạn.</p>
                 </div>
               </div>
 
-              <div class="content-box" style="border-left: 5px solid #D97706;">
+              <div class="notebook-box" style="border-left-color: #D97706;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <strong style="color: #92400E; font-size: 16px;">HỒ SƠ 02 — BẠN SƠN</strong>
-                  <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealRefCase('Son')">Xem gợi ý</button>
+                  <strong style="color: #92400E; font-size: 15px;">HỒ SƠ 02 — BẠN SƠN</strong>
+                  <button class="btn-action secondary" style="padding: 5px 10px; font-size: 11px;" onclick="revealRefCase('Son')">Xem gợi ý</button>
                 </div>
-                <div id="refSon" style="margin-top: 8px; font-size: 14px; color: #475569; display: none;">
+                <div id="refSon" style="margin-top: 6px; font-size: 13px; color: #475569; display: none;">
                   <p>• <strong>Biểu hiện:</strong> Từ chối dọn dẹp vệ sinh hậu cần sau làm mô hình.</p>
                   <p>• <strong>Nguyên tắc:</strong> Tương tác trực tiếp.</p>
                   <p style="color: #D97706; font-weight: 700;">• <strong>Phân công mới:</strong> Cả nhóm cùng dành 5 phút dọn dẹp vệ sinh chung trước khi ra về.</p>
                 </div>
               </div>
 
-              <div class="content-box" style="border-left: 5px solid #059669;">
+              <div class="notebook-box" style="border-left-color: #059669;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <strong style="color: #065F46; font-size: 16px;">HỒ SƠ 03 — BẠN ĐỨC</strong>
-                  <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealRefCase('Duc')">Xem gợi ý</button>
+                  <strong style="color: #065F46; font-size: 15px;">HỒ SƠ 03 — BẠN ĐỨC</strong>
+                  <button class="btn-action secondary" style="padding: 5px 10px; font-size: 11px;" onclick="revealRefCase('Duc')">Xem gợi ý</button>
                 </div>
-                <div id="refDuc" style="margin-top: 8px; font-size: 14px; color: #475569; display: none;">
+                <div id="refDuc" style="margin-top: 6px; font-size: 13px; color: #475569; display: none;">
                   <p>• <strong>Biểu hiện:</strong> Ngần ngại không chịu đi in tài liệu vì ngại đường xa.</p>
                   <p>• <strong>Nguyên tắc:</strong> Phụ thuộc tích cực.</p>
                   <p style="color: #059669; font-weight: 700;">• <strong>Phân công mới:</strong> Bạn cùng nhóm gửi file sớm, Đức in trên đường đi học về.</p>
                 </div>
               </div>
 
-              <div class="content-box" style="border-left: 5px solid #7C3AED;">
+              <div class="notebook-box" style="border-left-color: #7C3AED;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                  <strong style="color: #5B21B6; font-size: 16px;">HỒ SƠ 04 — BẠN VIỆT</strong>
-                  <button class="btn-action secondary" style="padding: 6px 12px; font-size: 12px;" onclick="revealRefCase('Viet')">Xem gợi ý</button>
+                  <strong style="color: #5B21B6; font-size: 15px;">HỒ SƠ 04 — BẠN VIỆT</strong>
+                  <button class="btn-action secondary" style="padding: 5px 10px; font-size: 11px;" onclick="revealRefCase('Viet')">Xem gợi ý</button>
                 </div>
-                <div id="refViet" style="margin-top: 8px; font-size: 14px; color: #475569; display: none;">
+                <div id="refViet" style="margin-top: 6px; font-size: 13px; color: #475569; display: none;">
                   <p>• <strong>Biểu hiện:</strong> Đẩy việc tính chi phí và mua dụng cụ cho nhóm trưởng.</p>
                   <p>• <strong>Nguyên tắc:</strong> Đánh giá hoạt động nhóm.</p>
                   <p style="color: #7C3AED; font-weight: 700;">• <strong>Phân công mới:</strong> Việt lập bảng kê thu chi minh bạch và công khai cho cả nhóm.</p>
@@ -1053,19 +1096,19 @@
             <h2 class="slide-title">GHÉP 4 MẢNH CHẨN ĐOÁN TRONG NHÓM</h2>
             <p class="slide-subtitle">Lần lượt từng bạn chia sẻ giải pháp để cả nhóm hoàn thiện đủ 4 hồ sơ vào vở</p>
 
-            <div style="margin-top: 14px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; background: #EEF2FF; padding: 14px 20px; border-radius: 14px; border: 1px solid #C7D2FE;">
-                <div style="font-weight: 800; color: #312E81;">TIẾN ĐỘ CHIA SẺ TRONG NHÓM:</div>
-                <div style="display: flex; gap: 10px;" id="trackSteps">
-                  <span class="btn-action secondary" id="step1" style="padding: 6px 14px; font-size: 13px;">1. NAM</span>
-                  <span class="btn-action secondary" id="step2" style="padding: 6px 14px; font-size: 13px;">2. SƠN</span>
-                  <span class="btn-action secondary" id="step3" style="padding: 6px 14px; font-size: 13px;">3. ĐỨC</span>
-                  <span class="btn-action secondary" id="step4" style="padding: 6px 14px; font-size: 13px;">4. VIỆT</span>
+            <div style="margin-top: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; background: #EFF6FF; padding: 12px 18px; border-radius: 14px; border: 1px solid #BFDBFE;">
+                <div style="font-weight: 800; color: #1E3A8A; font-size: 14px;">TIẾN ĐỘ CHIA SẺ TRONG NHÓM:</div>
+                <div style="display: flex; gap: 8px;" id="trackSteps">
+                  <span class="btn-action secondary" id="step1" style="padding: 5px 12px; font-size: 12px;">1. NAM</span>
+                  <span class="btn-action secondary" id="step2" style="padding: 5px 12px; font-size: 12px;">2. SƠN</span>
+                  <span class="btn-action secondary" id="step3" style="padding: 5px 12px; font-size: 12px;">3. ĐỨC</span>
+                  <span class="btn-action secondary" id="step4" style="padding: 5px 12px; font-size: 12px;">4. VIỆT</span>
                 </div>
               </div>
 
-              <div class="content-box highlight" style="margin-top: 14px;">
-                <p style="font-size: 16px; font-weight: 700; color: #1E1B4B;">
+              <div class="notebook-box" style="margin-top: 12px;">
+                <p style="font-size: 15px; font-weight: 700; color: #1E1B4B;">
                   👥 Lắng nghe giải pháp của từng bạn và ghi bổ sung đầy đủ 4 trường hợp vào bảng của mình trong vở.
                 </p>
               </div>
@@ -1073,12 +1116,12 @@
           </div>
 
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-              <div class="timer-widget" style="padding: 8px 18px;">
-                <span style="font-size: 13px; font-weight: 800; color: #FDE047;">ĐẾM GIỜ NHÓM 4:</span>
-                <span class="timer-display" id="timerDisplayT2_10" style="font-size: 24px; min-width: 70px;">04:00</span>
-                <button class="timer-btn" style="padding: 4px 8px; font-size: 12px;" onclick="startTimerT2_10()">Chạy</button>
-                <button class="timer-btn" style="padding: 4px 8px; font-size: 12px;" onclick="pauseTimerT2_10()">Dừng</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+              <div class="timer-widget" style="padding: 6px 16px;">
+                <span style="font-size: 12px; font-weight: 800; color: #FDE047;">ĐẾM GIỜ NHÓM 4:</span>
+                <span class="timer-display" id="timerDisplayT2_10" style="font-size: 22px; min-width: 60px;">04:00</span>
+                <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="startTimerT2_10()">Chạy</button>
+                <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="pauseTimerT2_10()">Dừng</button>
               </div>
               <button class="btn-action secondary" onclick="nextShareStep()">
                 ▶ LƯỢT TIẾP THEO
@@ -1139,15 +1182,15 @@
               </table>
             </div>
 
-            <div id="boxPrompt11" class="content-box highlight" style="margin-top: 14px;">
-              <p style="font-size: 16px; font-weight: 700; color: #312E81;">
+            <div id="boxPrompt11" class="notebook-box" style="margin-top: 12px;">
+              <p style="font-size: 15px; font-weight: 700; color: #1E3A8A;">
                 🎤 Giáo viên mời 2 đại diện nhóm đứng dậy báo cáo nhanh phương án điều chỉnh của nhóm mình.
               </p>
             </div>
 
-            <div id="boxConclusion11" class="content-box amber" style="margin-top: 14px; display: none;">
-              <p style="font-size: 15px; font-weight: 800; color: #B45309;">💡 KẾT LUẬN SƯ PHẠM:</p>
-              <p style="font-size: 16px; font-weight: 700; color: #92400E;">
+            <div id="boxConclusion11" class="sticky-note" style="margin-top: 12px; display: none;">
+              <p style="font-size: 14px; font-weight: 800; color: #854D0E;">💡 KẾT LUẬN SƯ PHẠM:</p>
+              <p style="font-size: 15px; font-weight: 700; color: #713F12;">
                 Khi nhiệm vụ gắn liền với trách nhiệm cá nhân rõ ràng và sự tương tác hỗ trợ lẫn nhau, mọi thành viên đều dễ dàng tự giác làm tròn phần việc của mình.
               </p>
             </div>
@@ -1175,29 +1218,29 @@
             <h2 class="slide-title">GIÁO VIÊN TƯ VẤN CẦN LÀM GÌ?</h2>
             <p class="slide-subtitle">3 Tiêu chuẩn vàng để xây dựng một lời tư vấn sư phạm thuyết phục</p>
 
-            <div class="grid-3" style="margin-top: 14px;">
+            <div class="grid-3" style="margin-top: 12px;">
               <div class="reveal-card" id="cardTv1" onclick="revealTv(1)">
-                <div style="font-size: 32px; margin-bottom: 8px;">⚖️</div>
-                <h3 style="font-size: 17px; font-weight: 900; color: #312E81;">① CÔNG TÂM</h3>
-                <p id="txtTv1" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm mở)</p>
+                <div style="font-size: 28px; margin-bottom: 6px;">⚖️</div>
+                <h3 style="font-size: 16px; font-weight: 900; color: #1E3A8A;">① CÔNG TÂM</h3>
+                <p id="txtTv1" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
               </div>
 
               <div class="reveal-card" id="cardTv2" onclick="revealTv(2)">
-                <div style="font-size: 32px; margin-bottom: 8px;">💎</div>
-                <h3 style="font-size: 17px; font-weight: 900; color: #D97706;">② GIẢI THÍCH GIÁ TRỊ</h3>
-                <p id="txtTv2" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm mở)</p>
+                <div style="font-size: 28px; margin-bottom: 6px;">💎</div>
+                <h3 style="font-size: 16px; font-weight: 900; color: #D97706;">② GIẢI THÍCH GIÁ TRỊ</h3>
+                <p id="txtTv2" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
               </div>
 
               <div class="reveal-card" id="cardTv3" onclick="revealTv(3)">
-                <div style="font-size: 32px; margin-bottom: 8px;">🤝</div>
-                <h3 style="font-size: 17px; font-weight: 900; color: #059669;">③ KHÔNG ÁP ĐẶT</h3>
-                <p id="txtTv3" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm mở)</p>
+                <div style="font-size: 28px; margin-bottom: 6px;">🤝</div>
+                <h3 style="font-size: 16px; font-weight: 900; color: #059669;">③ KHÔNG ÁP ĐẶT</h3>
+                <p id="txtTv3" style="font-size: 13px; color: #64748B; margin-top: 4px;">(Bấm mở)</p>
               </div>
             </div>
 
-            <div id="boxTvConclusion" class="content-box amber" style="margin-top: 16px; display: none;">
-              <p style="font-size: 15px; font-weight: 800; color: #B45309;">💡 KẾT LUẬN SƯ PHẠM:</p>
-              <p style="font-size: 16px; font-weight: 700; color: #92400E;">
+            <div id="boxTvConclusion" class="sticky-note" style="margin-top: 14px; display: none;">
+              <p style="font-size: 14px; font-weight: 800; color: #854D0E;">💡 KẾT LUẬN SƯ PHẠM:</p>
+              <p style="font-size: 15px; font-weight: 700; color: #713F12;">
                 Thuyết phục hiệu quả không phải là ép buộc, mà là giúp bạn thấu hiểu giá trị đóng góp của mình đối với kết quả chung của cả tập thể.
               </p>
             </div>
@@ -1225,17 +1268,17 @@
             <h2 class="slide-title">CHUẨN BỊ LỜI TƯ VẤN</h2>
             <p class="slide-subtitle">Chọn 1 nhân vật và chuẩn bị cấu trúc 3 bước thuyết phục bạn ngừng đùn đẩy</p>
 
-            <div class="grid-2" style="align-items: center; margin-top: 12px;">
-              <div class="content-box highlight">
-                <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 10px;">📋 KHUNG CẤU TRÚC 3 BƯỚC THUYẾT PHỤC:</p>
-                <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: #334155; font-weight: 600;">
-                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #4F46E5;">
+            <div class="grid-2" style="align-items: center; margin-top: 10px;">
+              <div class="notebook-box">
+                <p style="font-size: 15px; font-weight: 800; color: #1E3A8A; margin-bottom: 8px;">📋 KHUNG CẤU TRÚC 3 BƯỚC THUYẾT PHỤC:</p>
+                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #334155; font-weight: 600;">
+                  <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #2563EB;">
                     ① <strong>Gọi tên vấn đề:</strong> Ghi nhận điểm mạnh và chỉ ra rào cản một cách nhẹ nhàng.
                   </div>
-                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #D97706;">
+                  <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #D97706;">
                     ② <strong>Giải thích giá trị:</strong> Vì sao phần việc này lại đóng vai trò quyết định?
                   </div>
-                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #059669;">
+                  <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #059669;">
                     ③ <strong>Đề xuất cách làm mới:</strong> Phân chia công bằng và cùng nhau phối hợp.
                   </div>
                 </div>
@@ -1244,7 +1287,7 @@
               <div style="text-align: center;">
                 <div class="timer-widget">
                   <div>
-                    <div style="font-size: 12px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">CHUẨN BỊ LỜI THOẠI</div>
+                    <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">CHUẨN BỊ LỜI THOẠI</div>
                     <div class="timer-display" id="timerDisplayT2_13">02:00</div>
                   </div>
                   <div class="timer-controls">
@@ -1257,7 +1300,7 @@
           </div>
 
           <div>
-            <div style="text-align: center; margin-top: 16px;">
+            <div style="text-align: center; margin-top: 14px;">
               <button class="btn-action" onclick="goToSlide(14)">
                 🎭 SẴN SÀNG DIỄN TẬP
               </button>
@@ -1275,14 +1318,14 @@
             <h2 class="slide-title">DIỄN TẬP LƯỢT 1</h2>
             <p class="slide-subtitle">Bạn A: Giáo viên tư vấn | Bạn B: Thành viên đang đùn đẩy công việc</p>
 
-            <div class="grid-2" style="margin-top: 12px;">
-              <div class="content-box highlight" style="border: 2px solid #4F46E5;">
-                <p style="font-size: 14px; font-weight: 800; color: #4F46E5;">TRÌNH TỰ DIỄN TẬP 2 CHẶNG:</p>
-                <div style="margin-top: 8px; font-size: 15px; color: #334155; line-height: 1.6;">
+            <div class="grid-2" style="margin-top: 10px;">
+              <div class="notebook-box" style="border-left-color: #2563EB;">
+                <p style="font-size: 13px; font-weight: 800; color: #2563EB;">TRÌNH TỰ DIỄN TẬP 2 CHẶNG:</p>
+                <div style="margin-top: 6px; font-size: 14px; color: #334155; line-height: 1.5;">
                   <p>• <strong>Chặng 1 (90 giây):</strong> Bạn A tư vấn và thuyết phục bạn B theo 3 bước.</p>
                   <p>• <strong>Chặng 2 (90 giây):</strong> Bạn B phản hồi và bạn A ghi 1 nhận xét vào vở.</p>
                 </div>
-                <div id="subStageMsg14" style="margin-top: 10px; font-size: 14px; font-weight: 800; color: #D97706;">
+                <div id="subStageMsg14" style="margin-top: 8px; font-size: 13px; font-weight: 800; color: #D97706;">
                   ▶ Đang ở: Chặng 1 — Bạn A tư vấn
                 </div>
               </div>
@@ -1290,7 +1333,7 @@
               <div style="text-align: center;">
                 <div class="timer-widget">
                   <div>
-                    <div style="font-size: 12px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ 2 CHẶNG TỰ ĐỘNG</div>
+                    <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ 2 CHẶNG TỰ ĐỘNG</div>
                     <div class="timer-display" id="timerDisplayT2_14">01:30</div>
                   </div>
                   <div class="timer-controls">
@@ -1304,7 +1347,7 @@
           </div>
 
           <div>
-            <div style="text-align: right; margin-top: 16px;">
+            <div style="text-align: right; margin-top: 14px;">
               <button class="btn-action primary" onclick="goToSlide(15)">
                 🔄 ĐỔI VAI (LƯỢT 2) ▶
               </button>
@@ -1322,14 +1365,14 @@
             <h2 class="slide-title">DIỄN TẬP LƯỢT 2 (ĐỔI VAI)</h2>
             <p class="slide-subtitle">Bạn B: Giáo viên tư vấn | Bạn A: Thành viên đang đùn đẩy công việc</p>
 
-            <div class="grid-2" style="margin-top: 12px;">
-              <div class="content-box amber" style="border: 2px solid #D97706;">
-                <p style="font-size: 14px; font-weight: 800; color: #B45309;">TRÌNH TỰ ĐỔI VAI 2 CHẶNG:</p>
-                <div style="margin-top: 8px; font-size: 15px; color: #334155; line-height: 1.6;">
+            <div class="grid-2" style="margin-top: 10px;">
+              <div class="notebook-box" style="border-left-color: #D97706;">
+                <p style="font-size: 13px; font-weight: 800; color: #D97706;">TRÌNH TỰ ĐỔI VAI 2 CHẶNG:</p>
+                <div style="margin-top: 6px; font-size: 14px; color: #334155; line-height: 1.5;">
                   <p>• <strong>Chặng 1 (90 giây):</strong> Bạn B tư vấn và thuyết phục bạn A theo 3 bước.</p>
                   <p>• <strong>Chặng 2 (90 giây):</strong> Bạn A phản hồi và bạn B ghi 1 nhận xét vào vở.</p>
                 </div>
-                <div id="subStageMsg15" style="margin-top: 10px; font-size: 14px; font-weight: 800; color: #B45309;">
+                <div id="subStageMsg15" style="margin-top: 8px; font-size: 13px; font-weight: 800; color: #D97706;">
                   ▶ Đang ở: Chặng 1 — Bạn B tư vấn
                 </div>
               </div>
@@ -1337,7 +1380,7 @@
               <div style="text-align: center;">
                 <div class="timer-widget">
                   <div>
-                    <div style="font-size: 12px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ 2 CHẶNG TỰ ĐỘNG</div>
+                    <div style="font-size: 11px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ 2 CHẶNG TỰ ĐỘNG</div>
                     <div class="timer-display" id="timerDisplayT2_15">01:30</div>
                   </div>
                   <div class="timer-controls">
@@ -1351,7 +1394,7 @@
           </div>
 
           <div>
-            <div style="text-align: right; margin-top: 16px;">
+            <div style="text-align: right; margin-top: 14px;">
               <button class="btn-action primary" onclick="goToSlide(16)">
                 🎬 TRÌNH DIỄN TRƯỚC HỘI ĐỒNG ▶
               </button>
@@ -1370,8 +1413,8 @@
             <p class="slide-subtitle">2 Nhóm đôi trình diễn mẫu trước lớp kèm Bảng kiểm đánh giá</p>
 
             <div class="grid-2" style="margin-top: 10px;">
-              <div class="content-box highlight">
-                <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 10px;">📋 BẢNG KIỂM ĐÁNH GIÁ (CHECKLIST):</p>
+              <div class="notebook-box">
+                <p style="font-size: 15px; font-weight: 800; color: #1E3A8A; margin-bottom: 8px;">📋 BẢNG KIỂM ĐÁNH GIÁ (CHECKLIST):</p>
                 <div class="rubric-item" onclick="toggleRubric(this)">
                   <input type="checkbox"> <span>Thái độ công tâm, không thiên vị hay đổ lỗi</span>
                 </div>
@@ -1386,12 +1429,12 @@
                 </div>
               </div>
 
-              <div id="boxRefSpeech16" class="content-box amber">
-                <p style="font-size: 15px; font-weight: 800; color: #B45309; margin-bottom: 6px;">💬 LỜI TƯ VẤN THAM KHẢO:</p>
-                <div id="refSpeechText16" style="display: none; font-size: 15px; color: #92400E; line-height: 1.6; font-weight: 600;">
+              <div id="boxRefSpeech16" class="sticky-note">
+                <p style="font-size: 14px; font-weight: 800; color: #854D0E; margin-bottom: 4px;">💬 LỜI TƯ VẤN THAM KHẢO:</p>
+                <div id="refSpeechText16" style="display: none; font-size: 14px; color: #713F12; line-height: 1.6; font-weight: 600;">
                   “Chào Nam, việc tìm tài liệu rất quan trọng vì nó quyết định chiều sâu của bài báo cáo. Nếu Nam phụ trách tìm tài liệu phần đầu và cùng thuyết trình với bạn, bài của nhóm mình chắc chắn sẽ rất thuyết phục và đạt kết quả cao!”
                 </div>
-                <div id="btnShowSpeech16" style="text-align: center; margin-top: 20px;">
+                <div id="btnShowSpeech16" style="text-align: center; margin-top: 16px;">
                   <button class="btn-action secondary" onclick="revealSpeech16()">👁️ HIỆN LỜI TƯ VẤN MẪU</button>
                 </div>
               </div>
@@ -1399,7 +1442,7 @@
           </div>
 
           <div>
-            <div style="text-align: right; margin-top: 16px;">
+            <div style="text-align: right; margin-top: 14px;">
               <button class="btn-action primary" onclick="goToSlide(17)">
                 📝 PHẢN TƯ SƯ PHẠM ▶
               </button>
@@ -1417,25 +1460,25 @@
             <h2 class="slide-title">PHẢN TƯ SƯ PHẠM</h2>
             <p class="slide-subtitle">Nhìn nhận lại phản ứng của bản thân và ghi 2 dòng vào vở</p>
 
-            <div class="content-box highlight" style="margin-top: 14px;">
-              <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 8px;">❓ 2 CÂU HỎI PHẢN TƯ CÁ NHÂN:</p>
-              <div style="display: flex; flex-direction: column; gap: 12px; font-size: 16px; color: #1E1B4B; font-weight: 600;">
+            <div class="notebook-box" style="margin-top: 12px;">
+              <p style="font-size: 15px; font-weight: 800; color: #1E3A8A; margin-bottom: 6px;">❓ 2 CÂU HỎI PHẢN TƯ CÁ NHÂN:</p>
+              <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; color: #1E1B4B; font-weight: 600;">
                 <p>1. Khi nhóm phân công một phần việc khó hoặc tẻ nhạt, em thường có phản ứng ban đầu như thế nào?</p>
                 <p>2. Em sẽ dùng nguyên tắc nào trong 5 nguyên tắc Học tập hợp tác để điều chỉnh thái độ đó?</p>
               </div>
-              <p style="font-size: 14px; color: #64748B; margin-top: 10px; font-style: italic;">
+              <p style="font-size: 13px; color: #64748B; margin-top: 8px; font-style: italic;">
                 ✍️ Viết 2 dòng câu trả lời chân thật vào vở ghi của em.
               </p>
             </div>
           </div>
 
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
-              <div class="timer-widget" style="padding: 8px 18px;">
-                <span style="font-size: 13px; font-weight: 800; color: #FDE047;">ĐẾM GIỜ GHI VỞ:</span>
-                <span class="timer-display" id="timerDisplayT2_17" style="font-size: 24px; min-width: 70px;">02:00</span>
-                <button class="timer-btn" style="padding: 4px 8px; font-size: 12px;" onclick="startTimerT2_17()">Chạy</button>
-                <button class="timer-btn" style="padding: 4px 8px; font-size: 12px;" onclick="pauseTimerT2_17()">Dừng</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+              <div class="timer-widget" style="padding: 6px 16px;">
+                <span style="font-size: 12px; font-weight: 800; color: #FDE047;">ĐẾM GIỜ GHI VỞ:</span>
+                <span class="timer-display" id="timerDisplayT2_17" style="font-size: 22px; min-width: 60px;">02:00</span>
+                <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="startTimerT2_17()">Chạy</button>
+                <button class="timer-btn" style="padding: 3px 6px; font-size: 11px;" onclick="pauseTimerT2_17()">Dừng</button>
               </div>
               <button class="btn-action primary" onclick="goToSlide(18)">
                 📜 CAM KẾT ĐỒNG ĐỘI ▶
@@ -1456,26 +1499,26 @@
             <h2 class="slide-title">CAM KẾT CỦA MỘT NGƯỜI ĐỒNG ĐỘI</h2>
             <p class="slide-subtitle">Khẳng định tinh thần trách nhiệm và sự công bằng trong mọi hoạt động nhóm</p>
 
-            <div class="content-box highlight" style="border: 2px solid #818CF8; padding: 28px; margin-top: 10px;">
-              <p style="font-size: 15px; font-weight: 800; color: #4338CA; margin-bottom: 8px;">📜 BẢN CAM KẾT ĐỒNG ĐỘI:</p>
-              <p style="font-size: 19px; font-weight: 800; color: #1E1B4B; line-height: 1.7; font-style: italic;">
+            <div class="notebook-box" style="border-left-color: #2563EB; padding: 24px; margin-top: 8px;">
+              <p style="font-size: 14px; font-weight: 800; color: #1D4ED8; margin-bottom: 6px;">📜 BẢN CAM KẾT ĐỒNG ĐỘI:</p>
+              <p style="font-size: 18px; font-weight: 800; color: #1E1B4B; line-height: 1.7; font-style: italic;">
                 “Em cam kết luôn chủ động trao đổi thẳng thắn để phân chia công việc công bằng và hoàn thành trọn vẹn trách nhiệm phần việc đã thống nhất.”
               </p>
-              <div style="margin-top: 14px; font-size: 15px; color: #475569; font-weight: 600;">
+              <div style="margin-top: 10px; font-size: 14px; color: #475569; font-weight: 600;">
                 ✍️ Ghi câu cam kết vào vở và ký tên xác nhận.
               </div>
             </div>
 
-            <div id="boxFinalMsgT2" class="content-box amber" style="margin-top: 14px; display: none;">
-              <p style="font-size: 15px; font-weight: 800; color: #B45309;">✨ THÔNG ĐIỆP BẾ MẠC TIẾT 2:</p>
-              <p style="font-size: 17px; font-weight: 800; color: #92400E;">
+            <div id="boxFinalMsgT2" class="sticky-note" style="margin-top: 12px; display: none;">
+              <p style="font-size: 14px; font-weight: 800; color: #854D0E;">✨ THÔNG ĐIỆP BẾ MẠC TIẾT 2:</p>
+              <p style="font-size: 16px; font-weight: 800; color: #713F12;">
                 Tự giác gánh vác trách nhiệm trên nền tảng công bằng là phẩm chất quý giá của một người đồng đội xuất sắc!
               </p>
             </div>
           </div>
 
           <div>
-            <div style="text-align: center; margin-top: 16px;">
+            <div style="text-align: center; margin-top: 14px;">
               <button class="btn-action emerald" id="btnFinishT2" onclick="finishTiet2()">
                 ✍️ HOÀN THÀNH TIẾT 2
               </button>
@@ -1513,7 +1556,7 @@
   </div>
 
   <script>
-    /* AUDIO SYNTHESIZER */
+    /* AUDIO SYNTHESIZER (SCHOOL BELL & CHIMES) */
     let audioCtx = null;
     let isAudioEnabled = true;
 
@@ -1525,7 +1568,7 @@
     function toggleAudio() {
       isAudioEnabled = !isAudioEnabled;
       const btn = document.getElementById('btnAudioToggle');
-      if (btn) btn.innerText = isAudioEnabled ? '🔊 Âm thanh: BẬT' : '🔇 Âm thanh: TẮT';
+      if (btn) btn.innerText = isAudioEnabled ? '🔔 Chuông trường: BẬT' : '🔕 Chuông trường: TẮT';
       if (isAudioEnabled) playSound('click');
     }
 
@@ -1548,19 +1591,26 @@
           const osc2 = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc1.type = 'sine'; osc2.type = 'sine';
-          osc1.frequency.setValueAtTime(523.25, now); osc1.frequency.setValueAtTime(659.25, now + 0.1);
-          osc2.frequency.setValueAtTime(659.25, now); osc2.frequency.setValueAtTime(1046.50, now + 0.1);
-          gain.gain.setValueAtTime(0.25, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45);
+          osc1.frequency.setValueAtTime(587.33, now); osc1.frequency.setValueAtTime(880, now + 0.12);
+          osc2.frequency.setValueAtTime(880, now); osc2.frequency.setValueAtTime(1174.66, now + 0.12);
+          gain.gain.setValueAtTime(0.25, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
           osc1.connect(gain); osc2.connect(gain); gain.connect(audioCtx.destination);
-          osc1.start(now); osc2.start(now); osc1.stop(now + 0.45); osc2.stop(now + 0.45);
+          osc1.start(now); osc2.start(now); osc1.stop(now + 0.5); osc2.stop(now + 0.5);
         } else if (type === 'alarm') {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'triangle'; osc.frequency.setValueAtTime(880, now);
-          osc.frequency.setValueAtTime(440, now + 0.15); osc.frequency.setValueAtTime(880, now + 0.3);
-          gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
-          osc.connect(gain); gain.connect(audioCtx.destination);
-          osc.start(now); osc.stop(now + 0.5);
+          // Chuông trường học 2 hồi (Ding-Dong)
+          const osc1 = audioCtx.createOscillator();
+          const gain1 = audioCtx.createGain();
+          osc1.type = 'sine'; osc1.frequency.setValueAtTime(783.99, now);
+          gain1.gain.setValueAtTime(0.3, now); gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+          osc1.connect(gain1); gain1.connect(audioCtx.destination);
+          osc1.start(now); osc1.stop(now + 0.4);
+
+          const osc2 = audioCtx.createOscillator();
+          const gain2 = audioCtx.createGain();
+          osc2.type = 'sine'; osc2.frequency.setValueAtTime(659.25, now + 0.25);
+          gain2.gain.setValueAtTime(0.3, now + 0.25); gain2.gain.exponentialRampToValueAtTime(0.01, now + 0.7);
+          osc2.connect(gain2); gain2.connect(audioCtx.destination);
+          osc2.start(now + 0.25); osc2.stop(now + 0.7);
         } else if (type === 'stamp') {
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
@@ -1638,7 +1688,6 @@
     });
 
     /* SLIDE-SPECIFIC LOGIC */
-    // Slide 2: Mở kho kiến thức
     const knData = ["Phụ thuộc tích cực", "Trách nhiệm cá nhân", "Tương tác trực tiếp", "Kỹ năng xã hội", "Đánh giá hoạt động nhóm"];
     let knIndex = 0;
     function revealNextPrinciple() {
@@ -1648,11 +1697,10 @@
         const card = document.getElementById('cardKn' + knIndex);
         const text = document.getElementById('knText' + knIndex);
         if (card) card.classList.add('revealed');
-        if (text) { text.innerText = knData[knIndex - 1]; text.style.color = '#312E81'; }
+        if (text) { text.innerText = knData[knIndex - 1]; text.style.color = '#1E3A8A'; }
       }
     }
 
-    // Slide 3: True / False
     function selectTF(statementNum, isTrue) {
       playSound('click');
       if (statementNum === 1) {
@@ -1664,7 +1712,6 @@
       }
     }
 
-    // Slide 4: Giải thích đáp án
     function revealQuizAnswers() {
       playSound('correct');
       document.getElementById('boxAns1').style.display = 'block';
@@ -1672,7 +1719,6 @@
       document.getElementById('boxInvite').style.display = 'block';
     }
 
-    // Slide 5: Tiếp nhận 4 hồ sơ
     const caseData = {
       Nam: "Giành làm phần thuyết trình nổi bật, đùn đẩy việc tìm kiếm tài liệu cho bạn.",
       Son: "Từ chối dọn dẹp vệ sinh hậu cần sau khi hoàn thành buổi làm mô hình.",
@@ -1690,7 +1736,6 @@
       ['Nam', 'Son', 'Duc', 'Viet'].forEach(name => revealCase(name));
     }
 
-    // Slide 6: Timer 01:00
     let timerT2_6 = null;
     let secT2_6 = 60;
     function formatTime(s) {
@@ -1714,7 +1759,6 @@
     function pauseTimerT2_6() { clearInterval(timerT2_6); }
     function resetTimerT2_6() { clearInterval(timerT2_6); secT2_6 = 60; document.getElementById('timerDisplayT2_6').innerText = '01:00'; document.getElementById('msgT2_6').style.display = 'none'; }
 
-    // Slide 8: Timer 05:00
     let timerT2_8 = null;
     let secT2_8 = 300;
     function startTimerT2_8() {
@@ -1737,7 +1781,6 @@
     function pauseTimerT2_8() { clearInterval(timerT2_8); }
     function resetTimerT2_8() { clearInterval(timerT2_8); secT2_8 = 300; document.getElementById('timerDisplayT2_8').innerText = '05:00'; document.getElementById('warnT2_8').style.display = 'none'; document.getElementById('msgT2_8').style.display = 'none'; }
 
-    // Slide 9: Mở phương án tham khảo
     function revealRefCase(name) {
       playSound('correct');
       const box = document.getElementById('ref' + name);
@@ -1747,7 +1790,6 @@
       ['Nam', 'Son', 'Duc', 'Viet'].forEach(name => revealRefCase(name));
     }
 
-    // Slide 10: Chia sẻ nhóm 4 & Timer 04:00
     let curStep10 = 1;
     function nextShareStep() {
       curStep10 = (curStep10 < 4) ? curStep10 + 1 : 1;
@@ -1779,7 +1821,6 @@
     }
     function pauseTimerT2_10() { clearInterval(timerT2_10); }
 
-    // Slide 11: Hiện bảng đối chiếu tổng hợp
     function revealMasterTable() {
       playSound('correct');
       document.getElementById('boxMasterTable').style.display = 'block';
@@ -1787,7 +1828,6 @@
       document.getElementById('boxPrompt11').style.display = 'none';
     }
 
-    // Slide 12: Mở tiêu chuẩn tư vấn
     const tvData = [
       "Không thiên vị hoặc đổ lỗi, nhìn nhận vấn đề khách quan.",
       "Giúp bạn hiểu vì sao phần việc của mình có ý nghĩa quyết định.",
@@ -1805,7 +1845,6 @@
       for (let i = 1; i <= 3; i++) revealTv(i);
     }
 
-    // Slide 13: Timer chuẩn bị
     let timerT2_13 = null;
     let secT2_13 = 120;
     function startTimerT2_13() {
@@ -1822,7 +1861,6 @@
     }
     function pauseTimerT2_13() { clearInterval(timerT2_13); }
 
-    // Slide 14: 2 Chặng tự động lượt 1 (90s x 2)
     let timerT2_14 = null;
     let secT2_14 = 90;
     let stageT2_14 = 1;
@@ -1849,7 +1887,6 @@
     function pauseTimerT2_14() { clearInterval(timerT2_14); }
     function resetTimerT2_14() { clearInterval(timerT2_14); secT2_14 = 90; stageT2_14 = 1; document.getElementById('timerDisplayT2_14').innerText = '01:30'; document.getElementById('subStageMsg14').innerText = '▶ Đang ở: Chặng 1 — Bạn A tư vấn'; }
 
-    // Slide 15: 2 Chặng tự động lượt 2 (90s x 2)
     let timerT2_15 = null;
     let secT2_15 = 90;
     let stageT2_15 = 1;
@@ -1876,7 +1913,6 @@
     function pauseTimerT2_15() { clearInterval(timerT2_15); }
     function resetTimerT2_15() { clearInterval(timerT2_15); secT2_15 = 90; stageT2_15 = 1; document.getElementById('timerDisplayT2_15').innerText = '01:30'; document.getElementById('subStageMsg15').innerText = '▶ Đang ở: Chặng 1 — Bạn B tư vấn'; }
 
-    // Slide 16: Checklist & Lời thoại mẫu
     function toggleRubric(el) {
       playSound('click');
       el.classList.toggle('checked');
@@ -1889,7 +1925,6 @@
       document.getElementById('btnShowSpeech16').style.display = 'none';
     }
 
-    // Slide 17: Timer phản tư
     let timerT2_17 = null;
     let secT2_17 = 120;
     function startTimerT2_17() {
@@ -1906,7 +1941,6 @@
     }
     function pauseTimerT2_17() { clearInterval(timerT2_17); }
 
-    // Slide 18: Hoàn thành Tiết 2
     function finishTiet2() {
       playSound('stamp');
       const stamp = document.getElementById('stampCommitT2');
@@ -1914,11 +1948,10 @@
       document.getElementById('boxFinalMsgT2').style.display = 'block';
       document.getElementById('btnFinishT2').style.display = 'none';
       try {
-        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+        confetti({ particleCount: 110, spread: 75, origin: { y: 0.6 } });
       } catch (e) {}
     }
 
-    /* PREVENT COMPOUND WORD WRAPPING */
     function preventCompoundWordWrapping() {
       const compoundWords = [
         "Trung học cơ sở", "Kỹ năng sống", "Giáo viên", "Học sinh",
