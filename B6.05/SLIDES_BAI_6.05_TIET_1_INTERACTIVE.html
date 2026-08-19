@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 6.05 — Tiết 1: Nhận diện mâu thuẫn đùn đẩy việc và hình thành 5 nguyên tắc Học tập hợp tác</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      user-select: none;
+      word-break: keep-all;
+      position: relative;
+    }
+
+    /* Nền hoa văn trang nhã phong cách Sư phạm Học đường */
+    .edu-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: 
+        radial-gradient(circle at 10% 15%, rgba(79, 70, 229, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(217, 119, 6, 0.08) 0%, transparent 45%),
+        linear-gradient(135deg, #F8FAFC 0%, #EEF2FF 50%, #F1F5F9 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .edu-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background-image: linear-gradient(rgba(79, 70, 229, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(79, 70, 229, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      height: 100vh;
+    }
+    
+    /* SIDEBAR ĐIỀU HƯỚNG */
+    .sidebar {
+      width: 380px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      border-right: 2px solid #CBD5E1;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 4px 0 25px rgba(15, 23, 42, 0.08);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    .sidebar.collapsed { width: 0; overflow: hidden; border: none; }
+    .sidebar-header {
+      padding: 20px;
+      background: linear-gradient(135deg, #312E81 0%, #1E1B4B 100%);
+      color: #FFFFFF;
+      border-bottom: 3px solid #D97706;
+    }
+    .sidebar-header h2 { font-family: 'Montserrat', sans-serif; font-size: 16px; color: #FDE047; letter-spacing: 0.5px; }
+    .sidebar-header p { font-size: 12px; color: #A5B4FC; font-weight: 700; margin-top: 4px; }
+    
+    .sidebar-nav { flex: 1; overflow-y: auto; padding: 14px; }
+    
+    .activity-header {
+      font-size: 12px;
+      font-weight: 900;
+      color: #312E81;
+      background: #EEF2FF;
+      border-left: 4px solid #D97706;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-top: 14px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-item {
+      padding: 9px 12px;
+      font-size: 13px;
+      color: #334155;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 3px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid transparent;
+    }
+    .nav-item:hover { background: #E0E7FF; color: #4338CA; font-weight: 700; }
+    .nav-item.active { background: #EEF2FF; color: #312E81; font-weight: 800; border-left: 4px solid #4F46E5; border-color: #C7D2FE; }
+    .nav-item .slide-num { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 11px; background: #E2E8F0; color: #475569; padding: 2px 6px; border-radius: 4px; }
+    .nav-item.active .slide-num { background: #4F46E5; color: #FFFFFF; }
+
+    /* MAIN VIEWPORT */
+    .main-viewport {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    /* HEADER */
+    .top-header {
+      height: 64px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(15px);
+      border-bottom: 2px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+      z-index: 5;
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .btn-toggle-sidebar {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-toggle-sidebar:hover { background: #E2E8F0; color: #0F172A; }
+    
+    .theme-badge {
+      background: linear-gradient(135deg, #4F46E5, #312E81);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    }
+    .role-badge {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 12px; }
+    .header-tool-btn {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .header-tool-btn:hover { background: #F8FAFC; border-color: #94A3B8; }
+
+    /* SLIDE STAGE */
+    .slide-stage {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .slide-card {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(25px);
+      border: 2px solid #CBD5E1;
+      border-radius: 24px;
+      padding: 36px 44px;
+      width: 100%;
+      max-width: 1100px;
+      min-height: 540px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide-card.active { display: flex; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* SLIDE TYPOGRAPHY */
+    .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #EEF2FF;
+      color: #4338CA;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 30px;
+      border: 1px solid #C7D2FE;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .slide-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: #1E1B4B;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .slide-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    /* TEACHER NOTE BAR */
+    .teacher-instruction-bar {
+      background: #FFFBEB;
+      border-left: 4px solid #D97706;
+      border-right: 1px solid #FDE68A;
+      border-top: 1px solid #FDE68A;
+      border-bottom: 1px solid #FDE68A;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #92400E;
+      font-weight: 600;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .teacher-instruction-bar strong { color: #B45309; }
+
+    /* FOOTER CONTROLS */
+    .bottom-bar {
+      height: 68px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(15px);
+      border-top: 2px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.04);
+      z-index: 5;
+    }
+    .nav-btn-group { display: flex; align-items: center; gap: 12px; }
+    .btn-nav {
+      background: #FFFFFF;
+      border: 2px solid #CBD5E1;
+      color: #1E293B;
+      padding: 10px 22px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+    }
+    .btn-nav:hover:not(:disabled) {
+      background: #F1F5F9;
+      border-color: #94A3B8;
+      transform: translateY(-1px);
+    }
+    .btn-nav:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-nav.primary {
+      background: linear-gradient(135deg, #4F46E5, #3730A3);
+      color: #FFFFFF;
+      border-color: #4338CA;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+    .btn-nav.primary:hover:not(:disabled) {
+      background: linear-gradient(135deg, #4338CA, #312E81);
+      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+    }
+
+    .slide-pagination {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: #4338CA;
+      background: #EEF2FF;
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1px solid #C7D2FE;
+    }
+
+    .progress-track {
+      flex: 1;
+      max-width: 380px;
+      height: 8px;
+      background: #E2E8F0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0 24px;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #4F46E5, #D97706);
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+
+    /* BUTTONS & INTERACTIVE ELEMENTS */
+    .btn-action {
+      background: linear-gradient(135deg, #4F46E5, #3730A3);
+      color: #FFFFFF;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+      transition: all 0.2s;
+    }
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(79, 70, 229, 0.35);
+    }
+    .btn-action.secondary {
+      background: #FFFFFF;
+      color: #4338CA;
+      border: 2px solid #C7D2FE;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+    }
+    .btn-action.secondary:hover {
+      background: #EEF2FF;
+      border-color: #818CF8;
+    }
+    .btn-action.amber {
+      background: linear-gradient(135deg, #D97706, #B45309);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px rgba(217, 119, 6, 0.25);
+    }
+    .btn-action.emerald {
+      background: linear-gradient(135deg, #059669, #047857);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px rgba(5, 150, 105, 0.25);
+    }
+
+    /* BOXES & CARDS */
+    .content-box {
+      background: #FFFFFF;
+      border: 2px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+    }
+    .content-box.highlight {
+      border-color: #818CF8;
+      background: #F8FAFC;
+    }
+    .content-box.amber {
+      border-color: #FCD34D;
+      background: #FFFDF5;
+    }
+
+    /* GRID LAYOUTS */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+
+    /* TABLES */
+    .edu-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 2px solid #CBD5E1;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+    .edu-table th {
+      background: #EEF2FF;
+      color: #312E81;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 14px 18px;
+      border-bottom: 2px solid #CBD5E1;
+      text-align: left;
+    }
+    .edu-table td {
+      padding: 14px 18px;
+      font-size: 15px;
+      color: #334155;
+      border-bottom: 1px solid #E2E8F0;
+      line-height: 1.5;
+    }
+    .edu-table tr:last-child td { border-bottom: none; }
+    .edu-table tr:nth-child(even) td { background: #F8FAFC; }
+
+    /* TIMER WIDGET */
+    .timer-widget {
+      background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%);
+      border: 3px solid #D97706;
+      border-radius: 20px;
+      padding: 18px 28px;
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(49, 46, 129, 0.25);
+    }
+    .timer-display {
+      font-family: 'Montserrat', monospace;
+      font-size: 42px;
+      font-weight: 900;
+      color: #FDE047;
+      letter-spacing: 2px;
+      min-width: 130px;
+      text-align: center;
+    }
+    .timer-controls { display: flex; gap: 8px; }
+    .timer-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .timer-btn:hover { background: rgba(255, 255, 255, 0.3); }
+
+    /* CLICK TO MATCH SYSTEM */
+    .match-column { display: flex; flex-direction: column; gap: 12px; }
+    .match-item {
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: #FFFFFF;
+      border: 2px solid #CBD5E1;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1E293B;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .match-item:hover { border-color: #818CF8; background: #EEF2FF; }
+    .match-item.selected {
+      border-color: #4F46E5;
+      background: #4F46E5;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+    .match-item.matched {
+      border-color: #059669;
+      background: #ECFDF5;
+      color: #065F46;
+      cursor: default;
+    }
+
+    /* FLIP & REVEAL CARDS */
+    .reveal-card {
+      background: #FFFFFF;
+      border: 2px solid #CBD5E1;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+    .reveal-card:hover { border-color: #4F46E5; transform: translateY(-2px); }
+    .reveal-card.revealed {
+      border-color: #4F46E5;
+      background: #F8FAFC;
+    }
+
+    /* STAMP SEAL */
+    .stamp-seal {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      border: 4px dashed #DC2626;
+      color: #DC2626;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      padding: 12px 28px;
+      border-radius: 12px;
+      transform: rotate(-5deg) scale(0);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+      background: rgba(254, 226, 226, 0.7);
+    }
+    .stamp-seal.active {
+      transform: rotate(-5deg) scale(1);
+      opacity: 1;
+    }
+
+    /* CHECKBOX RUBRIC */
+    .rubric-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .rubric-item:hover { background: #EEF2FF; border-color: #C7D2FE; }
+    .rubric-item.checked { background: #ECFDF5; border-color: #A7F3D0; color: #065F46; }
+    .rubric-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #059669;
+      cursor: pointer;
+    }
+
+    /* OPTION BUTTONS A, B, C, D */
+    .quiz-option {
+      background: #FFFFFF;
+      border: 2px solid #CBD5E1;
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1E293B;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.2s;
+      margin-bottom: 12px;
+    }
+    .quiz-option:hover { border-color: #818CF8; background: #F8FAFC; }
+    .quiz-option.selected { border-color: #4F46E5; background: #EEF2FF; color: #312E81; }
+    .quiz-option.correct { border-color: #059669; background: #ECFDF5; color: #065F46; }
+    .quiz-letter {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: #E2E8F0;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+    }
+    .quiz-option.selected .quiz-letter { background: #4F46E5; color: #FFFFFF; }
+    .quiz-option.correct .quiz-letter { background: #059669; color: #FFFFFF; }
+  </style>
+</head>
+<body>
+
+  <div class="edu-bg"></div>
+  <div class="edu-grid"></div>
+
+  <div class="app-container">
+    
+    <!-- SIDEBAR ĐIỀU HƯỚNG BÀI HỌC -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>HỘI ĐỒNG SƯ PHẠM NHÍ NOVA</h2>
+        <p>BÀI 6.05 — TIẾT 1: CÁC NGUYÊN TẮC HỌC TẬP HỢP TÁC</p>
+      </div>
+      <div class="sidebar-nav">
+        <div class="activity-header">Khởi động: Mở khóa bài dạy</div>
+        <div class="nav-item active" onclick="goToSlide(1)"><span>Hội đồng Sư phạm Nhí nhận nhiệm vụ</span><span class="slide-num">01</span></div>
+        <div class="nav-item" onclick="goToSlide(2)"><span>Tình huống Hùng & Tuấn</span><span class="slide-num">02</span></div>
+        <div class="nav-item" onclick="goToSlide(3)"><span>Xác định nguyên nhân cốt lõi</span><span class="slide-num">03</span></div>
+        <div class="nav-item" onclick="goToSlide(4)"><span>Sơ đồ mâu thuẫn đùn đẩy</span><span class="slide-num">04</span></div>
+        <div class="nav-item" onclick="goToSlide(5)"><span>Giải phẫu mâu thuẫn 3 cột</span><span class="slide-num">05</span></div>
+        <div class="nav-item" onclick="goToSlide(6)"><span>2 Phút phân tích nhóm đôi</span><span class="slide-num">06</span></div>
+        <div class="nav-item" onclick="goToSlide(7)"><span>Kiểm chứng bảng phân tích</span><span class="slide-num">07</span></div>
+
+        <div class="activity-header">Khám phá: Nghiên cứu giáo án</div>
+        <div class="nav-item" onclick="goToSlide(8)"><span>5 Nguyên tắc & 5 Ý nghĩa</span><span class="slide-num">08</span></div>
+        <div class="nav-item" onclick="goToSlide(9)"><span>Ghép 5 nguyên tắc hợp tác</span><span class="slide-num">09</span></div>
+        <div class="nav-item" onclick="goToSlide(10)"><span>5 Cặp nguyên tắc chuẩn mực</span><span class="slide-num">10</span></div>
+        <div class="nav-item" onclick="goToSlide(11)"><span>Sơ đồ 5 nguyên tắc hợp tác</span><span class="slide-num">11</span></div>
+        <div class="nav-item" onclick="goToSlide(12)"><span>Tiêu chuẩn phân công “4 Rõ”</span><span class="slide-num">12</span></div>
+
+        <div class="activity-header">Luyện tập: Đứng lớp giảng bài</div>
+        <div class="nav-item" onclick="goToSlide(13)"><span>Em là người điều phối nhóm</span><span class="slide-num">13</span></div>
+        <div class="nav-item" onclick="goToSlide(14)"><span>5 Phút lập phương án phân công</span><span class="slide-num">14</span></div>
+        <div class="nav-item" onclick="goToSlide(15)"><span>Phương án phân công tham khảo</span><span class="slide-num">15</span></div>
+        <div class="nav-item" onclick="goToSlide(16)"><span>Chuẩn bị điều phối 60 giây</span><span class="slide-num">16</span></div>
+        <div class="nav-item" onclick="goToSlide(17)"><span>Đứng lớp: 60 Giây điều phối</span><span class="slide-num">17</span></div>
+
+        <div class="activity-header">Tổng kết: Nhật ký & Chuyển giao</div>
+        <div class="nav-item" onclick="goToSlide(18)"><span>Nhật ký người thầy: Nhìn lại</span><span class="slide-num">18</span></div>
+        <div class="nav-item" onclick="goToSlide(19)"><span>Cam kết và chuyển giao tuần</span><span class="slide-num">19</span></div>
+      </div>
+    </aside>
+
+    <!-- MAIN VIEWPORT -->
+    <main class="main-viewport">
+      
+      <!-- TOP HEADER -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="btn-toggle-sidebar" onclick="toggleSidebar()">
+            <span>☰</span> DANH SÁCH BÀI HỌC
+          </button>
+          <div class="theme-badge">🎓 NOVA ACADEMY</div>
+          <div class="role-badge" id="headerRoleBadge">Thành viên Hội đồng Sư phạm tập sự</div>
+        </div>
+        <div class="header-right">
+          <button class="header-tool-btn" id="btnAudioToggle" onclick="toggleAudio()">
+            🔊 Âm thanh: BẬT
+          </button>
+          <button class="header-tool-btn" onclick="toggleFullScreen()">
+            ⛶ Toàn màn hình
+          </button>
+        </div>
+      </header>
+
+      <!-- SLIDE STAGE -->
+      <div class="slide-stage">
+
+        <!-- ==================== SLIDE 1 ==================== -->
+        <section class="slide-card active" id="slide-1">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 1 — MỞ ĐẦU TIẾT HỌC</div>
+            <h1 class="slide-title">BÀI 6.05 — TIẾT 1<br>CÁC NGUYÊN TẮC KHI LÀM VIỆC NHÓM</h1>
+            <p class="slide-subtitle">Chủ đề nhập vai: Hội đồng Sư phạm Nhí Nova — Soạn giảng và làm chủ bài học hợp tác</p>
+            
+            <div class="content-box highlight" style="margin-bottom: 20px;">
+              <p style="font-size: 16px; font-weight: 700; color: #1E1B4B; margin-bottom: 8px;">📋 THÔNG ĐIỆP NHẬP VAI:</p>
+              <p style="font-size: 16px; color: #334155; line-height: 1.6;">
+                Một nhóm học sinh đang rơi vào mâu thuẫn gay gắt vì ai cũng muốn nhận phần việc nổi bật nhưng không ai muốn làm phần việc khó. Nhiệm vụ của Hội đồng Sư phạm Nhí là tìm giải pháp giúp nhóm phân chia công việc công bằng, không tranh việc nhẹ đùn việc khó, và cùng chịu trách nhiệm về kết quả chung.
+              </p>
+            </div>
+
+            <div class="content-box amber">
+              <p style="font-size: 15px; font-weight: 800; color: #B45309; margin-bottom: 4px;">❓ CÂU HỎI LỚN CỦA TIẾT HỌC:</p>
+              <p style="font-size: 17px; font-weight: 700; color: #92400E;">
+                “Làm thế nào để mỗi thành viên đều làm tròn trách nhiệm mà nhóm vẫn hợp tác hiệu quả?”
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="text-align: center; margin-top: 24px;">
+              <button class="btn-action" onclick="goToSlide(2)">
+                🚀 MỞ HỒ SƠ BÀI GIẢNG
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Tạo không khí nhập vai Hội đồng Sư phạm, nêu câu hỏi lớn và chuyển ngay sang tiếp nhận tình huống.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 2 ==================== -->
+        <section class="slide-card" id="slide-2">
+          <div>
+            <div class="slide-tag">GIAI ĐOẠN 1 — MỞ KHÓA BÀI GIẢNG</div>
+            <h2 class="slide-title">CHUYỆN GÌ ĐANG XẢY RA VỚI HÙNG VÀ TUẤN?</h2>
+            <p class="slide-subtitle">Đọc kỹ tình huống thực tế của nhóm mô hình thủ công Khối 6</p>
+
+            <div id="boxHungTuanCover" class="content-box" style="text-align: center; padding: 40px 20px; cursor: pointer; border: 2px dashed #818CF8; background: #F8FAFC;" onclick="revealHungTuanCase()">
+              <div style="font-size: 40px; margin-bottom: 12px;">📁</div>
+              <h3 style="font-size: 20px; font-weight: 800; color: #312E81; margin-bottom: 8px;">HỒ SƠ TÌNH HUỐNG: HÙNG & TUẤN</h3>
+              <p style="font-size: 14px; color: #64748B;">Bấm vào đây để mở dữ kiện biên bản mâu thuẫn</p>
+              <button class="btn-action secondary" style="margin-top: 14px;">📂 MỞ TÌNH HUỐNG</button>
+            </div>
+
+            <div id="boxHungTuanContent" class="content-box highlight" style="display: none;">
+              <p style="font-size: 15px; font-weight: 800; color: #4338CA; margin-bottom: 8px;">📌 DỮ KIỆN BIÊN BẢN TÌNH HUỐNG:</p>
+              <p style="font-size: 18px; color: #1E293B; line-height: 1.7; font-weight: 600;">
+                “Khi chuẩn bị dự án mô hình thủ công lớp 6, <strong>Hùng và Tuấn</strong> liên tục tranh cãi gay gắt. Cả hai đều muốn làm <strong>Người nảy ý tưởng</strong> để vẽ trang trí nổi bật, đồng thời kiên quyết <strong>đùn đẩy phần viết báo cáo thuyết minh</strong> tẻ nhạt cho nhau khiến tiến độ nhóm bị đình trệ nghiêm trọng.”
+              </p>
+              <div style="margin-top: 16px; padding: 12px 16px; background: #FEF3C7; border-radius: 10px; border: 1px solid #FCD34D;">
+                <p style="font-size: 15px; font-weight: 700; color: #92400E;">🤔 Nhiệm vụ học sinh: Đọc tình huống và suy nghĩ: <em>Điều gì thực sự khiến Hùng và Tuấn xảy ra mâu thuẫn?</em></p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Cho học sinh 1 phút đọc tình huống cá nhân. Không gợi ý đáp án trước khi chuyển sang chọn nhận định.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 3 ==================== -->
+        <section class="slide-card" id="slide-3">
+          <div>
+            <div class="slide-tag">GIAI ĐOẠN 1 — MỞ KHÓA BÀI GIẢNG</div>
+            <h2 class="slide-title">NGUYÊN NHÂN CỐT LÕI LÀ GÌ?</h2>
+            <p class="slide-subtitle">Chọn nhận định phản ánh đúng nhất bản chất mâu thuẫn của Hùng và Tuấn</p>
+
+            <div style="margin-top: 10px;">
+              <div class="quiz-option" id="optA" onclick="selectQuizOption('A')">
+                <div class="quiz-letter">A</div>
+                <div>Hai bạn đều không biết vẽ trang trí mô hình.</div>
+              </div>
+              <div class="quiz-option" id="optB" onclick="selectQuizOption('B')">
+                <div class="quiz-letter">B</div>
+                <div>Hai bạn muốn làm phần việc nổi bật nhưng né tránh phần việc tẻ nhạt.</div>
+              </div>
+              <div class="quiz-option" id="optC" onclick="selectQuizOption('C')">
+                <div class="quiz-letter">C</div>
+                <div>Nhóm không có đủ thành viên để phân chia công việc.</div>
+              </div>
+              <div class="quiz-option" id="optD" onclick="selectQuizOption('D')">
+                <div class="quiz-letter">D</div>
+                <div>Dự án mô hình thủ công quá khó đối với học sinh lớp 6.</div>
+              </div>
+            </div>
+
+            <div id="quizExplainBox" class="content-box emerald" style="display: none; margin-top: 16px; border: 2px solid #059669; background: #ECFDF5;">
+              <p style="font-size: 16px; font-weight: 800; color: #065F46;">✅ ĐÁP ÁN CHÍNH XÁC: LỰA CHỌN B</p>
+              <p style="font-size: 15px; color: #064E3B; margin-top: 4px; line-height: 1.5;">
+                <strong>Đúng trọng tâm:</strong> Hai bạn cùng muốn nhận phần việc dễ nổi bật trước tập thể nhưng cùng né tránh phần việc ít hấp dẫn, đòi hỏi nhiều công sức viết lách.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; gap: 12px; margin-top: 16px;">
+              <button class="btn-action secondary" onclick="checkQuizAnswer()">
+                🔍 KIỂM CHỨNG ĐÁP ÁN
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Mời 2 học sinh phát biểu giải thích lý do trước khi bấm Kiểm chứng đáp án.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 4 ==================== -->
+        <section class="slide-card" id="slide-4">
+          <div>
+            <div class="slide-tag">GIAI ĐOẠN 1 — MỞ KHÓA BÀI GIẢNG</div>
+            <h2 class="slide-title">MÂU THUẪN BẮT ĐẦU TỪ ĐÂU?</h2>
+            <p class="slide-subtitle">Sơ đồ bóc tách chuỗi mắt xích gây đổ vỡ trong làm việc nhóm</p>
+
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 14px;">
+              <div id="chain1" class="content-box" style="display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-left: 6px solid #4F46E5;">
+                <span style="font-size: 20px; font-weight: 900; color: #4F46E5;">01</span>
+                <span style="font-size: 16px; font-weight: 700; color: #1E1B4B;">MUỐN NHẬN VIỆC NỔI BẬT (Ai cũng muốn phần hấp dẫn, ghi điểm)</span>
+              </div>
+              <div id="chain2" class="content-box" style="display: none; align-items: center; gap: 16px; padding: 14px 20px; border-left: 6px solid #D97706; background: #FFFDF5;">
+                <span style="font-size: 20px; font-weight: 900; color: #D97706;">02</span>
+                <span style="font-size: 16px; font-weight: 700; color: #92400E;">ĐÙN ĐẨY VIỆC TẺ NHẠT / KHÓ (Né tránh phần việc tốn sức, ít hào nhoáng)</span>
+              </div>
+              <div id="chain3" class="content-box" style="display: none; align-items: center; gap: 16px; padding: 14px 20px; border-left: 6px solid #E11D48; background: #FFF1F2;">
+                <span style="font-size: 20px; font-weight: 900; color: #E11D48;">03</span>
+                <span style="font-size: 16px; font-weight: 700; color: #9F1239;">KHÔNG CÓ PHÂN CÔNG CÔNG BẰNG (Thiếu sự đồng thuận và rõ ràng nhiệm vụ)</span>
+              </div>
+              <div id="chain4" class="content-box" style="display: none; align-items: center; gap: 16px; padding: 14px 20px; border-left: 6px solid #7C3AED; background: #F5F3FF;">
+                <span style="font-size: 20px; font-weight: 900; color: #7C3AED;">04</span>
+                <span style="font-size: 16px; font-weight: 700; color: #5B21B6;">MÂU THUẪN PHÁT SINH & ĐÌNH TRỆ TIẾN ĐỘ DỰ ÁN</span>
+              </div>
+            </div>
+
+            <div id="chainConclusion" class="content-box amber" style="display: none; margin-top: 14px;">
+              <p style="font-size: 15px; font-weight: 800; color: #B45309;">💡 KẾT LUẬN SƯ PHẠM:</p>
+              <p style="font-size: 16px; font-weight: 700; color: #92400E;">
+                Tâm lý “tranh việc nhẹ, đùn việc khó” là một rào cản lớn phá vỡ tinh thần đoàn kết và làm sụp đổ hiệu quả làm việc nhóm.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="margin-top: 16px;">
+              <button class="btn-action secondary" id="btnNextChain" onclick="advanceChainStep()">
+                ▶ TIẾP TỤC MỞ MẮT XÍCH
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Bấm nút “Tiếp tục mở mắt xích” để học sinh theo dõi từng bước logic phát sinh mâu thuẫn.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 5 ==================== -->
+        <section class="slide-card" id="slide-5">
+          <div>
+            <div class="slide-tag">GIAI ĐOẠN 2 — NHẬN KẾ HOẠCH BÀI DẠY</div>
+            <h2 class="slide-title">GIẢI PHẪU MÂU THUẪN HÙNG – TUẤN</h2>
+            <p class="slide-subtitle">Kẻ bảng phân tích 3 cột vào vở để tiến hành thảo luận nhóm đôi</p>
+
+            <table class="edu-table" style="margin-top: 14px;">
+              <thead>
+                <tr>
+                  <th style="width: 33%;">CỘT 1: Việc hai bạn giành nhau</th>
+                  <th style="width: 33%;">CỘT 2: Việc hai bạn đùn đẩy</th>
+                  <th style="width: 34%;">CỘT 3: Hậu quả đối với nhóm</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="height: 140px;">
+                  <td style="vertical-align: top; color: #64748B; font-style: italic;">(Ghi vào vở phần việc cả hai cùng tranh nhận...)</td>
+                  <td style="vertical-align: top; color: #64748B; font-style: italic;">(Ghi vào vở phần việc cả hai kiên quyết né tránh...)</td>
+                  <td style="vertical-align: top; color: #64748B; font-style: italic;">(Ghi vào vở tác động tiêu cực đến tiến độ và quan hệ nhóm...)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="content-box highlight" style="margin-top: 16px;">
+              <p style="font-size: 15px; font-weight: 700; color: #4338CA;">
+                👥 Hướng dẫn: Hai bạn cùng bàn trao đổi nhóm đôi trong 2 phút để hoàn thiện đủ 3 cột vào vở ghi.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="text-align: center; margin-top: 16px;">
+              <button class="btn-action" onclick="goToSlide(6)">
+                ⏱️ TÔI ĐÃ KẺ BẢNG — BẮT ĐẦU 2 PHÚT PHÂN TÍCH
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Đảm bảo 100% học sinh đã kẻ sẵn khung bảng 3 cột vào vở trước khi bấm nút đếm giờ.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 6 ==================== -->
+        <section class="slide-card" id="slide-6">
+          <div>
+            <div class="slide-tag">GIAI ĐOẠN 2 — NHẬN KẾ HOẠCH BÀI DẠY</div>
+            <h2 class="slide-title">2 PHÚT PHÂN TÍCH NHÓM ĐÔI</h2>
+            <p class="slide-subtitle">Trao đổi và hoàn thiện 3 cột phân tích tình huống Hùng & Tuấn</p>
+
+            <div class="grid-2" style="align-items: center; margin-top: 14px;">
+              <div class="content-box highlight">
+                <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 12px;">🔍 3 CÂU HỎI NHẮC VIỆC:</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #334155; font-weight: 600;">
+                  <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #4F46E5;">
+                    ① Hai bạn đang giành nhau việc gì?
+                  </div>
+                  <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #D97706;">
+                    ② Hai bạn đang đùn đẩy việc gì?
+                  </div>
+                  <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #E11D48;">
+                    ③ Điều đó gây hậu quả gì cho cả nhóm?
+                  </div>
+                </div>
+              </div>
+
+              <div style="text-align: center;">
+                <div class="timer-widget">
+                  <div>
+                    <div style="font-size: 12px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ ĐẾM NGƯỢC</div>
+                    <div class="timer-display" id="timerDisplay6">02:00</div>
+                  </div>
+                  <div class="timer-controls">
+                    <button class="timer-btn" onclick="startTimerSlide6()">Bắt đầu</button>
+                    <button class="timer-btn" onclick="pauseTimerSlide6()">Tạm dừng</button>
+                    <button class="timer-btn" onclick="addTimeSlide6(30)">+30 giây</button>
+                    <button class="timer-btn" onclick="resetTimerSlide6()">Đặt lại</button>
+                  </div>
+                </div>
+                <div id="timerMsg6" style="margin-top: 14px; font-size: 15px; font-weight: 800; color: #D97706; display: none;">
+                  🔔 Đã hết thời gian! Dừng bút và chuẩn bị đối chiếu kết quả.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="text-align: right; margin-top: 16px;">
+              <button class="btn-action primary" onclick="goToSlide(7)">
+                🔍 ĐỐI CHIẾU KẾT QUẢ ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Quan sát các nhóm thảo luận, nhắc nhở ghi vắn tắt các từ khóa cốt lõi vào vở.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 7 ==================== -->
+        <section class="slide-card" id="slide-7">
+          <div>
+            <div class="slide-tag">GIAI ĐOẠN 2 — NHẬN KẾ HOẠCH BÀI DẠY</div>
+            <h2 class="slide-title">KIỂM CHỨNG BẢNG PHÂN TÍCH</h2>
+            <p class="slide-subtitle">Đối chiếu bảng ghi chép trong vở với phân tích chuẩn mực của Hội đồng</p>
+
+            <table class="edu-table" style="margin-top: 14px;">
+              <thead>
+                <tr>
+                  <th style="width: 33%;">CỘT 1: Việc hai bạn giành nhau</th>
+                  <th style="width: 33%;">CỘT 2: Việc hai bạn đùn đẩy</th>
+                  <th style="width: 34%;">CỘT 3: Hậu quả đối với nhóm</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="height: 120px;">
+                  <td id="colCol1" style="vertical-align: top; font-weight: 600; color: #1E293B;">
+                    <button class="btn-action secondary" style="padding: 8px 14px; font-size: 13px;" onclick="revealColumn(1)">👁️ MỞ CỘT 1</button>
+                  </td>
+                  <td id="colCol2" style="vertical-align: top; font-weight: 600; color: #1E293B;">
+                    <button class="btn-action secondary" style="padding: 8px 14px; font-size: 13px;" onclick="revealColumn(2)">👁️ MỞ CỘT 2</button>
+                  </td>
+                  <td id="colCol3" style="vertical-align: top; font-weight: 600; color: #1E293B;">
+                    <button class="btn-action secondary" style="padding: 8px 14px; font-size: 13px;" onclick="revealColumn(3)">👁️ MỞ CỘT 3</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div id="boxConclusion7" class="content-box amber" style="margin-top: 16px; display: none;">
+              <p style="font-size: 15px; font-weight: 800; color: #B45309;">💡 KẾT LUẬN CHỐT:</p>
+              <p style="font-size: 16px; font-weight: 700; color: #92400E;">
+                Nhóm chỉ có thể thành công khi mọi thành viên cùng chia sẻ trách nhiệm và tôn trọng giá trị của mọi vị trí công việc.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+              <button class="btn-action secondary" onclick="revealAllColumns()">
+                👁️ MỞ TOÀN BỘ 3 CỘT
+              </button>
+              <button class="btn-action primary" onclick="goToSlide(8)">
+                🚀 TIẾP TỤC SANG KHÁM PHÁ BÀI HỌC ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Cho học sinh tự đối chiếu và bổ sung vào vở. Không yêu cầu học sinh phải viết đúng từng chữ.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 8 ==================== -->
+        <section class="slide-card" id="slide-8">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 2 — GIAI ĐOẠN 3: NGHIÊN CỨU TÀI LIỆU</div>
+            <h2 class="slide-title">5 NGUYÊN TẮC ĐANG BỊ TÁCH KHỎI Ý NGHĨA</h2>
+            <p class="slide-subtitle">Quan sát 5 nguyên tắc và 5 ý nghĩa đang bị xáo trộn vị trí</p>
+
+            <div class="grid-2" style="margin-top: 14px;">
+              <div class="content-box highlight">
+                <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 12px;">📌 5 NGUYÊN TẮC HỌC TẬP HỢP TÁC</p>
+                <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; font-weight: 700; color: #1E1B4B;">
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #CBD5E1;">1. Phụ thuộc tích cực</div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #CBD5E1;">2. Trách nhiệm cá nhân</div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #CBD5E1;">3. Tương tác trực tiếp</div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #CBD5E1;">4. Kỹ năng xã hội</div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #CBD5E1;">5. Đánh giá hoạt động nhóm</div>
+                </div>
+              </div>
+
+              <div class="content-box amber">
+                <p style="font-size: 16px; font-weight: 800; color: #B45309; margin-bottom: 12px;">🔀 5 Ý NGHĨA ĐANG XÁO TRỘN</p>
+                <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 600; color: #78350F;">
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #FDE68A;">A. Hoàn thành trọn vẹn phần việc được giao.</div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #FDE68A;">B. Cùng tiến bộ, thành công của bạn là thành công của tớ.</div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #FDE68A;">C. Hỗ trợ, động viên nhau cùng làm việc.</div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #FDE68A;">D. Lắng nghe, hòa giải bất đồng một cách văn minh.</div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border: 1px solid #FDE68A;">E. Rút kinh nghiệm để hoàn thiện cho lần sau.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-box" style="margin-top: 14px; background: #EEF2FF; border-color: #C7D2FE;">
+              <p style="font-size: 15px; font-weight: 700; color: #3730A3;">
+                👥 Nhiệm vụ: Thảo luận nhóm 4 trong 3 phút để ghép nối mỗi nguyên tắc với 01 ý nghĩa phù hợp nhất.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="text-align: center; margin-top: 14px;">
+              <button class="btn-action" onclick="goToSlide(9)">
+                🧩 BẮT ĐẦU GHÉP NỐI NGUYÊN TẮC
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Chiếu màn hình dữ liệu, không cung cấp đáp án trước để kích thích tư duy phân tích của học sinh.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 9 ==================== -->
+        <section class="slide-card" id="slide-9">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 2 — GIAI ĐOẠN 3: NGHIÊN CỨU TÀI LIỆU</div>
+            <h2 class="slide-title">GHÉP 5 NGUYÊN TẮC HỌC TẬP HỢP TÁC</h2>
+            <p class="slide-subtitle">Bấm chọn 1 Nguyên tắc ở cột trái ➔ Bấm chọn 1 Ý nghĩa ở cột phải để tạo cặp ghép</p>
+
+            <div class="grid-2" style="margin-top: 10px;">
+              <div class="match-column">
+                <p style="font-size: 15px; font-weight: 800; color: #4F46E5;">CỘT NGUYÊN TẮC (1 — 5):</p>
+                <div class="match-item" id="left-1" onclick="selectMatchItem('left', 1)">
+                  <span>1. Phụ thuộc tích cực</span>
+                  <span id="match-tag-1" style="font-size: 12px; color: #64748B;">[Chưa nối]</span>
+                </div>
+                <div class="match-item" id="left-2" onclick="selectMatchItem('left', 2)">
+                  <span>2. Trách nhiệm cá nhân</span>
+                  <span id="match-tag-2" style="font-size: 12px; color: #64748B;">[Chưa nối]</span>
+                </div>
+                <div class="match-item" id="left-3" onclick="selectMatchItem('left', 3)">
+                  <span>3. Tương tác trực tiếp</span>
+                  <span id="match-tag-3" style="font-size: 12px; color: #64748B;">[Chưa nối]</span>
+                </div>
+                <div class="match-item" id="left-4" onclick="selectMatchItem('left', 4)">
+                  <span>4. Kỹ năng xã hội</span>
+                  <span id="match-tag-4" style="font-size: 12px; color: #64748B;">[Chưa nối]</span>
+                </div>
+                <div class="match-item" id="left-5" onclick="selectMatchItem('left', 5)">
+                  <span>5. Đánh giá hoạt động nhóm</span>
+                  <span id="match-tag-5" style="font-size: 12px; color: #64748B;">[Chưa nối]</span>
+                </div>
+              </div>
+
+              <div class="match-column">
+                <p style="font-size: 15px; font-weight: 800; color: #D97706;">CỘT Ý NGHĨA (A — E):</p>
+                <div class="match-item" id="right-A" onclick="selectMatchItem('right', 'A')">
+                  <span>A. Hoàn thành trọn vẹn phần việc được giao</span>
+                </div>
+                <div class="match-item" id="right-B" onclick="selectMatchItem('right', 'B')">
+                  <span>B. Cùng tiến bộ, thành công của bạn là của tớ</span>
+                </div>
+                <div class="match-item" id="right-C" onclick="selectMatchItem('right', 'C')">
+                  <span>C. Hỗ trợ, động viên nhau cùng làm việc</span>
+                </div>
+                <div class="match-item" id="right-D" onclick="selectMatchItem('right', 'D')">
+                  <span>D. Lắng nghe, hòa giải bất đồng văn minh</span>
+                </div>
+                <div class="match-item" id="right-E" onclick="selectMatchItem('right', 'E')">
+                  <span>E. Rút kinh nghiệm để hoàn thiện cho lần sau</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+              <div style="display: flex; gap: 8px;">
+                <button class="btn-action secondary" style="padding: 10px 18px; font-size: 14px;" onclick="undoMatch()">↩ Hoàn tác</button>
+                <button class="btn-action secondary" style="padding: 10px 18px; font-size: 14px;" onclick="resetAllMatches()">🗑️ Xóa tất cả</button>
+              </div>
+              <div class="timer-widget" style="padding: 8px 18px;">
+                <span style="font-size: 13px; font-weight: 800; color: #FDE047;">ĐẾM GIỜ:</span>
+                <span class="timer-display" id="timerDisplay9" style="font-size: 24px; min-width: 70px;">03:00</span>
+                <button class="timer-btn" style="padding: 4px 8px; font-size: 12px;" onclick="startTimerSlide9()">Chạy</button>
+                <button class="timer-btn" style="padding: 4px 8px; font-size: 12px;" onclick="pauseTimerSlide9()">Dừng</button>
+              </div>
+              <button class="btn-action primary" onclick="goToSlide(10)">
+                🔍 KIỂM CHỨNG 5 CẶP ĐÚNG ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Bấm ghép nối theo phương án của đại diện các nhóm đưa ra, sau đó bấm nút “Kiểm chứng 5 cặp đúng”.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 10 ==================== -->
+        <section class="slide-card" id="slide-10">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 2 — GIAI ĐOẠN 3: NGHIÊN CỨU TÀI LIỆU</div>
+            <h2 class="slide-title">5 NGUYÊN TẮC HỌC TẬP HỢP TÁC CHUẨN MỰC</h2>
+            <p class="slide-subtitle">Bảng đối chiếu 5 cặp nguyên tắc và ý nghĩa sư phạm cốt lõi</p>
+
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+              <div id="pair1" class="content-box highlight" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
+                <div><strong style="color: #4F46E5;">1 ➔ B: PHỤ THUỘC TÍCH CỰC</strong></div>
+                <div style="color: #334155; font-weight: 600;">Cùng tiến bộ, thành công của bạn là thành công của tớ.</div>
+              </div>
+              <div id="pair2" class="content-box highlight" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
+                <div><strong style="color: #4F46E5;">2 ➔ A: TRÁCH NHIỆM CÁ NHÂN</strong></div>
+                <div style="color: #334155; font-weight: 600;">Hoàn thành trọn vẹn phần việc được giao.</div>
+              </div>
+              <div id="pair3" class="content-box highlight" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
+                <div><strong style="color: #4F46E5;">3 ➔ C: TƯƠNG TÁC TRỰC TIẾP</strong></div>
+                <div style="color: #334155; font-weight: 600;">Hỗ trợ, động viên nhau cùng làm việc.</div>
+              </div>
+              <div id="pair4" class="content-box highlight" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
+                <div><strong style="color: #4F46E5;">4 ➔ D: KỸ NĂNG XÃ HỘI</strong></div>
+                <div style="color: #334155; font-weight: 600;">Lắng nghe, hòa giải bất đồng văn minh.</div>
+              </div>
+              <div id="pair5" class="content-box highlight" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
+                <div><strong style="color: #4F46E5;">5 ➔ E: ĐÁNH GIÁ HOẠT ĐỘNG NHÓM</strong></div>
+                <div style="color: #334155; font-weight: 600;">Rút kinh nghiệm để hoàn thiện cho lần sau.</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="text-align: right; margin-top: 14px;">
+              <button class="btn-action primary" onclick="goToSlide(11)">
+                📊 HỆ THỐNG HÓA SƠ ĐỒ ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Học sinh ghi nhanh 5 cặp nguyên tắc vào vở học tập.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 11 ==================== -->
+        <section class="slide-card" id="slide-11">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 2 — GIAI ĐOẠN 4: SOẠN GIÁO ÁN</div>
+            <h2 class="slide-title">SƠ ĐỒ 5 NGUYÊN TẮC HỌC TẬP HỢP TÁC</h2>
+            <p class="slide-subtitle">Bấm từng nhánh để hệ thống hóa 5 trụ cột sư phạm và vẽ sơ đồ vào vở</p>
+
+            <div style="text-align: center; margin: 12px 0;">
+              <div style="display: inline-block; background: linear-gradient(135deg, #312E81, #4F46E5); color: #FFFFFF; padding: 12px 36px; border-radius: 30px; font-size: 20px; font-weight: 900; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);">
+                🌟 HỌC TẬP HỢP TÁC
+              </div>
+            </div>
+
+            <div class="grid-5" style="margin-top: 12px;">
+              <div class="reveal-card" id="branch1" onclick="revealBranch(1)">
+                <div style="font-size: 22px; font-weight: 900; color: #4F46E5; margin-bottom: 6px;">①</div>
+                <div id="branchTitle1" style="font-weight: 800; font-size: 14px; color: #64748B;">?</div>
+                <div id="branchSub1" style="font-size: 12px; color: #475569; margin-top: 4px; display: none;">Cùng tiến bộ</div>
+              </div>
+
+              <div class="reveal-card" id="branch2" onclick="revealBranch(2)">
+                <div style="font-size: 22px; font-weight: 900; color: #4F46E5; margin-bottom: 6px;">②</div>
+                <div id="branchTitle2" style="font-weight: 800; font-size: 14px; color: #64748B;">?</div>
+                <div id="branchSub2" style="font-size: 12px; color: #475569; margin-top: 4px; display: none;">Làm tròn việc</div>
+              </div>
+
+              <div class="reveal-card" id="branch3" onclick="revealBranch(3)">
+                <div style="font-size: 22px; font-weight: 900; color: #4F46E5; margin-bottom: 6px;">③</div>
+                <div id="branchTitle3" style="font-weight: 800; font-size: 14px; color: #64748B;">?</div>
+                <div id="branchSub3" style="font-size: 12px; color: #475569; margin-top: 4px; display: none;">Hỗ trợ nhau</div>
+              </div>
+
+              <div class="reveal-card" id="branch4" onclick="revealBranch(4)">
+                <div style="font-size: 22px; font-weight: 900; color: #4F46E5; margin-bottom: 6px;">④</div>
+                <div id="branchTitle4" style="font-weight: 800; font-size: 14px; color: #64748B;">?</div>
+                <div id="branchSub4" style="font-size: 12px; color: #475569; margin-top: 4px; display: none;">Lắng nghe hòa giải</div>
+              </div>
+
+              <div class="reveal-card" id="branch5" onclick="revealBranch(5)">
+                <div style="font-size: 22px; font-weight: 900; color: #4F46E5; margin-bottom: 6px;">⑤</div>
+                <div id="branchTitle5" style="font-weight: 800; font-size: 14px; color: #64748B;">?</div>
+                <div id="branchSub5" style="font-size: 12px; color: #475569; margin-top: 4px; display: none;">Rút kinh nghiệm</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+              <button class="btn-action secondary" onclick="revealAllBranches()">
+                👁️ MỞ TẤT CẢ 5 NHÁNH
+              </button>
+              <button class="btn-action primary" onclick="goToSlide(12)">
+                🎯 TIÊU CHUẨN 4 RÕ ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Học sinh vẽ sơ đồ phân nhánh 5 nguyên tắc vào vở học tập.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 12 ==================== -->
+        <section class="slide-card" id="slide-12">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 2 — GIAI ĐOẠN 4: SOẠN GIÁO ÁN</div>
+            <h2 class="slide-title">MUỐN PHÂN CÔNG CÔNG BẰNG: NHỚ “4 RÕ”</h2>
+            <p class="slide-subtitle">Bộ tiêu chuẩn vàng giúp mọi kế hoạch làm việc nhóm luôn minh bạch và hiệu quả</p>
+
+            <div class="grid-4" style="margin-top: 14px;">
+              <div class="reveal-card" id="cardRo1" onclick="revealRo(1)">
+                <div style="font-size: 32px; margin-bottom: 8px;">👤</div>
+                <h3 style="font-size: 17px; font-weight: 900; color: #312E81;">1. RÕ NGƯỜI</h3>
+                <p id="roText1" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm mở)</p>
+              </div>
+
+              <div class="reveal-card" id="cardRo2" onclick="revealRo(2)">
+                <div style="font-size: 32px; margin-bottom: 8px;">📋</div>
+                <h3 style="font-size: 17px; font-weight: 900; color: #312E81;">2. RÕ VIỆC</h3>
+                <p id="roText2" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm mở)</p>
+              </div>
+
+              <div class="reveal-card" id="cardRo3" onclick="revealRo(3)">
+                <div style="font-size: 32px; margin-bottom: 8px;">⏳</div>
+                <h3 style="font-size: 17px; font-weight: 900; color: #312E81;">3. RÕ THỜI HẠN</h3>
+                <p id="roText3" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm mở)</p>
+              </div>
+
+              <div class="reveal-card" id="cardRo4" onclick="revealRo(4)">
+                <div style="font-size: 32px; margin-bottom: 8px;">🎯</div>
+                <h3 style="font-size: 17px; font-weight: 900; color: #312E81;">4. RÕ TIÊU CHUẨN</h3>
+                <p id="roText4" style="font-size: 14px; color: #64748B; margin-top: 6px;">(Bấm mở)</p>
+              </div>
+            </div>
+
+            <div id="roConclusion" class="content-box highlight" style="margin-top: 16px; display: none;">
+              <p style="font-size: 15px; font-weight: 800; color: #4338CA;">💡 KẾT LUẬN SƯ PHẠM:</p>
+              <p style="font-size: 16px; font-weight: 700; color: #1E1B4B;">
+                Phân công minh bạch theo “4 Rõ” giúp mỗi thành viên hiểu rõ nhiệm vụ của mình, loại bỏ cảm giác bất công và tự giác làm tròn trách nhiệm.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+              <button class="btn-action secondary" onclick="revealAllRo()">
+                👁️ MỞ TẤT CẢ “4 RÕ”
+              </button>
+              <button class="btn-action primary" onclick="goToSlide(13)">
+                🛠️ BÂY GIỜ EM LÀ NGƯỜI ĐIỀU PHỐI ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Nhắc học sinh ghi nhớ thần chú “4 Rõ” trước khi bước vào giải quyết lại tình huống Hùng & Tuấn.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 13 ==================== -->
+        <section class="slide-card" id="slide-13">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 3 — GIAI ĐOẠN 5: THÔNG QUA GIÁO ÁN</div>
+            <h2 class="slide-title">BÂY GIỜ EM LÀ NGƯỜI ĐIỀU PHỐI</h2>
+            <p class="slide-subtitle">Vận dụng 5 nguyên tắc và “4 Rõ” để phân công lại công việc cho Hùng và Tuấn</p>
+
+            <div class="grid-2" style="margin-top: 10px;">
+              <div class="content-box" style="border-left: 5px solid #4F46E5;">
+                <h3 style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 6px;">👤 BẠN HÙNG</h3>
+                <p style="font-size: 14px; color: #475569;">Thích vẽ trang trí nổi bật — Né tránh viết báo cáo thuyết minh</p>
+              </div>
+              <div class="content-box" style="border-left: 5px solid #D97706;">
+                <h3 style="font-size: 16px; font-weight: 800; color: #92400E; margin-bottom: 6px;">👤 BẠN TUẤN</h3>
+                <p style="font-size: 14px; color: #475569;">Thích vẽ trang trí nổi bật — Né tránh viết báo cáo thuyết minh</p>
+              </div>
+            </div>
+
+            <div class="content-box highlight" style="margin-top: 14px;">
+              <p style="font-size: 15px; font-weight: 800; color: #4338CA; margin-bottom: 8px;">📋 KẺ BẢNG PHÂN CÔNG VÀO VỞ:</p>
+              <table class="edu-table">
+                <thead>
+                  <tr>
+                    <th style="width: 25%;">Thành viên</th>
+                    <th style="width: 45%;">Nhiệm vụ chính được giao</th>
+                    <th style="width: 30%;">Tiêu chuẩn hoàn thành</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight: 700;">Hùng</td>
+                    <td style="color: #64748B; font-style: italic;">(Lập phương án phân công...)</td>
+                    <td style="color: #64748B; font-style: italic;">(Ghi rõ thời hạn & chất lượng...)</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight: 700;">Tuấn</td>
+                    <td style="color: #64748B; font-style: italic;">(Lập phương án phân công...)</td>
+                    <td style="color: #64748B; font-style: italic;">(Ghi rõ thời hạn & chất lượng...)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <div style="text-align: center; margin-top: 14px;">
+              <button class="btn-action" onclick="goToSlide(14)">
+                ⏱️ BẮT ĐẦU 5 PHÚT LẬP PHƯƠNG ÁN
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Yêu cầu phương án phải đảm bảo công bằng, không dồn việc khó cho một bạn.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 14 ==================== -->
+        <section class="slide-card" id="slide-14">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 3 — GIAI ĐOẠN 5: THÔNG QUA GIÁO ÁN</div>
+            <h2 class="slide-title">5 PHÚT LẬP PHƯƠNG ÁN PHÂN CÔNG</h2>
+            <p class="slide-subtitle">Hoàn thiện kế hoạch phân công công bằng cho Hùng và Tuấn vào vở</p>
+
+            <div class="grid-2" style="align-items: center; margin-top: 14px;">
+              <div class="content-box highlight">
+                <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 12px;">🔍 3 CÂU HỎI KIỂM TRA PHƯƠNG ÁN:</p>
+                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; color: #334155; font-weight: 600;">
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #4F46E5;">
+                    ① Cả hai bạn đều có phần việc vẽ phù hợp năng khiếu không?
+                  </div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #D97706;">
+                    ② Phần việc khó (viết báo cáo) có bị đẩy hết cho một người không?
+                  </div>
+                  <div style="padding: 10px 14px; background: #FFFFFF; border-radius: 8px; border-left: 4px solid #059669;">
+                    ③ Tiêu chuẩn hoàn thành đã rõ ràng theo “4 Rõ” chưa?
+                  </div>
+                </div>
+              </div>
+
+              <div style="text-align: center;">
+                <div class="timer-widget">
+                  <div>
+                    <div style="font-size: 12px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">ĐỒNG HỒ ĐẾM NGƯỢC</div>
+                    <div class="timer-display" id="timerDisplay14">05:00</div>
+                  </div>
+                  <div class="timer-controls">
+                    <button class="timer-btn" onclick="startTimerSlide14()">Bắt đầu</button>
+                    <button class="timer-btn" onclick="pauseTimerSlide14()">Tạm dừng</button>
+                    <button class="timer-btn" onclick="resetTimerSlide14()">Đặt lại</button>
+                  </div>
+                </div>
+                <div id="timerWarn14" style="margin-top: 14px; font-size: 15px; font-weight: 800; color: #D97706; display: none;">
+                  ⏳ Còn 1 phút — Hãy kiểm tra lại tính công bằng của phương án!
+                </div>
+                <div id="timerMsg14" style="margin-top: 14px; font-size: 15px; font-weight: 800; color: #DC2626; display: none;">
+                  🔔 Đã hết thời gian! Dừng bút và chuẩn bị thông qua phương án.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="text-align: right; margin-top: 16px;">
+              <button class="btn-action primary" onclick="goToSlide(15)">
+                📋 XEM PHƯƠNG ÁN THAM KHẢO ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Đi quanh lớp hỗ trợ các nhóm gặp khó khăn trong việc chia đôi phần việc viết báo cáo.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 15 ==================== -->
+        <section class="slide-card" id="slide-15">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 3 — GIAI ĐOẠN 5: THÔNG QUA GIÁO ÁN</div>
+            <h2 class="slide-title">PHƯƠNG ÁN PHÂN CÔNG THAM KHẢO</h2>
+            <p class="slide-subtitle">Giải pháp phân công chuẩn mực dựa trên 5 nguyên tắc Học tập hợp tác</p>
+
+            <table class="edu-table" style="margin-top: 12px;">
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Thành viên</th>
+                  <th style="width: 50%;">Nhiệm vụ chính được giao</th>
+                  <th style="width: 30%;">Tiêu chuẩn hoàn thành</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 800; color: #312E81;">HÙNG</td>
+                  <td id="tdHungTask" style="color: #64748B;">(Bấm nút bên dưới để mở phương án)</td>
+                  <td id="tdHungStd" style="color: #64748B;">---</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 800; color: #92400E;">TUẤN</td>
+                  <td id="tdTuanTask" style="color: #64748B;">(Bấm nút bên dưới để mở phương án)</td>
+                  <td id="tdTuanStd" style="color: #64748B;">---</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div id="boxPlanConclusion" class="content-box amber" style="margin-top: 14px; display: none;">
+              <p style="font-size: 15px; font-weight: 800; color: #B45309;">💡 BÀI HỌC CỐT LÕI:</p>
+              <p style="font-size: 16px; font-weight: 700; color: #92400E;">
+                Chia nhỏ nhiệm vụ hấp dẫn và cùng gánh vác phần việc khó giúp triệt tiêu tâm lý đùn đẩy, tạo nên sự gắn kết bền chặt.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+              <button class="btn-action secondary" onclick="revealSamplePlan()">
+                👁️ HIỆN PHƯƠNG ÁN THAM KHẢO
+              </button>
+              <button class="btn-action primary" onclick="goToSlide(16)">
+                🎭 CHUẨN BỊ SẮM VAI ĐIỀU PHỐI ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Đặt câu hỏi kiểm chứng: Điểm nào trong phương án này giúp hạn chế việc đùn đẩy?</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 16 ==================== -->
+        <section class="slide-card" id="slide-16">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 3 — GIAI ĐOẠN 6: ĐỨNG LỚP GIẢNG BÀI</div>
+            <h2 class="slide-title">CHUẨN BỊ ĐIỀU PHỐI TRONG 60 GIÂY</h2>
+            <p class="slide-subtitle">Sẵn sàng nhập vai Giáo viên điều phối và Thành viên nhóm</p>
+
+            <div class="grid-2" style="margin-top: 10px;">
+              <div class="content-box highlight">
+                <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 10px;">📋 CHECKLIST TIÊU CHUẨN LỜI ĐIỀU PHỐI:</p>
+                <div class="rubric-item" onclick="toggleRubric(this)">
+                  <input type="checkbox"> <span>Ghi nhận điểm mạnh/năng khiếu của các bạn</span>
+                </div>
+                <div class="rubric-item" onclick="toggleRubric(this)">
+                  <input type="checkbox"> <span>Phân chia nhiệm vụ rõ người, rõ việc, rõ tiêu chuẩn</span>
+                </div>
+                <div class="rubric-item" onclick="toggleRubric(this)">
+                  <input type="checkbox"> <span>Đảm bảo cả hai cùng chia sẻ phần việc khó</span>
+                </div>
+                <div class="rubric-item" onclick="toggleRubric(this)">
+                  <input type="checkbox"> <span>Khích lệ hai bạn cùng hỗ trợ nhau tiến bộ</span>
+                </div>
+                <div class="rubric-item" onclick="toggleRubric(this)">
+                  <input type="checkbox"> <span>Thái độ chân thành, không chỉ trích áp đặt</span>
+                </div>
+              </div>
+
+              <div style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div class="timer-widget">
+                  <div>
+                    <div style="font-size: 12px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">CHUẨN BỊ LỜI THOẠI</div>
+                    <div class="timer-display" id="timerDisplay16">01:00</div>
+                  </div>
+                  <div class="timer-controls">
+                    <button class="timer-btn" onclick="startTimerSlide16()">Chạy</button>
+                    <button class="timer-btn" onclick="pauseTimerSlide16()">Dừng</button>
+                  </div>
+                </div>
+                <p style="font-size: 14px; font-weight: 700; color: #64748B; margin-top: 14px;">
+                  Bạn A = Giáo viên điều phối | Bạn B = Thành viên nhóm
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="text-align: center; margin-top: 16px;">
+              <button class="btn-action" onclick="goToSlide(17)">
+                🎬 BẮT ĐẦU DIỄN TẬP ĐIỀU PHỐI
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Học sinh nhẩm lời thoại trong 60 giây trước khi bắt đầu diễn tập sắm vai.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 17 ==================== -->
+        <section class="slide-card" id="slide-17">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 3 — GIAI ĐOẠN 6: ĐỨNG LỚP GIẢNG BÀI</div>
+            <h2 class="slide-title">ĐỨNG LỚP: 60 GIÂY ĐIỀU PHỐI</h2>
+            <p class="slide-subtitle">Thực hành sắm vai theo lượt và trình diễn trước Hội đồng</p>
+
+            <div class="grid-2" style="margin-top: 10px;">
+              <div id="boxRoleA" class="content-box highlight" style="border: 2px solid #4F46E5;">
+                <p style="font-size: 14px; font-weight: 800; color: #4F46E5;" id="lblTurn">LƯỢT 1: BẠN A ĐIỀU PHỐI</p>
+                <h3 style="font-size: 18px; font-weight: 900; color: #1E1B4B; margin: 6px 0;" id="txtRoleDesc">A = Giáo viên điều phối | B = Thành viên nhóm</h3>
+                <p style="font-size: 14px; color: #475569;" id="txtTurnInstruction">Bạn A thực hiện lời nói thuyết phục trong 60 giây. Sau đó bạn B phản hồi.</p>
+              </div>
+
+              <div style="text-align: center;">
+                <div class="timer-widget">
+                  <div>
+                    <div style="font-size: 12px; font-weight: 800; color: #FDE047; margin-bottom: 2px;">THỜI GIAN LƯỢT</div>
+                    <div class="timer-display" id="timerDisplay17">01:00</div>
+                  </div>
+                  <div class="timer-controls">
+                    <button class="timer-btn" onclick="startTimerSlide17()">Bắt đầu</button>
+                    <button class="timer-btn" onclick="pauseTimerSlide17()">Tạm dừng</button>
+                    <button class="timer-btn" onclick="resetTimerSlide17()">Đặt lại</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="boxSampleSpeech" class="content-box amber" style="margin-top: 14px; display: none;">
+              <p style="font-size: 15px; font-weight: 800; color: #B45309;">💬 LỜI ĐIỀU PHỐI MẪU THAM KHẢO:</p>
+              <p style="font-size: 16px; font-weight: 700; color: #92400E; line-height: 1.6;">
+                “Hùng và Tuấn đều có năng khiếu vẽ rất tốt! Thầy/cô đề xuất Hùng vẽ bố cục chính, Tuấn vẽ minh họa chi tiết và hai bạn cùng chia đôi phần viết báo cáo nhé. Khi cùng hỗ trợ nhau, sản phẩm của nhóm chắc chắn sẽ đạt điểm cao nhất!”
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+              <button class="btn-action secondary" id="btnSwitchTurn" onclick="switchRoleTurn()">
+                🔄 ĐỔI VAI (LƯỢT 2)
+              </button>
+              <button class="btn-action amber" onclick="revealSampleSpeech()">
+                👁️ HIỆN LỜI THOẠI MẪU
+              </button>
+              <button class="btn-action primary" onclick="goToSlide(18)">
+                📝 NHẬT KÝ NGƯỜI THẦY ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Mời 2 nhóm đôi lên trước lớp trình diễn mẫu sau 2 lượt đổi vai tại chỗ.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 18 ==================== -->
+        <section class="slide-card" id="slide-18">
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 4 — GIAI ĐOẠN 7: NHẬT KÝ NGƯỜI THẦY</div>
+            <h2 class="slide-title">NHÌN LẠI CHÍNH MÌNH</h2>
+            <p class="slide-subtitle">Phản tư sư phạm cá nhân và ghi chép vào khung nhật ký trong vở</p>
+
+            <div class="content-box highlight" style="margin-top: 12px;">
+              <p style="font-size: 16px; font-weight: 800; color: #312E81; margin-bottom: 8px;">❓ CÂU HỎI PHẢN TƯ:</p>
+              <p style="font-size: 18px; font-weight: 700; color: #1E1B4B; line-height: 1.6;">
+                “Trong 5 nguyên tắc Học tập hợp tác, nguyên tắc nào em thấy bản thân cần rèn luyện nhiều nhất khi làm việc nhóm? Vì sao?”
+              </p>
+              <p style="font-size: 14px; color: #64748B; margin-top: 8px; font-style: italic;">
+                ✍️ Hãy viết 2 — 3 dòng chân thành vào ô đóng khung nhật ký cuối bài trong vở ghi của em.
+              </p>
+            </div>
+
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;">
+              <span style="font-size: 13px; font-weight: 800; color: #4F46E5; background: #EEF2FF; padding: 6px 12px; border-radius: 6px;">① Phụ thuộc tích cực</span>
+              <span style="font-size: 13px; font-weight: 800; color: #4F46E5; background: #EEF2FF; padding: 6px 12px; border-radius: 6px;">② Trách nhiệm cá nhân</span>
+              <span style="font-size: 13px; font-weight: 800; color: #4F46E5; background: #EEF2FF; padding: 6px 12px; border-radius: 6px;">③ Tương tác trực tiếp</span>
+              <span style="font-size: 13px; font-weight: 800; color: #4F46E5; background: #EEF2FF; padding: 6px 12px; border-radius: 6px;">④ Kỹ năng xã hội</span>
+              <span style="font-size: 13px; font-weight: 800; color: #4F46E5; background: #EEF2FF; padding: 6px 12px; border-radius: 6px;">⑤ Đánh giá hoạt động nhóm</span>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+              <div class="timer-widget" style="padding: 8px 18px;">
+                <span style="font-size: 13px; font-weight: 800; color: #FDE047;">ĐẾM GIỜ GHI VỞ:</span>
+                <span class="timer-display" id="timerDisplay18" style="font-size: 24px; min-width: 70px;">02:00</span>
+                <button class="timer-btn" style="padding: 4px 8px; font-size: 12px;" onclick="startTimerSlide18()">Chạy</button>
+                <button class="timer-btn" style="padding: 4px 8px; font-size: 12px;" onclick="pauseTimerSlide18()">Dừng</button>
+              </div>
+              <button class="btn-action primary" onclick="goToSlide(19)">
+                📜 CAM KẾT VẬN DỤNG ▶
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Đây là hoạt động phản tư cá nhân, giáo viên tôn trọng mọi câu trả lời chân thật của học sinh.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SLIDE 19 ==================== -->
+        <section class="slide-card" id="slide-19">
+          <div class="stamp-seal" id="stampCommit">ĐÃ CAM KẾT</div>
+
+          <div>
+            <div class="slide-tag">HOẠT ĐỘNG 4 — GIAI ĐOẠN 8: LAN TỎA TRI THỨC</div>
+            <h2 class="slide-title">THỬ THÁCH LÀM VIỆC NHÓM TRONG TUẦN NÀY</h2>
+            <p class="slide-subtitle">Ký cam kết trách nhiệm đồng đội để xây dựng tập thể vững mạnh</p>
+
+            <div class="content-box highlight" style="border: 2px solid #818CF8; padding: 28px; margin-top: 10px;">
+              <p style="font-size: 15px; font-weight: 800; color: #4338CA; margin-bottom: 8px;">📜 BẢN TUYÊN NGÔN CAM KẾT:</p>
+              <p style="font-size: 19px; font-weight: 800; color: #1E1B4B; line-height: 1.7; font-style: italic;">
+                “Trong tất cả các bài tập nhóm tuần này, em cam kết chủ động trao đổi thẳng thắn để phân chia công việc công bằng và hoàn thành trọn vẹn trách nhiệm phần việc đã thống nhất.”
+              </p>
+              <div style="margin-top: 14px; font-size: 15px; color: #475569; font-weight: 600;">
+                ✍️ Ghi câu cam kết vào trang cuối bài học trong vở và ký tên xác nhận.
+              </div>
+            </div>
+
+            <div id="boxFinalMsg" class="content-box amber" style="margin-top: 14px; display: none;">
+              <p style="font-size: 15px; font-weight: 800; color: #B45309;">✨ THÔNG ĐIỆP BẾ MẠC TIẾT 1:</p>
+              <p style="font-size: 17px; font-weight: 800; color: #92400E;">
+                Tinh thần trách nhiệm và sự sẻ chia là chất keo gắn kết giúp tập thể luôn vững mạnh!
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div style="text-align: center; margin-top: 16px;">
+              <button class="btn-action emerald" id="btnAcceptChallenge" onclick="acceptChallenge()">
+                ✍️ NHẬN THỬ THÁCH VÀ HOÀN THÀNH TIẾT 1
+              </button>
+            </div>
+            <div class="teacher-instruction-bar">
+              <span>🎙️ <strong>HƯỚNG DẪN GIÁO VIÊN:</strong> Cả lớp cùng đồng thanh đọc câu cam kết trước khi bế mạc tiết học.</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- FOOTER CONTROLS -->
+      <footer class="bottom-bar">
+        <div class="nav-btn-group">
+          <button class="btn-nav" id="btnPrev" onclick="prevSlide()">
+            ◀ TRƯỚC
+          </button>
+          <span class="slide-pagination" id="slidePagination">TRANG 01 / 19</span>
+          <button class="btn-nav primary" id="btnNext" onclick="nextSlide()">
+            TIẾP ▶
+          </button>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">
+          ⌨ Phím tắt: [◀] Trước — [▶] Tiếp theo
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    /* =========================================================
+       AUDIO SYNTHESIZER (WEB AUDIO API)
+       ========================================================= */
+    let audioCtx = null;
+    let isAudioEnabled = true;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function toggleAudio() {
+      isAudioEnabled = !isAudioEnabled;
+      const btn = document.getElementById('btnAudioToggle');
+      if (btn) {
+        btn.innerText = isAudioEnabled ? '🔊 Âm thanh: BẬT' : '🔇 Âm thanh: TẮT';
+      }
+      if (isAudioEnabled) playSound('click');
+    }
+
+    function playSound(type) {
+      if (!isAudioEnabled) return;
+      try {
+        initAudio();
+        const now = audioCtx.currentTime;
+
+        if (type === 'click') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(600, now);
+          osc.frequency.exponentialRampToValueAtTime(300, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.08);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(now); osc.stop(now + 0.08);
+        } else if (type === 'correct') {
+          const osc1 = audioCtx.createOscillator();
+          const osc2 = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc1.type = 'sine'; osc2.type = 'sine';
+          osc1.frequency.setValueAtTime(523.25, now);
+          osc1.frequency.setValueAtTime(659.25, now + 0.1);
+          osc2.frequency.setValueAtTime(659.25, now);
+          osc2.frequency.setValueAtTime(1046.50, now + 0.1);
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45);
+          osc1.connect(gain); osc2.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc1.start(now); osc2.start(now);
+          osc1.stop(now + 0.45); osc2.stop(now + 0.45);
+        } else if (type === 'alarm') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(880, now);
+          osc.frequency.setValueAtTime(440, now + 0.15);
+          osc.frequency.setValueAtTime(880, now + 0.3);
+          gain.gain.setValueAtTime(0.3, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(now); osc.stop(now + 0.5);
+        } else if (type === 'stamp') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(120, now);
+          osc.frequency.exponentialRampToValueAtTime(40, now + 0.2);
+          gain.gain.setValueAtTime(0.4, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(now); osc.stop(now + 0.2);
+        }
+      } catch (e) {
+        console.warn('Audio Context error:', e);
+      }
+    }
+
+    /* =========================================================
+       NAVIGATION SYSTEM (19 SLIDES)
+       ========================================================= */
+    const totalSlides = 19;
+    let currentSlide = 1;
+
+    function updateHeaderRoleBadge(slideNum) {
+      const badge = document.getElementById('headerRoleBadge');
+      if (!badge) return;
+      if (slideNum <= 7) {
+        badge.innerText = 'Thành viên Hội đồng Sư phạm tập sự';
+      } else if (slideNum <= 12) {
+        badge.innerText = 'Chuyên viên Soạn giảng & Phân tích';
+      } else if (slideNum <= 17) {
+        badge.innerText = 'Giáo viên Điều phối Sư phạm';
+      } else {
+        badge.innerText = 'Chủ tọa Hội đồng Sư phạm Nova';
+      }
+    }
+
+    function goToSlide(num) {
+      if (num < 1 || num > totalSlides) return;
+      currentSlide = num;
+      playSound('click');
+
+      // Ẩn tất cả slide card
+      document.querySelectorAll('.slide-card').forEach(card => card.classList.remove('active'));
+      const activeCard = document.getElementById('slide-' + currentSlide);
+      if (activeCard) activeCard.classList.add('active');
+
+      // Cập nhật sidebar nav items
+      document.querySelectorAll('.sidebar-nav .nav-item').forEach((item, idx) => {
+        if (idx + 1 === currentSlide) {
+          item.classList.add('active');
+          item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // Cập nhật Pagination & Progress Fill
+      const pag = document.getElementById('slidePagination');
+      if (pag) pag.innerText = `TRANG ${String(currentSlide).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+      
+      const progress = document.getElementById('progressFill');
+      if (progress) {
+        const percent = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+        progress.style.width = percent + '%';
+      }
+
+      // Nút Trước / Tiếp
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      if (btnPrev) btnPrev.disabled = (currentSlide === 1);
+      if (btnNext) btnNext.disabled = (currentSlide === totalSlides);
+
+      updateHeaderRoleBadge(currentSlide);
+    }
+
+    function prevSlide() { if (currentSlide > 1) goToSlide(currentSlide - 1); }
+    function nextSlide() { if (currentSlide < totalSlides) goToSlide(currentSlide + 1); }
+
+    function toggleSidebar() {
+      const sb = document.getElementById('sidebar');
+      if (sb) sb.classList.toggle('collapsed');
+    }
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => console.log(err));
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') nextSlide();
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+    });
+
+    /* =========================================================
+       INTERACTION LOGIC PER SLIDE
+       ========================================================= */
+
+    // SLIDE 2: Mở tình huống Hùng & Tuấn
+    function revealHungTuanCase() {
+      playSound('correct');
+      document.getElementById('boxHungTuanCover').style.display = 'none';
+      document.getElementById('boxHungTuanContent').style.display = 'block';
+    }
+
+    // SLIDE 3: Trắc nghiệm nhận định nguyên nhân
+    let selectedQuizOpt = null;
+    function selectQuizOption(opt) {
+      selectedQuizOpt = opt;
+      playSound('click');
+      ['A', 'B', 'C', 'D'].forEach(letter => {
+        const el = document.getElementById('opt' + letter);
+        if (el) el.classList.remove('selected');
+      });
+      const chosen = document.getElementById('opt' + opt);
+      if (chosen) chosen.classList.add('selected');
+    }
+
+    function checkQuizAnswer() {
+      playSound('correct');
+      const optB = document.getElementById('optB');
+      if (optB) {
+        optB.classList.remove('selected');
+        optB.classList.add('correct');
+      }
+      const explain = document.getElementById('quizExplainBox');
+      if (explain) explain.style.display = 'block';
+    }
+
+    // SLIDE 4: Mở chuỗi mắt xích
+    let chainStep = 1;
+    function advanceChainStep() {
+      chainStep++;
+      playSound('click');
+      if (chainStep === 2) {
+        document.getElementById('chain2').style.display = 'flex';
+      } else if (chainStep === 3) {
+        document.getElementById('chain3').style.display = 'flex';
+      } else if (chainStep === 4) {
+        document.getElementById('chain4').style.display = 'flex';
+        document.getElementById('chainConclusion').style.display = 'block';
+        document.getElementById('btnNextChain').style.display = 'none';
+        playSound('correct');
+      }
+    }
+
+    // SLIDE 6: Timer 02:00
+    let timer6 = null;
+    let sec6 = 120;
+    function formatTime(s) {
+      const m = String(Math.floor(s / 60)).padStart(2, '0');
+      const rem = String(s % 60).padStart(2, '0');
+      return `${m}:${rem}`;
+    }
+    function startTimerSlide6() {
+      initAudio();
+      clearInterval(timer6);
+      timer6 = setInterval(() => {
+        if (sec6 > 0) {
+          sec6--;
+          document.getElementById('timerDisplay6').innerText = formatTime(sec6);
+        } else {
+          clearInterval(timer6);
+          playSound('alarm');
+          document.getElementById('timerMsg6').style.display = 'block';
+        }
+      }, 1000);
+    }
+    function pauseTimerSlide6() { clearInterval(timer6); }
+    function addTimeSlide6(secs) { sec6 += secs; document.getElementById('timerDisplay6').innerText = formatTime(sec6); }
+    function resetTimerSlide6() { clearInterval(timer6); sec6 = 120; document.getElementById('timerDisplay6').innerText = '02:00'; document.getElementById('timerMsg6').style.display = 'none'; }
+
+    // SLIDE 7: Mở cột bảng phân tích
+    function revealColumn(num) {
+      playSound('correct');
+      if (num === 1) {
+        document.getElementById('colCol1').innerHTML = '<span style="color: #4338CA;">Giành làm người nảy ý tưởng, vẽ trang trí mô hình nổi bật để được chú ý.</span>';
+      } else if (num === 2) {
+        document.getElementById('colCol2').innerHTML = '<span style="color: #D97706;">Kiên quyết đùn đẩy phần viết báo cáo thuyết minh tẻ nhạt, tốn công sức.</span>';
+      } else if (num === 3) {
+        document.getElementById('colCol3').innerHTML = '<span style="color: #DC2626;">Tiến độ nhóm bị đình trệ nghiêm trọng; phát sinh bất hòa gay gắt; nguy cơ điểm kém.</span>';
+        document.getElementById('boxConclusion7').style.display = 'block';
+      }
+    }
+    function revealAllColumns() {
+      revealColumn(1);
+      revealColumn(2);
+      revealColumn(3);
+    }
+
+    // SLIDE 9: Match System (Click-to-match)
+    let selectedLeft = null;
+    let selectedRight = null;
+    let matchHistory = [];
+    const correctMap = { 1: 'B', 2: 'A', 3: 'C', 4: 'D', 5: 'E' };
+
+    function selectMatchItem(side, val) {
+      playSound('click');
+      if (side === 'left') {
+        selectedLeft = val;
+        for (let i = 1; i <= 5; i++) {
+          const el = document.getElementById('left-' + i);
+          if (el && !el.classList.contains('matched')) el.classList.remove('selected');
+        }
+        const target = document.getElementById('left-' + val);
+        if (target && !target.classList.contains('matched')) target.classList.add('selected');
+      } else if (side === 'right') {
+        selectedRight = val;
+        ['A', 'B', 'C', 'D', 'E'].forEach(l => {
+          const el = document.getElementById('right-' + l);
+          if (el && !el.classList.contains('matched')) el.classList.remove('selected');
+        });
+        const target = document.getElementById('right-' + val);
+        if (target && !target.classList.contains('matched')) target.classList.add('selected');
+      }
+
+      if (selectedLeft && selectedRight) {
+        // Thực hiện nối
+        const leftEl = document.getElementById('left-' + selectedLeft);
+        const rightEl = document.getElementById('right-' + selectedRight);
+        const tagEl = document.getElementById('match-tag-' + selectedLeft);
+
+        if (tagEl) {
+          tagEl.innerText = `➔ Đã nối với [${selectedRight}]`;
+          tagEl.style.color = '#4F46E5';
+          tagEl.style.fontWeight = '800';
+        }
+        if (leftEl) leftEl.classList.add('matched');
+        if (rightEl) rightEl.classList.add('matched');
+
+        matchHistory.push({ left: selectedLeft, right: selectedRight });
+        playSound('correct');
+
+        selectedLeft = null;
+        selectedRight = null;
+      }
+    }
+
+    function undoMatch() {
+      if (matchHistory.length === 0) return;
+      const last = matchHistory.pop();
+      const leftEl = document.getElementById('left-' + last.left);
+      const rightEl = document.getElementById('right-' + last.right);
+      const tagEl = document.getElementById('match-tag-' + last.left);
+
+      if (leftEl) { leftEl.classList.remove('matched', 'selected'); }
+      if (rightEl) { rightEl.classList.remove('matched', 'selected'); }
+      if (tagEl) { tagEl.innerText = '[Chưa nối]'; tagEl.style.color = '#64748B'; tagEl.style.fontWeight = 'normal'; }
+      playSound('click');
+    }
+
+    function resetAllMatches() {
+      while (matchHistory.length > 0) { undoMatch(); }
+    }
+
+    // Timer slide 9
+    let timer9 = null;
+    let sec9 = 180;
+    function startTimerSlide9() {
+      initAudio();
+      clearInterval(timer9);
+      timer9 = setInterval(() => {
+        if (sec9 > 0) {
+          sec9--;
+          document.getElementById('timerDisplay9').innerText = formatTime(sec9);
+        } else {
+          clearInterval(timer9);
+          playSound('alarm');
+        }
+      }, 1000);
+    }
+    function pauseTimerSlide9() { clearInterval(timer9); }
+
+    // SLIDE 11: Mở nhánh sơ đồ 5 nguyên tắc
+    const branchData = [
+      { num: 1, title: 'Phụ thuộc tích cực', sub: 'Cùng tiến bộ, thành công chung' },
+      { num: 2, title: 'Trách nhiệm cá nhân', sub: 'Làm tròn trọn vẹn phần việc' },
+      { num: 3, title: 'Tương tác trực tiếp', sub: 'Động viên, hỗ trợ nhau' },
+      { num: 4, title: 'Kỹ năng xã hội', sub: 'Lắng nghe, hòa giải văn minh' },
+      { num: 5, title: 'Đánh giá nhóm', sub: 'Rút kinh nghiệm hoàn thiện' }
+    ];
+
+    function revealBranch(num) {
+      playSound('correct');
+      const card = document.getElementById('branch' + num);
+      const title = document.getElementById('branchTitle' + num);
+      const sub = document.getElementById('branchSub' + num);
+      const d = branchData[num - 1];
+
+      if (card) card.classList.add('revealed');
+      if (title) { title.innerText = d.title; title.style.color = '#312E81'; }
+      if (sub) { sub.style.display = 'block'; }
+    }
+    function revealAllBranches() {
+      for (let i = 1; i <= 5; i++) revealBranch(i);
+    }
+
+    // SLIDE 12: Mở Tiêu chuẩn 4 Rõ
+    const roData = [
+      { num: 1, text: 'Ai phụ trách? (Gắn trực tiếp với từng cá nhân)' },
+      { num: 2, text: 'Cụ thể phải làm gì? (Rõ từng hành động, đầu việc)' },
+      { num: 3, text: 'Khi nào phải nộp? (Mốc thời gian hoàn thành cụ thể)' },
+      { num: 4, text: 'Làm đến mức nào đạt? (Số lượng, chất lượng, thẩm mỹ)' }
+    ];
+    function revealRo(num) {
+      playSound('correct');
+      const card = document.getElementById('cardRo' + num);
+      const text = document.getElementById('roText' + num);
+      if (card) card.classList.add('revealed');
+      if (text) { text.innerText = roData[num - 1].text; text.style.color = '#1E293B'; text.style.fontWeight = '700'; }
+      document.getElementById('roConclusion').style.display = 'block';
+    }
+    function revealAllRo() {
+      for (let i = 1; i <= 4; i++) revealRo(i);
+    }
+
+    // SLIDE 14: Timer 05:00
+    let timer14 = null;
+    let sec14 = 300;
+    function startTimerSlide14() {
+      initAudio();
+      clearInterval(timer14);
+      timer14 = setInterval(() => {
+        if (sec14 > 0) {
+          sec14--;
+          document.getElementById('timerDisplay14').innerText = formatTime(sec14);
+          if (sec14 === 60) {
+            document.getElementById('timerWarn14').style.display = 'block';
+            playSound('alarm');
+          }
+        } else {
+          clearInterval(timer14);
+          playSound('alarm');
+          document.getElementById('timerMsg14').style.display = 'block';
+        }
+      }, 1000);
+    }
+    function pauseTimerSlide14() { clearInterval(timer14); }
+    function resetTimerSlide14() { clearInterval(timer14); sec14 = 300; document.getElementById('timerDisplay14').innerText = '05:00'; document.getElementById('timerWarn14').style.display = 'none'; document.getElementById('timerMsg14').style.display = 'none'; }
+
+    // SLIDE 15: Hiện phương án tham khảo
+    function revealSamplePlan() {
+      playSound('correct');
+      document.getElementById('tdHungTask').innerHTML = '<strong>Vẽ phác thảo bố cục chính</strong> + Cùng viết một nửa phần đầu của bản báo cáo thuyết minh.';
+      document.getElementById('tdHungStd').innerHTML = 'Hoàn thành đúng hạn, rõ ràng, sạch đẹp.';
+      document.getElementById('tdTuanTask').innerHTML = '<strong>Vẽ hoàn thiện chi tiết mô hình</strong> + Cùng viết một nửa phần sau của bản báo cáo thuyết minh.';
+      document.getElementById('tdTuanStd').innerHTML = 'Hoàn thành đúng hạn, rõ ràng, sạch đẹp.';
+      document.getElementById('boxPlanConclusion').style.display = 'block';
+    }
+
+    // SLIDE 16: Checklist & Timer
+    function toggleRubric(el) {
+      playSound('click');
+      el.classList.toggle('checked');
+      const chk = el.querySelector('input[type="checkbox"]');
+      if (chk) chk.checked = el.classList.contains('checked');
+    }
+    let timer16 = null;
+    let sec16 = 60;
+    function startTimerSlide16() {
+      initAudio();
+      clearInterval(timer16);
+      timer16 = setInterval(() => {
+        if (sec16 > 0) {
+          sec16--;
+          document.getElementById('timerDisplay16').innerText = formatTime(sec16);
+        } else {
+          clearInterval(timer16);
+          playSound('alarm');
+        }
+      }, 1000);
+    }
+    function pauseTimerSlide16() { clearInterval(timer16); }
+
+    // SLIDE 17: Sắm vai điều phối & Đổi vai
+    let turn17 = 1;
+    let timer17 = null;
+    let sec17 = 60;
+
+    function startTimerSlide17() {
+      initAudio();
+      clearInterval(timer17);
+      timer17 = setInterval(() => {
+        if (sec17 > 0) {
+          sec17--;
+          document.getElementById('timerDisplay17').innerText = formatTime(sec17);
+        } else {
+          clearInterval(timer17);
+          playSound('alarm');
+        }
+      }, 1000);
+    }
+    function pauseTimerSlide17() { clearInterval(timer17); }
+    function resetTimerSlide17() { clearInterval(timer17); sec17 = 60; document.getElementById('timerDisplay17').innerText = '01:00'; }
+
+    function switchRoleTurn() {
+      turn17 = (turn17 === 1) ? 2 : 1;
+      playSound('correct');
+      resetTimerSlide17();
+
+      const lbl = document.getElementById('lblTurn');
+      const desc = document.getElementById('txtRoleDesc');
+      const inst = document.getElementById('txtTurnInstruction');
+      const btn = document.getElementById('btnSwitchTurn');
+
+      if (turn17 === 2) {
+        lbl.innerText = 'LƯỢT 2: BẠN B ĐIỀU PHỐI';
+        desc.innerText = 'B = Giáo viên điều phối | A = Thành viên nhóm';
+        inst.innerText = 'Bạn B thực hiện lời nói thuyết phục trong 60 giây. Sau đó bạn A phản hồi và ghi 1 nhận xét vào vở.';
+        btn.innerText = '🔄 ĐỔI VAI (LƯỢT 1)';
+      } else {
+        lbl.innerText = 'LƯỢT 1: BẠN A ĐIỀU PHỐI';
+        desc.innerText = 'A = Giáo viên điều phối | B = Thành viên nhóm';
+        inst.innerText = 'Bạn A thực hiện lời nói thuyết phục trong 60 giây. Sau đó bạn B phản hồi.';
+        btn.innerText = '🔄 ĐỔI VAI (LƯỢT 2)';
+      }
+    }
+
+    function revealSampleSpeech() {
+      playSound('correct');
+      document.getElementById('boxSampleSpeech').style.display = 'block';
+    }
+
+    // SLIDE 18: Timer phản tư
+    let timer18 = null;
+    let sec18 = 120;
+    function startTimerSlide18() {
+      initAudio();
+      clearInterval(timer18);
+      timer18 = setInterval(() => {
+        if (sec18 > 0) {
+          sec18--;
+          document.getElementById('timerDisplay18').innerText = formatTime(sec18);
+        } else {
+          clearInterval(timer18);
+          playSound('alarm');
+        }
+      }, 1000);
+    }
+    function pauseTimerSlide18() { clearInterval(timer18); }
+
+    // SLIDE 19: Nhận thử thách & Hoàn thành
+    function acceptChallenge() {
+      playSound('stamp');
+      const stamp = document.getElementById('stampCommit');
+      if (stamp) stamp.classList.add('active');
+
+      document.getElementById('boxFinalMsg').style.display = 'block';
+      document.getElementById('btnAcceptChallenge').style.display = 'none';
+
+      // Confetti celebration
+      try {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      } catch (e) {}
+    }
+
+    /* =========================================================
+       PREVENT COMPOUND WORD WRAPPING (GATEKEEPER STANDARD 10)
+       ========================================================= */
+    function preventCompoundWordWrapping() {
+      const compoundWords = [
+        "Trung học cơ sở", "Kỹ năng sống", "Giáo viên", "Học sinh",
+        "Học tập hợp tác", "Hội đồng Sư phạm", "Phụ thuộc tích cực",
+        "Trách nhiệm cá nhân", "Tương tác trực tiếp", "Kỹ năng xã hội",
+        "Đánh giá hoạt động nhóm", "Người điều phối", "Bản báo cáo",
+        "Mô hình thủ công", "Thuyết minh", "Phân chia công việc"
+      ];
+      compoundWords.sort((a, b) => b.length - a.length);
+      const regexes = compoundWords.map(word => ({
+        regex: new RegExp(word.replace(/ /g, '[ \\t\\r\\n]+'), 'g'),
+        replacement: word.replace(/ /g, '\u00A0')
+      }));
+
+      function walk(node) {
+        if (node.nodeType === 3) {
+          let text = node.nodeValue;
+          let changed = false;
+          regexes.forEach(({ regex, replacement }) => {
+            if (regex.test(text)) {
+              text = text.replace(regex, replacement);
+              changed = true;
+            }
+          });
+          if (changed) node.nodeValue = text;
+        } else if (node.nodeType === 1 && node.nodeName !== 'SCRIPT' && node.nodeName !== 'STYLE') {
+          node.childNodes.forEach(walk);
+        }
+      }
+      walk(document.body);
+    }
+
+    // Init on DOM Load
+    document.addEventListener('DOMContentLoaded', () => {
+      goToSlide(1);
+      preventCompoundWordWrapping();
+    });
+  </script>
+</body>
+</html>

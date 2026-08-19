@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bộ Slide Tương Tác Kỹ Năng Sống — Bài 6.05: Các Nguyên Tắc Khi Làm Việc Nhóm</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .edu-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: 
+        radial-gradient(circle at 10% 15%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 90% 85%, rgba(217, 119, 6, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #F8FAFC 0%, #EEF2FF 50%, #F1F5F9 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(25px);
+      border: 2px solid #CBD5E1;
+      border-radius: 28px;
+      padding: 48px;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+      text-align: center;
+    }
+
+    .badge-theme {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #EEF2FF;
+      color: #4338CA;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 6px 18px;
+      border-radius: 30px;
+      border: 1px solid #C7D2FE;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: #1E1B4B;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    p.subtitle {
+      font-size: 17px;
+      color: #475569;
+      font-weight: 600;
+      max-width: 720px;
+      margin: 0 auto 36px auto;
+      line-height: 1.6;
+    }
+
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: left;
+    }
+
+    .lesson-card {
+      background: #FFFFFF;
+      border: 2px solid #CBD5E1;
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-6px);
+      border-color: #4F46E5;
+      box-shadow: 0 15px 35px rgba(79, 70, 229, 0.15);
+    }
+
+    .tiet-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      padding: 4px 12px;
+      border-radius: 8px;
+      width: fit-content;
+      margin-bottom: 14px;
+    }
+    .tiet-1 .tiet-badge { background: #EEF2FF; color: #4F46E5; }
+    .tiet-2 .tiet-badge { background: #FEF3C7; color: #B45309; }
+    .tiet-3 .tiet-badge { background: #ECFDF5; color: #059669; }
+
+    .lesson-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1E1B4B;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .lesson-desc {
+      font-size: 14px;
+      color: #64748B;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .btn-launch {
+      background: linear-gradient(135deg, #4F46E5, #3730A3);
+      color: #FFFFFF;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 800;
+      text-align: center;
+      display: block;
+      transition: all 0.2s;
+    }
+    .lesson-card:hover .btn-launch {
+      background: linear-gradient(135deg, #4338CA, #312E81);
+    }
+
+    .footer-notes {
+      margin-top: 36px;
+      font-size: 13px;
+      color: #94A3B8;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="edu-bg"></div>
+
+  <div class="container">
+    <div class="badge-theme">🎓 NOVA ACADEMY — HỘI ĐỒNG SƯ PHẠM NHÍ</div>
+    <h1>BÀI 6.05: CÁC NGUYÊN TẮC KHI LÀM VIỆC NHÓM</h1>
+    <p class="subtitle">Hệ thống bài giảng Slide tương tác Light Mode chuẩn mực sư phạm Kỹ năng sống Khối 6, tích hợp âm thanh Web Audio API, đồng hồ đếm ngược và kiểm soát bài học thông minh.</p>
+
+    <div class="lessons-grid">
+      <!-- TIẾT 1 -->
+      <a href="SLIDES_BAI_6.05_TIET_1_INTERACTIVE.html" class="lesson-card tiet-1">
+        <div>
+          <div class="tiet-badge">TIẾT 1 / 3 — 19 TRANG</div>
+          <div class="lesson-title">Nhận diện mâu thuẫn & Hình thành 5 nguyên tắc</div>
+          <div class="lesson-desc">Phân tích tình huống Hùng – Tuấn tranh việc nhẹ đùn việc khó, khám phá 5 nguyên tắc Học tập hợp tác và tiêu chuẩn phân công “4 Rõ”.</div>
+        </div>
+        <div class="btn-launch">🚀 MỞ SLIDE TIẾT 1</div>
+      </a>
+
+      <!-- TIẾT 2 -->
+      <a href="SLIDES_BAI_6.05_TIET_2_INTERACTIVE.html" class="lesson-card tiet-2">
+        <div>
+          <div class="tiet-badge">TIẾT 2 / 3 — 18 TRANG</div>
+          <div class="lesson-title">Phân tích 4 hồ sơ & Điều chỉnh kế hoạch</div>
+          <div class="lesson-desc">Hội chẩn 4 ca bệnh đùn đẩy (Nam, Sơn, Đức, Việt), thiết lập bảng phân công công bằng và diễn tập sắm vai Giáo viên tư vấn.</div>
+        </div>
+        <div class="btn-launch">🚀 MỞ SLIDE TIẾT 2</div>
+      </a>
+
+      <!-- TIẾT 3 -->
+      <a href="SLIDES_BAI_6.05_TIET_3_INTERACTIVE.html" class="lesson-card tiet-3">
+        <div>
+          <div class="tiet-badge">TIẾT 3 / 3 — 18 TRANG</div>
+          <div class="lesson-title">Nghiệm thu dự án & Lan tỏa tinh thần đồng đội</div>
+          <div class="lesson-desc">Báo cáo dự án nhóm theo 3 bước, đánh giá chéo theo 3 tiêu chí, vinh danh thành quả và chuyển giao bảng theo dõi thói quen 7 ngày.</div>
+        </div>
+        <div class="btn-launch">🚀 MỞ SLIDE TIẾT 3</div>
+      </a>
+    </div>
+
+    <div class="footer-notes">
+      Chương trình Kỹ năng sống THCS Khối 6 — Bộ công cụ tương tác số hóa Nova Academy
+    </div>
+  </div>
+
+</body>
+</html>
